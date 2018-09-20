@@ -9,23 +9,24 @@
 # include "configs/HAL_Conf.h"
 #endif
 
+//default defines,  overriden by HAL_Conf.h  in path sketch or path valiants/valiant/configs/
 /***************  HAL_Conf default here ******************/
-//default defines,  overriden by HAL_Conf.h in sketch path
+
 //OS
-#ifndef FREERTOS /*running with freertos*/
-# define FREERTOS    0
+#ifndef  FREERTOS
+# define FREERTOS 0
 #endif
 
 #ifndef  UCOSII	/*running with ucosii*/
 # define UCOSII      0
 #endif
 
-#ifndef BOOTLOADER	/*chech & go if avalible */
+#ifndef BOOTLOADER	/*check & go addr if avalible */
 # define BOOTLOADER  0
 #endif
 
 //core
-#ifndef USE_BITCONSTANTS
+#ifndef USE_BITCONSTANTS  /* some libraries are incompatible so can not included it */
 # define USE_BITCONSTANTS 1
 #endif
 
@@ -39,6 +40,14 @@
 
 #ifndef USE_EXTRAMSYSMALLOC
 # define USE_EXTRAMSYSMALLOC 1
+#endif
+
+#ifndef USE_AVREMULATION   /*avr PORTx PINx DDRx emulation*/
+#define USE_AVREMULATION  1
+#endif
+
+#ifndef USE_BITBAND
+#define USE_BITBAND       0
 #endif
 
 //devices
