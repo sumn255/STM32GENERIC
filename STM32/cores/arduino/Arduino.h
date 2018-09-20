@@ -27,7 +27,6 @@
 #include <string.h>
 #include <math.h>
 #include "stm32_def.h"
-#include "util/toolschain.h"
 
 /*C including option*/
 #if USE_BITCONSTANTS
@@ -109,7 +108,10 @@ void pinMode(uint8_t, uint8_t);
 //int digitalRead(uint8_t);
 int analogRead(uint8_t);
 void analogReadResolution(int resolution);
-void analogReference(uint8_t mode);
+
+#define analogReference(x)  /*huaweiwx@sina.com 2018.9*/
+//void analogReference(uint8_t mode);
+
 void analogWrite(uint8_t, int);
 void analogWriteResolution(int bits);
 uint8_t getAnalogWriteResolution(void);
@@ -184,6 +186,7 @@ long map(long, long, long, long, long);
 #include "stm32_clock.h"
 #include "stm32_gpio.h"
 #include "stm32_debug.h"
+
 
 #ifdef __cplusplus
 
