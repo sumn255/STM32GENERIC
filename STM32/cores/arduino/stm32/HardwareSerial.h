@@ -55,7 +55,7 @@
 #define SERIAL_7O2 0x3C
 #define SERIAL_8O2 0x3E
 
-class HardwareSerial : public Stream  {
+class HardwareSerial : public Stream{
   public:
     HardwareSerial(USART_TypeDef *instance);
     void begin(const uint32_t baud, uint8_t config = SERIAL_8N1);

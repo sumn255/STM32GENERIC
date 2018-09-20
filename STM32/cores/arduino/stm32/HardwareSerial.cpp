@@ -508,7 +508,6 @@ int HardwareSerial::peek() {
 }
 
 void HardwareSerial::flush() {
-
   while (txEnd % BUFFER_SIZE != txStart % BUFFER_SIZE);
 }
 
