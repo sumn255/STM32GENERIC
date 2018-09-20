@@ -157,7 +157,7 @@ extern int _write( UNUSED_PARAM(int file), UNUSED_PARAM(char *ptr), int len )
   return iIndex ;
 }
 */
-void _exit( int status )
+void _exit(UNUSED_PARAM(int status))
 {
 //  printf( "Exiting with status %d.\n", status ) ;
   for ( ; ; ) ;
@@ -167,7 +167,7 @@ __attribute__((weak))
 int _kill( UNUSED_PARAM(int pid), UNUSED_PARAM(int sig) )
 {
   errno = EINVAL;	
-  return ;
+  return -1;
 }
 
 int _getpid ( void )

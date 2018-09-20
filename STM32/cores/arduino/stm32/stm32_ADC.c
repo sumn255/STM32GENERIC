@@ -36,7 +36,7 @@
 #include "stm32_gpio_af.h"
 #include "stm32_debug.h"
 
-void stm32_adc_init(ADC_HandleTypeDef *handle);
+//void stm32_adc_init(ADC_HandleTypeDef *handle);
 
 #ifdef ADC_CLOCK_SYNC_PCLK_DIV2
 #define ADC_CLOCK_DIV ADC_CLOCK_SYNC_PCLK_DIV2
@@ -70,7 +70,13 @@ void stm32_adc_init(ADC_HandleTypeDef *handle);
  
 static int readResolution = 10;
 
+#ifdef ADC3
 static ADC_HandleTypeDef handle[3];
+#elif defined(ADC2)
+static ADC_HandleTypeDef handle[2];
+#else
+static ADC_HandleTypeDef handle[1];
+#endif
 
 void analogReadResolution(int resolution) {
     readResolution = resolution;
@@ -97,8 +103,7 @@ int analogRead(uint8_t pin) {
     if (pin == 5) pin = A5;
 #endif
 
-    stm32_chip_adc1_channel_type config = stm32ADC1GetChannel(variant_pin_list[pin].port, variant_pin_list[pin].pinMask);
-
+    stm32_chip_adc1_channel_type config = stm32ADC1GetChannel(variant_pin_list[pin].port, variant_pin_list[pin].pinMask,0);
 
     if (config.instance == NULL) {
         return 0;
@@ -132,16 +137,16 @@ int analogRead(uint8_t pin) {
 	 #else  // __HAL_RCC_ADC_CLK_ENABLE  //L4 only 
         __HAL_RCC_ADC_CLK_ENABLE();
 	 #endif
-        
+
         handle[instanceIndex].Instance = config.instance;
         handle[instanceIndex].Init.ScanConvMode = DISABLE;
         handle[instanceIndex].Init.ContinuousConvMode = ENABLE;
         handle[instanceIndex].Init.DiscontinuousConvMode = DISABLE;
-		
+
 		#if !defined(STM32H7)
         handle[instanceIndex].Init.DataAlign = ADC_DATAALIGN_RIGHT;
 		#endif
-		
+
         #ifdef STM32L0
             handle[instanceIndex].Init.SamplingTime = ADC_SAMPLETIME_13CYCLES_5;
         #endif
@@ -217,11 +222,10 @@ int analogRead(uint8_t pin) {
 
     HAL_ADC_Stop(&handle[instanceIndex]);
 
-    #ifdef ADC_RANK_NONE
-        sConfig.Rank = ADC_RANK_NONE;
-        HAL_ADC_ConfigChannel(&handle[instanceIndex], &sConfig);
-    #endif
+#ifdef ADC_RANK_NONE
+    sConfig.Rank = ADC_RANK_NONE;
+    HAL_ADC_ConfigChannel(&handle[instanceIndex], &sConfig);
+#endif
 
     return ret;
 }
-
