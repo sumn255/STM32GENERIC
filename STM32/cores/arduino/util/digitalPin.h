@@ -265,7 +265,8 @@ bool fastDigitalRead(uint8_t pin) {
   }
   return 0;
 }
-#else  // CORE_TEENSY & STM32GENERIC
+
+#else  // CORE_TEENSY / STM32GENERIC /EFM32GENERIC
 //------------------------------------------------------------------------------
 inline void fastDigitalWrite(uint8_t pin, bool value) {
   digitalWrite(pin, value);
@@ -302,7 +303,7 @@ inline void fastPinMode(uint8_t pin, uint8_t mode) {
  * @class DigitalPin
  * @brief Fast digital port I/O
  */
-template<uint8_t PinNumber>
+template<const int PinNumber>
 class DigitalPin {
  public:
   //----------------------------------------------------------------------------
@@ -334,7 +335,14 @@ class DigitalPin {
    */
   inline __attribute__((always_inline))
   void config(uint8_t mode, bool level) {
+#ifdef STM32GENERIC
+    if((mode == INPUT) && (level))
+        pinMode(PinNumber,INPUT_PULLUP);
+    else
+        fastPinConfig(PinNumber, mode, level);
+#else
     fastPinConfig(PinNumber, mode, level);
+#endif
   }
   //----------------------------------------------------------------------------
   /**
