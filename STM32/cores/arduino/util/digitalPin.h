@@ -278,12 +278,29 @@ inline bool fastDigitalRead(uint8_t pin) {
 #endif  // CORE_TEENSY& STM32GENERIC
 //------------------------------------------------------------------------------
 inline void fastDigitalToggle(uint8_t pin) {
-#ifdef STM32GENERIC  //add by huaweiwx@sina.com 2017.12.24
-  digitalToggle(pin);
+#if defined(STM32GENERIC)||defined(EFM32GENERIC)  //add by huaweiwx@sina.com 2018.8.28
+	digitalToggle(pin);
 #else
-  fastDigitalWrite(pin, !fastDigitalRead(pin));
+	fastDigitalWrite(pin, !fastDigitalRead(pin));
 #endif
 }
+
+#if defined(STM32GENERIC)||defined(EFM32GENERIC)  //add by huaweiwx@sina.com 2018.8.28
+#ifdef  __cplusplus
+inline void fastDigitalWrite(ARDUINOPIN_TypeDef pin, bool value) {
+  digitalWrite(pin, value);
+}
+//------------------------------------------------------------------------------
+inline bool fastDigitalRead(ARDUINOPIN_TypeDef pin) {
+  return digitalRead(pin);
+}
+//------------------------------------------------------------------------------
+inline void fastDigitalToggle(ARDUINOPIN_TypeDef pin) {
+  digitalToggle(pin);
+}
+#endif //__cplusplus
+#endif
+
 //------------------------------------------------------------------------------
 inline void fastPinMode(uint8_t pin, uint8_t mode) {
   pinMode(pin, mode);
@@ -303,6 +320,8 @@ inline void fastPinMode(uint8_t pin, uint8_t mode) {
  * @class DigitalPin
  * @brief Fast digital port I/O
  */
+#ifdef  __cplusplus
+
 template<const int PinNumber>
 class DigitalPin {
  public:
@@ -394,5 +413,6 @@ class DigitalPin {
     fastDigitalWrite(PinNumber, value);
   }
 };
+#endif /*__cplusplus*/
 #endif  // DigitalPin_h
 /** @} */
