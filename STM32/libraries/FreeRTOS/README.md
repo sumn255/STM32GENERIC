@@ -16,7 +16,7 @@
 
 ### 3. FreeRTOS port macro variable. 系统定制宏变量
 
--  	`portUSE_HEAP`  Memory management value is 1~5  to use 'HEAP_x.c' default 4
+-  	`portUSE_HEAP`  Memory management value is 1~5  to use 'HEAP_x.c' default 3,  0 use heap_useNewlib.c 
 -  	`portTickUSE_TIMx` value is 0/6/7/11/17  0 use systic or TIMx  to schedule, default is TIM7 if have else systic<br>
 -  	`configUSE_MALLOC_FAILED_HOOK` malloc failed<br>
 -   `configCHECK_FOR_STACK_OVERFLOW` stack overflow<br>
