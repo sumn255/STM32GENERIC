@@ -57,35 +57,63 @@
 
 #undef errno
 extern int errno ;
-extern int  _end ;
+//extern int  _end ;
 
 static unsigned char *heap_brk = NULL;
 static unsigned char *heap_end = NULL;
+extern char _end; /* Defined by the linker */
 
 void setHeap(unsigned char *start, unsigned char *end) {
     heap_brk = start;
     heap_end = end;
 }
 
-caddr_t _sbrk ( int incr )
-{
-   caddr_t prev_heap;
+__attribute__((weak))
+caddr_t _sbrk( int incr ) {
+  extern char _estack; /* Defined in the linker script */
+  extern char _Min_Stack_Size; /* Defined in the linker script */
+  static char *heap_end = &_end ;
+  char *prev_heap_end = heap_end;
 
-  if ( heap_brk == NULL )
-  {
-      heap_brk = (unsigned char *)&_end ;
+  if (heap_end + incr > (char *)__get_MSP()) {
+    /* Heap and stack collision */
+    errno = ENOMEM;
+    return (caddr_t) -1;
   }
-  prev_heap = (caddr_t)heap_brk;
-
-  if (heap_end != NULL && (heap_brk + incr) > heap_end) {
-      return (caddr_t)-1;
+  /* Ensure to keep minimun stack size defined in the linker script */
+  if (heap_end + incr >= (char*)(&_estack - &_Min_Stack_Size)) {
+    errno = ENOMEM;
+    return (caddr_t) -1;
   }
-  
-  heap_brk += incr ;
 
-  return prev_heap ;
+  heap_end += incr ;
+  return (caddr_t) prev_heap_end ;
 }
 
+__attribute__((weak))
+int _link(char *old, char *new)
+{
+    UNUSED(old);
+    UNUSED(new);	
+	errno = EMLINK;
+	return -1;
+}
+
+__attribute__((weak))
+int _unlink(char *name)
+{
+    UNUSED(name);
+	return -1;
+}
+
+__attribute__((weak))
+int _times(struct tms *buf)
+{
+    UNUSED(buf);
+	return -1;
+}
+
+__attribute__((weak))
 int _open(char *path, int flags, ...)
 {
 	/* Pretend like we always fail */
@@ -99,27 +127,6 @@ int _close( UNUSED_PARAM(int file) )
 {
   return -1 ;
 }
-
-int _link(char *old, char *new)
-{
-    UNUSED(old);
-    UNUSED(new);	
-	errno = EMLINK;
-	return -1;
-}
-
-int _unlink(char *name)
-{
-    UNUSED(name);
-	return -1;
-}
-
-int _times(struct tms *buf)
-{
-    UNUSED(buf);
-	return -1;
-}
-
 
 __attribute__((weak))
 int _fstat( UNUSED_PARAM(int file), struct stat *st )
@@ -146,17 +153,18 @@ int _read(UNUSED_PARAM(int file), UNUSED_PARAM(char *ptr), UNUSED_PARAM(int len)
 {
   return 0 ;
 }
-/*
-extern int _write( UNUSED_PARAM(int file), UNUSED_PARAM(char *ptr), int len )
+
+__attribute__((weak))
+int _write( UNUSED_PARAM(int file), UNUSED_PARAM(char *ptr), int len )
 {
   int iIndex = 0;
-
   for ( iIndex=0 ; iIndex < len ; iIndex++) {
     //TODO write to Serial
   }
   return iIndex ;
 }
-*/
+
+__attribute__((weak))
 void _exit(UNUSED_PARAM(int status))
 {
 //  printf( "Exiting with status %d.\n", status ) ;
@@ -170,6 +178,7 @@ int _kill( UNUSED_PARAM(int pid), UNUSED_PARAM(int sig) )
   return -1;
 }
 
+__attribute__((weak))
 int _getpid ( void )
 {
   return -1 ;
