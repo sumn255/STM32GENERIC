@@ -1,11 +1,11 @@
 # See: http://code.google.com/p/arduino/wiki/Platforms
 # for user, copy or rename this file to boards.txt 
 
-menu.subboard=Specific Board
+menu.cpu=Processor
 menu.startadr=Startup adr
 menu.clock_source=Clock source
 menu.osc_speed=OSC Speed(MHz)
-menu.cpu_speed=cpu Speed(MHz)
+menu.cpu_speed=CPU Speed(MHz)
 menu.usb=USB
 menu.serial=Serial communication
 menu.jtag_swd=JTAG/SWD
@@ -24,108 +24,121 @@ NUCLEO_64.upload.tool=nucleoFlasher
 
 NUCLEO_64.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART2
 
-NUCLEO_64.menu.subboard.Nucleo_F030R8=Nucleo-F030R8(48M)
-NUCLEO_64.menu.subboard.Nucleo_F030R8.upload.maximum_size=65536
-NUCLEO_64.menu.subboard.Nucleo_F030R8.upload.maximum_data_size=8192
-NUCLEO_64.menu.subboard.Nucleo_F030R8.build.mcu=cortex-m0
-NUCLEO_64.menu.subboard.Nucleo_F030R8.build.series=STM32F0
-NUCLEO_64.menu.subboard.Nucleo_F030R8.build.variant=NUCLEO_F030R8
-NUCLEO_64.menu.subboard.Nucleo_F030R8.build.board=NUCLEO_F030R8
-NUCLEO_64.menu.subboard.Nucleo_F030R8.build.f_cpuhsi=48000000L
-NUCLEO_64.menu.subboard.Nucleo_F030R8.build.f_cpuhse=48000000L
-NUCLEO_64.menu.subboard.Nucleo_F030R8.build.extra_flags=-DSTM32F030R8
-NUCLEO_64.menu.subboard.Nucleo_F030R8.massstorage_drive=NODE_F030R8
+NUCLEO_64.menu.cpu.Nucleo_F030R8=Nucleo-F030R8(48M)
+NUCLEO_64.menu.cpu.Nucleo_F030R8.upload.maximum_size=65536
+NUCLEO_64.menu.cpu.Nucleo_F030R8.upload.maximum_data_size=8192
+NUCLEO_64.menu.cpu.Nucleo_F030R8.build.mcu=cortex-m0
+NUCLEO_64.menu.cpu.Nucleo_F030R8.build.series=STM32F0
+NUCLEO_64.menu.cpu.Nucleo_F030R8.build.variant=NUCLEO_F030R8
+NUCLEO_64.menu.cpu.Nucleo_F030R8.build.board=NUCLEO_F030R8
+NUCLEO_64.menu.cpu.Nucleo_F030R8.build.f_cpuhsi=48000000L
+NUCLEO_64.menu.cpu.Nucleo_F030R8.build.f_cpuhse=48000000L
+NUCLEO_64.menu.cpu.Nucleo_F030R8.build.extra_flags=-DSTM32F030R8
+NUCLEO_64.menu.cpu.Nucleo_F030R8.massstorage_drive=NODE_F030R8
 
-NUCLEO_64.menu.subboard.Nucleo_L053R8=Nucleo-L053R8(32M)
-NUCLEO_64.menu.subboard.Nucleo_L053R8.upload.maximum_size=65536
-NUCLEO_64.menu.subboard.Nucleo_L053R8.upload.maximum_data_size=8192
-NUCLEO_64.menu.subboard.Nucleo_L053R8.build.mcu=cortex-m0plus
-NUCLEO_64.menu.subboard.Nucleo_L053R8.build.series=STM32L0
-NUCLEO_64.menu.subboard.Nucleo_L053R8.build.variant=NUCLEO_L053R8
-NUCLEO_64.menu.subboard.Nucleo_L053R8.build.board=Nucleo_L053R8
-NUCLEO_64.menu.subboard.Nucleo_L053R8.build.f_cpuhsi=32000000L
-NUCLEO_64.menu.subboard.Nucleo_L053R8.build.f_cpuhse=32000000L
-NUCLEO_64.menu.subboard.Nucleo_L053R8.build.extra_flags=-DSTM32L053R8
-NUCLEO_64.menu.subboard.Nucleo_L053R8.massstorage_drive=NODE_L053R8
+NUCLEO_64.menu.cpu.Nucleo_F072RB=Nucleo-F072RB(48M)
+NUCLEO_64.menu.cpu.Nucleo_F072RB.upload.maximum_size=131072
+NUCLEO_64.menu.cpu.Nucleo_F072RB.upload.maximum_data_size=16384
+NUCLEO_64.menu.cpu.Nucleo_F072RB.upload.device=STM32F072RB
+NUCLEO_64.menu.cpu.Nucleo_F072RB.build.mcu=cortex-m0
+NUCLEO_64.menu.cpu.Nucleo_F072RB.build.series=STM32F0
+NUCLEO_64.menu.cpu.Nucleo_F072RB.build.variant=NUCLEO_F072RB
+NUCLEO_64.menu.cpu.Nucleo_F072RB.build.board=NUCLEO_F072RB
+NUCLEO_64.menu.cpu.Nucleo_F072RB.build.f_cpuhsi=48000000L
+NUCLEO_64.menu.cpu.Nucleo_F072RB.build.f_cpuhse=48000000L
+NUCLEO_64.menu.cpu.Nucleo_F072RB.build.extra_flags=-DSTM32F072RB
+NUCLEO_64.menu.cpu.Nucleo_F072RB.massstorage_drive=NODE_F072RB
 
-NUCLEO_64.menu.subboard.Nucleo_F103RB=Nucleo-F103R8/B(HSI48M/HSE72M)
-NUCLEO_64.menu.subboard.Nucleo_F103RB.upload.maximum_size=131072
-NUCLEO_64.menu.subboard.Nucleo_F103RB.upload.maximum_data_size=20480
-NUCLEO_64.menu.subboard.Nucleo_F103RB.build.mcu=cortex-m3
-NUCLEO_64.menu.subboard.Nucleo_F103RB.build.series=STM32F1
-NUCLEO_64.menu.subboard.Nucleo_F103RB.build.variant=NUCLEO_F103RB
-NUCLEO_64.menu.subboard.Nucleo_F103RB.build.board=NUCLEO_F103RB
-NUCLEO_64.menu.subboard.Nucleo_F103RB.build.f_cpuhsi=48000000L
-NUCLEO_64.menu.subboard.Nucleo_F103RB.build.f_cpuhse=72000000L
-NUCLEO_64.menu.subboard.Nucleo_F103RB.build.extra_flags=-DSTM32F103RB
-NUCLEO_64.menu.subboard.Nucleo_F103RB.massstorage_drive=NODE_F103RB
+NUCLEO_64.menu.cpu.Nucleo_F103RB=Nucleo-F103R8/B(HSI48M/HSE72M)
+NUCLEO_64.menu.cpu.Nucleo_F103RB.upload.maximum_size=131072
+NUCLEO_64.menu.cpu.Nucleo_F103RB.upload.maximum_data_size=20480
+NUCLEO_64.menu.cpu.Nucleo_F103RB.build.mcu=cortex-m3
+NUCLEO_64.menu.cpu.Nucleo_F103RB.build.series=STM32F1
+NUCLEO_64.menu.cpu.Nucleo_F103RB.build.variant=NUCLEO_F103RB
+NUCLEO_64.menu.cpu.Nucleo_F103RB.build.board=NUCLEO_F103RB
+NUCLEO_64.menu.cpu.Nucleo_F103RB.build.f_cpuhsi=48000000L
+NUCLEO_64.menu.cpu.Nucleo_F103RB.build.f_cpuhse=72000000L
+NUCLEO_64.menu.cpu.Nucleo_F103RB.build.extra_flags=-DSTM32F103RB
+NUCLEO_64.menu.cpu.Nucleo_F103RB.massstorage_drive=NODE_F103RB
 
-NUCLEO_64.menu.subboard.Nucleo_F103RE=Nucleo-F103RC/D/E(HSI48M/HSE72M)
-NUCLEO_64.menu.subboard.Nucleo_F103RE.upload.maximum_size=524288
-NUCLEO_64.menu.subboard.Nucleo_F103RE.upload.maximum_data_size=65536
-NUCLEO_64.menu.subboard.Nucleo_F103RE.upload.device=STM32F103RE
-NUCLEO_64.menu.subboard.Nucleo_F103RE.build.mcu=cortex-m3
-NUCLEO_64.menu.subboard.Nucleo_F103RE.build.series=STM32F1
-NUCLEO_64.menu.subboard.Nucleo_F103RE.build.variant=NUCLEO_F103RB
-NUCLEO_64.menu.subboard.Nucleo_F103RE.build.board=NUCLEO_F103RE
-NUCLEO_64.menu.subboard.Nucleo_F103RE.build.f_cpuhsi=48000000L
-NUCLEO_64.menu.subboard.Nucleo_F103RE.build.f_cpuhse=72000000L
-NUCLEO_64.menu.subboard.Nucleo_F103RE.build.extra_flags=-DSTM32F103RE
-NUCLEO_64.menu.subboard.Nucleo_F103RE.massstorage_drive=NODE_F103RE
+NUCLEO_64.menu.cpu.Nucleo_F103RE=Nucleo-F103RC/D/E(HSI48M/HSE72M)
+NUCLEO_64.menu.cpu.Nucleo_F103RE.upload.maximum_size=524288
+NUCLEO_64.menu.cpu.Nucleo_F103RE.upload.maximum_data_size=65536
+NUCLEO_64.menu.cpu.Nucleo_F103RE.upload.device=STM32F103RE
+NUCLEO_64.menu.cpu.Nucleo_F103RE.build.mcu=cortex-m3
+NUCLEO_64.menu.cpu.Nucleo_F103RE.build.series=STM32F1
+NUCLEO_64.menu.cpu.Nucleo_F103RE.build.variant=NUCLEO_F103RB
+NUCLEO_64.menu.cpu.Nucleo_F103RE.build.board=NUCLEO_F103RE
+NUCLEO_64.menu.cpu.Nucleo_F103RE.build.f_cpuhsi=48000000L
+NUCLEO_64.menu.cpu.Nucleo_F103RE.build.f_cpuhse=72000000L
+NUCLEO_64.menu.cpu.Nucleo_F103RE.build.extra_flags=-DSTM32F103RE
+NUCLEO_64.menu.cpu.Nucleo_F103RE.massstorage_drive=NODE_F103RE
 
-NUCLEO_64.menu.subboard.Nucleo_F303RE=Nucleo-F303RE(72M)
-NUCLEO_64.menu.subboard.Nucleo_F303RE.upload.maximum_size=524288
-NUCLEO_64.menu.subboard.Nucleo_F303RE.upload.maximum_data_size=81920
-NUCLEO_64.menu.subboard.Nucleo_F303RE.build.mcu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard
-NUCLEO_64.menu.subboard.Nucleo_F303RE.build.series=STM32F3
-NUCLEO_64.menu.subboard.Nucleo_F303RE.build.variant=NUCLEO_F303RE
-NUCLEO_64.menu.subboard.Nucleo_F303RE.build.board=NUCLEO_F303RE
-NUCLEO_64.menu.subboard.Nucleo_F303RE.build.f_cpuhsi=72000000L
-NUCLEO_64.menu.subboard.Nucleo_F303RE.build.f_cpuhse=72000000L
-NUCLEO_64.menu.subboard.Nucleo_F303RE.build.extra_flags=-DSTM32F303RE
-NUCLEO_64.menu.subboard.Nucleo_F303RE.massstorage_drive=NODE_F303RE
+NUCLEO_64.menu.cpu.Nucleo_F303RE=Nucleo-F303RE(72M)
+NUCLEO_64.menu.cpu.Nucleo_F303RE.upload.maximum_size=524288
+NUCLEO_64.menu.cpu.Nucleo_F303RE.upload.maximum_data_size=81920
+NUCLEO_64.menu.cpu.Nucleo_F303RE.build.mcu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard
+NUCLEO_64.menu.cpu.Nucleo_F303RE.build.series=STM32F3
+NUCLEO_64.menu.cpu.Nucleo_F303RE.build.variant=NUCLEO_F303RE
+NUCLEO_64.menu.cpu.Nucleo_F303RE.build.board=NUCLEO_F303RE
+NUCLEO_64.menu.cpu.Nucleo_F303RE.build.f_cpuhsi=72000000L
+NUCLEO_64.menu.cpu.Nucleo_F303RE.build.f_cpuhse=72000000L
+NUCLEO_64.menu.cpu.Nucleo_F303RE.build.extra_flags=-DSTM32F303RE
+NUCLEO_64.menu.cpu.Nucleo_F303RE.massstorage_drive=NODE_F303RE
 
-NUCLEO_64.menu.subboard.Nucleo_F401RE=Nucleo-F401RE(84M)
-NUCLEO_64.menu.subboard.Nucleo_F401RE.upload.maximum_size=524288
-NUCLEO_64.menu.subboard.Nucleo_F401RE.upload.maximum_data_size=98304
-NUCLEO_64.menu.subboard.Nucleo_F401RE.build.mcu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard
-NUCLEO_64.menu.subboard.Nucleo_F401RE.build.series=STM32F4
-NUCLEO_64.menu.subboard.Nucleo_F401RE.build.variant=NUCLEO_F401RE
-NUCLEO_64.menu.subboard.Nucleo_F401RE.build.board=NUCLEO_F401RE
-NUCLEO_64.menu.subboard.Nucleo_F401RE.build.f_cpuhsi=84000000L
-NUCLEO_64.menu.subboard.Nucleo_F401RE.build.f_cpuhse=84000000L
-NUCLEO_64.menu.subboard.Nucleo_F401RE.build.extra_flags=-DSTM32F401RE
-NUCLEO_64.menu.subboard.Nucleo_F401RE.massstorage_drive=NODE_F401RE
+NUCLEO_64.menu.cpu.Nucleo_F401RE=Nucleo-F401RE(84M)
+NUCLEO_64.menu.cpu.Nucleo_F401RE.upload.maximum_size=524288
+NUCLEO_64.menu.cpu.Nucleo_F401RE.upload.maximum_data_size=98304
+NUCLEO_64.menu.cpu.Nucleo_F401RE.build.mcu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard
+NUCLEO_64.menu.cpu.Nucleo_F401RE.build.series=STM32F4
+NUCLEO_64.menu.cpu.Nucleo_F401RE.build.variant=NUCLEO_F401RE
+NUCLEO_64.menu.cpu.Nucleo_F401RE.build.board=NUCLEO_F401RE
+NUCLEO_64.menu.cpu.Nucleo_F401RE.build.f_cpuhsi=84000000L
+NUCLEO_64.menu.cpu.Nucleo_F401RE.build.f_cpuhse=84000000L
+NUCLEO_64.menu.cpu.Nucleo_F401RE.build.extra_flags=-DSTM32F401RE
+NUCLEO_64.menu.cpu.Nucleo_F401RE.massstorage_drive=NODE_F401RE
 
-NUCLEO_64.menu.subboard.Nucleo_F411RE=Nucleo-F411RE(96M)
-NUCLEO_64.menu.subboard.Nucleo_F411RE.upload.maximum_size=524288
-NUCLEO_64.menu.subboard.Nucleo_F411RE.upload.maximum_data_size=131072
-NUCLEO_64.menu.subboard.Nucleo_F411RE.build.mcu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard
-NUCLEO_64.menu.subboard.Nucleo_F411RE.build.series=STM32F4
-NUCLEO_64.menu.subboard.Nucleo_F411RE.build.variant=NUCLEO_F411RE
-NUCLEO_64.menu.subboard.Nucleo_F411RE.build.board=NUCLEO_F411RE
-NUCLEO_64.menu.subboard.Nucleo_F411RE.build.f_cpuhsi=96000000L
-NUCLEO_64.menu.subboard.Nucleo_F411RE.build.f_cpuhse=96000000L
-NUCLEO_64.menu.subboard.Nucleo_F411RE.build.extra_flags=-DSTM32F411RE
-NUCLEO_64.menu.subboard.Nucleo_F411RE.massstorage_drive=NODE_F411RE
+NUCLEO_64.menu.cpu.Nucleo_F411RE=Nucleo-F411RE(96M)
+NUCLEO_64.menu.cpu.Nucleo_F411RE.upload.maximum_size=524288
+NUCLEO_64.menu.cpu.Nucleo_F411RE.upload.maximum_data_size=131072
+NUCLEO_64.menu.cpu.Nucleo_F411RE.build.mcu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard
+NUCLEO_64.menu.cpu.Nucleo_F411RE.build.series=STM32F4
+NUCLEO_64.menu.cpu.Nucleo_F411RE.build.variant=NUCLEO_F411RE
+NUCLEO_64.menu.cpu.Nucleo_F411RE.build.board=NUCLEO_F411RE
+NUCLEO_64.menu.cpu.Nucleo_F411RE.build.f_cpuhsi=96000000L
+NUCLEO_64.menu.cpu.Nucleo_F411RE.build.f_cpuhse=96000000L
+NUCLEO_64.menu.cpu.Nucleo_F411RE.build.extra_flags=-DSTM32F411RE
+NUCLEO_64.menu.cpu.Nucleo_F411RE.massstorage_drive=NODE_F411RE
 
-NUCLEO_64.menu.subboard.Nucleo_L152RE=Nucleo-L152RE(32M)
-NUCLEO_64.menu.subboard.Nucleo_L152RE.upload.maximum_size=524288
-NUCLEO_64.menu.subboard.Nucleo_L152RE.upload.maximum_data_size=81920
-NUCLEO_64.menu.subboard.Nucleo_L152RE.build.mcu=cortex-m3
-NUCLEO_64.menu.subboard.Nucleo_L152RE.build.series=STM32L1
-NUCLEO_64.menu.subboard.Nucleo_L152RE.build.variant=NUCLEO_L152RE
-NUCLEO_64.menu.subboard.Nucleo_L152RE.build.board=NUCLEO_L152RE
-NUCLEO_64.menu.subboard.Nucleo_L152RE.build.f_cpuhsi=32000000L
-NUCLEO_64.menu.subboard.Nucleo_L152RE.build.f_cpuhse=32000000L
-NUCLEO_64.menu.subboard.Nucleo_L152RE.build.extra_flags=-DSTM32L152RE
-NUCLEO_64.menu.subboard.Nucleo_L152RE.massstorage_drive=NODE_L152RE
+NUCLEO_64.menu.cpu.Nucleo_L053R8=Nucleo-L053R8(32M)
+NUCLEO_64.menu.cpu.Nucleo_L053R8.upload.maximum_size=65536
+NUCLEO_64.menu.cpu.Nucleo_L053R8.upload.maximum_data_size=8192
+NUCLEO_64.menu.cpu.Nucleo_L053R8.build.mcu=cortex-m0plus
+NUCLEO_64.menu.cpu.Nucleo_L053R8.build.series=STM32L0
+NUCLEO_64.menu.cpu.Nucleo_L053R8.build.variant=NUCLEO_L053R8
+NUCLEO_64.menu.cpu.Nucleo_L053R8.build.board=Nucleo_L053R8
+NUCLEO_64.menu.cpu.Nucleo_L053R8.build.f_cpuhsi=32000000L
+NUCLEO_64.menu.cpu.Nucleo_L053R8.build.f_cpuhse=32000000L
+NUCLEO_64.menu.cpu.Nucleo_L053R8.build.extra_flags=-DSTM32L053R8
+NUCLEO_64.menu.cpu.Nucleo_L053R8.massstorage_drive=NODE_L053R8
 
-NUCLEO_64.menu.clock_source.bypass=HSE_BYPASS_Clock_Source
-NUCLEO_64.menu.clock_source.bypass.build.f_cpu={build.f_cpuhse} -DUSE_HSEBYPASS -DHSE_VALUE=8000000
+NUCLEO_64.menu.cpu.Nucleo_L152RE=Nucleo-L152RE(32M)
+NUCLEO_64.menu.cpu.Nucleo_L152RE.upload.maximum_size=524288
+NUCLEO_64.menu.cpu.Nucleo_L152RE.upload.maximum_data_size=81920
+NUCLEO_64.menu.cpu.Nucleo_L152RE.build.mcu=cortex-m3
+NUCLEO_64.menu.cpu.Nucleo_L152RE.build.series=STM32L1
+NUCLEO_64.menu.cpu.Nucleo_L152RE.build.variant=NUCLEO_L152RE
+NUCLEO_64.menu.cpu.Nucleo_L152RE.build.board=NUCLEO_L152RE
+NUCLEO_64.menu.cpu.Nucleo_L152RE.build.f_cpuhsi=32000000L
+NUCLEO_64.menu.cpu.Nucleo_L152RE.build.f_cpuhse=32000000L
+NUCLEO_64.menu.cpu.Nucleo_L152RE.build.extra_flags=-DSTM32L152RE
+NUCLEO_64.menu.cpu.Nucleo_L152RE.massstorage_drive=NODE_L152RE
 
 NUCLEO_64.menu.clock_source.hsi=HSE_Disable(HSI)
 NUCLEO_64.menu.clock_source.hsi.build.f_cpu={build.f_cpuhsi} -DUSE_HSI
+
+NUCLEO_64.menu.clock_source.bypass=HSE_BYPASS_Clock_Source(If SB16/50 is closed)
+NUCLEO_64.menu.clock_source.bypass.build.f_cpu={build.f_cpuhse} -DUSE_HSEBYPASS -DHSE_VALUE=8000000
 
 NUCLEO_64.menu.clock_source.hse8m=HSE_Crystal(If 8M crystal is installed)
 NUCLEO_64.menu.clock_source.hse8m.build.f_cpu={build.f_cpuhse} -DUSE_HSE -DHSE_VALUE=8000000
@@ -167,44 +180,44 @@ NUCLEO_144.upload.tool=nucleoFlasher
 
 NUCLEO_144.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART3
 
-NUCLEO_144.menu.subboard.Nucleo_F207ZG=Nucleo-F207ZG(120M)
-NUCLEO_144.menu.subboard.Nucleo_F207ZG.upload.maximum_size=1048576
-NUCLEO_144.menu.subboard.Nucleo_F207ZG.upload.maximum_data_size=131072
-NUCLEO_144.menu.subboard.Nucleo_F207ZG.build.mcu=cortex-m3
-NUCLEO_144.menu.subboard.Nucleo_F207ZG.build.series=STM32F2
-NUCLEO_144.menu.subboard.Nucleo_F207ZG.build.variant=NUCLEO_F207ZG
-NUCLEO_144.menu.subboard.Nucleo_F207ZG.build.board=NUCLEO_F207ZG
-NUCLEO_144.menu.subboard.Nucleo_F207ZG.build.extra_flags=-DSTM32F207ZG
-NUCLEO_144.menu.subboard.Nucleo_F207ZG.massstorage_drive=NODE_F207ZG
-NUCLEO_144.menu.subboard.Nucleo_F207ZG.build.f_cpupre=120000000L
+NUCLEO_144.menu.cpu.Nucleo_F207ZG=Nucleo-F207ZG(120M)
+NUCLEO_144.menu.cpu.Nucleo_F207ZG.upload.maximum_size=1048576
+NUCLEO_144.menu.cpu.Nucleo_F207ZG.upload.maximum_data_size=131072
+NUCLEO_144.menu.cpu.Nucleo_F207ZG.build.mcu=cortex-m3
+NUCLEO_144.menu.cpu.Nucleo_F207ZG.build.series=STM32F2
+NUCLEO_144.menu.cpu.Nucleo_F207ZG.build.variant=NUCLEO_F207ZG
+NUCLEO_144.menu.cpu.Nucleo_F207ZG.build.board=NUCLEO_F207ZG
+NUCLEO_144.menu.cpu.Nucleo_F207ZG.build.extra_flags=-DSTM32F207ZG
+NUCLEO_144.menu.cpu.Nucleo_F207ZG.massstorage_drive=NODE_F207ZG
+NUCLEO_144.menu.cpu.Nucleo_F207ZG.build.f_cpupre=120000000L
 
-NUCLEO_144.menu.subboard.Nucleo_F767ZI=Nucleo-F767ZI(216M)
-NUCLEO_144.menu.subboard.Nucleo_F767ZI.upload.maximum_size=2097152
-NUCLEO_144.menu.subboard.Nucleo_F767ZI.upload.maximum_data_size=524288
-NUCLEO_144.menu.subboard.Nucleo_F767ZI.build.mcu=cortex-m7 -mfpu=fpv4-sp-d16 -mfloat-abi=hard
-NUCLEO_144.menu.subboard.Nucleo_F767ZI.build.series=STM32F7
-NUCLEO_144.menu.subboard.Nucleo_F767ZI.build.variant=NUCLEO_F767ZI
-NUCLEO_144.menu.subboard.Nucleo_F767ZI.build.board=NUCLEO_F767ZI
-NUCLEO_144.menu.subboard.Nucleo_F767ZI.build.extra_flags=-DSTM32F767ZI
-NUCLEO_144.menu.subboard.Nucleo_F767ZI.massstorage_drive=NODE_F767ZI
-NUCLEO_144.menu.subboard.Nucleo_F767ZI.build.f_cpupre=216000000L
+NUCLEO_144.menu.cpu.Nucleo_F767ZI=Nucleo-F767ZI(216M)
+NUCLEO_144.menu.cpu.Nucleo_F767ZI.upload.maximum_size=2097152
+NUCLEO_144.menu.cpu.Nucleo_F767ZI.upload.maximum_data_size=524288
+NUCLEO_144.menu.cpu.Nucleo_F767ZI.build.mcu=cortex-m7 -mfpu=fpv4-sp-d16 -mfloat-abi=hard
+NUCLEO_144.menu.cpu.Nucleo_F767ZI.build.series=STM32F7
+NUCLEO_144.menu.cpu.Nucleo_F767ZI.build.variant=NUCLEO_F767ZI
+NUCLEO_144.menu.cpu.Nucleo_F767ZI.build.board=NUCLEO_F767ZI
+NUCLEO_144.menu.cpu.Nucleo_F767ZI.build.extra_flags=-DSTM32F767ZI
+NUCLEO_144.menu.cpu.Nucleo_F767ZI.massstorage_drive=NODE_F767ZI
+NUCLEO_144.menu.cpu.Nucleo_F767ZI.build.f_cpupre=216000000L
 
-NUCLEO_144.menu.subboard.Nucleo_H743ZI=Nucleo-F743ZI(400M)
-NUCLEO_144.menu.subboard.Nucleo_H743ZI.upload.maximum_size=2097152
-NUCLEO_144.menu.subboard.Nucleo_H743ZI.upload.maximum_data_size=131072
-NUCLEO_144.menu.subboard.Nucleo_H743ZI.build.mcu=cortex-m7 -mfpu=fpv4-sp-d16 -mfloat-abi=hard
-NUCLEO_144.menu.subboard.Nucleo_H743ZI.build.series=STM32H7
-NUCLEO_144.menu.subboard.Nucleo_H743ZI.build.variant=NUCLEO_H743ZI
-NUCLEO_144.menu.subboard.Nucleo_H743ZI.build.board=NUCLEO_H743ZI
-NUCLEO_144.menu.subboard.Nucleo_H743ZI.build.extra_flags=-DSTM32H743ZI
-NUCLEO_144.menu.subboard.Nucleo_H743ZI.massstorage_drive=NODE_H743ZI
-NUCLEO_144.menu.subboard.Nucleo_H743ZI.build.f_cpupre=400000000L
-
-NUCLEO_144.menu.clock_source.bypass=HSE_BYPASS_Clock_Source
-NUCLEO_144.menu.clock_source.bypass.build.f_cpu={build.f_cpupre} -DUSE_HSEBYPASS -DHSE_VALUE=8000000
+NUCLEO_144.menu.cpu.Nucleo_H743ZI=Nucleo-F743ZI(400M)
+NUCLEO_144.menu.cpu.Nucleo_H743ZI.upload.maximum_size=2097152
+NUCLEO_144.menu.cpu.Nucleo_H743ZI.upload.maximum_data_size=131072
+NUCLEO_144.menu.cpu.Nucleo_H743ZI.build.mcu=cortex-m7 -mfpu=fpv4-sp-d16 -mfloat-abi=hard
+NUCLEO_144.menu.cpu.Nucleo_H743ZI.build.series=STM32H7
+NUCLEO_144.menu.cpu.Nucleo_H743ZI.build.variant=NUCLEO_H743ZI
+NUCLEO_144.menu.cpu.Nucleo_H743ZI.build.board=NUCLEO_H743ZI
+NUCLEO_144.menu.cpu.Nucleo_H743ZI.build.extra_flags=-DSTM32H743ZI
+NUCLEO_144.menu.cpu.Nucleo_H743ZI.massstorage_drive=NODE_H743ZI
+NUCLEO_144.menu.cpu.Nucleo_H743ZI.build.f_cpupre=400000000L
 
 NUCLEO_144.menu.clock_source.hsi=HSE_Disable(HSI)
 NUCLEO_144.menu.clock_source.hsi.build.f_cpu={build.f_cpupre} -DUSE_HSI
+
+NUCLEO_144.menu.clock_source.bypass=HSE_BYPASS_Clock_Source(If MCO is closed)
+NUCLEO_144.menu.clock_source.bypass.build.f_cpu={build.f_cpupre} -DUSE_HSEBYPASS -DHSE_VALUE=8000000
 
 NUCLEO_144.menu.clock_source.hse8m=HSE_Crystal(If 8M crystal is installed)
 NUCLEO_144.menu.clock_source.hse8m.build.f_cpu={build.f_cpupre} -DUSE_HSE -DHSE_VALUE=8000000
@@ -264,7 +277,7 @@ NUCLEO_L476.menu.clock_source.msi.build.f_cpu={build.f_cpuhsi} -DUSE_MSI
 NUCLEO_L476.menu.clock_source.hsi=HSE_Disable(HSI)
 NUCLEO_L476.menu.clock_source.hsi.build.f_cpu={build.f_cpuhsi} -DUSE_HSI
 
-NUCLEO_L476.menu.clock_source.bypass=HSE_BYPASS_Clock_Source(If SB50 closed)
+NUCLEO_L476.menu.clock_source.bypass=HSE_BYPASS_Clock_Source(If SB16/50 closed)
 NUCLEO_L476.menu.clock_source.bypass.build.f_cpu={build.f_cpuhse} -DUSE_HSEBYPASS -DHSE_VALUE=8000000
 
 NUCLEO_L476.menu.clock_source.hse8m=HSE_Crystal(If 8M crystal is installed)
@@ -445,19 +458,19 @@ DISCOVERY_L152R.build.board=DISCOVERY_L152RC
 DISCOVERY_L152R.build.mcu=cortex-m3
 DISCOVERY_L152R.build.series=STM32L1
 
-DISCOVERY_L152R.menu.subboard.L152RB=L152RB
-DISCOVERY_L152R.menu.subboard.L152RB.upload.maximum_size=131072
-DISCOVERY_L152R.menu.subboard.L152RB.upload.maximum_data_size=16384
-DISCOVERY_L152R.menu.subboard.L152RB.build.variant=DISCOVERY_L152RC
-DISCOVERY_L152R.menu.subboard.L152RB.build.extra_flags=-DSTM32L152RB
-DISCOVERY_L152R.menu.subboard.L152RB.build.ldscript=ld/l152rb.ld
+DISCOVERY_L152R.menu.cpu.L152RB=L152RB
+DISCOVERY_L152R.menu.cpu.L152RB.upload.maximum_size=131072
+DISCOVERY_L152R.menu.cpu.L152RB.upload.maximum_data_size=16384
+DISCOVERY_L152R.menu.cpu.L152RB.build.variant=DISCOVERY_L152RC
+DISCOVERY_L152R.menu.cpu.L152RB.build.extra_flags=-DSTM32L152RB
+DISCOVERY_L152R.menu.cpu.L152RB.build.ldscript=ld/l152rb.ld
 
-DISCOVERY_L152R.menu.subboard.L152RC=L152RC
-DISCOVERY_L152R.menu.subboard.L152RC.upload.maximum_size=262144
-DISCOVERY_L152R.menu.subboard.L152RC.upload.maximum_data_size=32768
-DISCOVERY_L152R.menu.subboard.L152RC.build.variant=DISCOVERY_L152RC
-DISCOVERY_L152R.menu.subboard.L152RC.build.extra_flags=-DSTM32L152RC
-DISCOVERY_L152R.menu.subboard.L152RC.build.ldscript=ld/l152rc.ld
+DISCOVERY_L152R.menu.cpu.L152RC=L152RC
+DISCOVERY_L152R.menu.cpu.L152RC.upload.maximum_size=262144
+DISCOVERY_L152R.menu.cpu.L152RC.upload.maximum_data_size=32768
+DISCOVERY_L152R.menu.cpu.L152RC.build.variant=DISCOVERY_L152RC
+DISCOVERY_L152R.menu.cpu.L152RC.build.extra_flags=-DSTM32L152RC
+DISCOVERY_L152R.menu.cpu.L152RC.build.ldscript=ld/l152rc.ld
 
 DISCOVERY_L152R.build.f_cpupre=32000000L
 
@@ -591,7 +604,7 @@ DISCOVERY_F407VG.menu.clock_source.hsi.build.f_cpu={build.f_cpupre} -DUSE_HSI
 DISCOVERY_F407VG.menu.clock_source.hse8m=HSE_Crystal(If 8M crystal is installed)
 DISCOVERY_F407VG.menu.clock_source.hse8m.build.f_cpu={build.f_cpupre} -DUSE_HSE -DHSE_VALUE=8000000
 
-DISCOVERY_F407VG.menu.subboard.F407VG=Discovery F407VG
+DISCOVERY_F407VG.menu.cpu.F407VG=Discovery F407VG
 
 DISCOVERY_F407VG.menu.extern_lib.NONE=NONE
 DISCOVERY_F407VG.menu.extern_lib.STemWin=STemWin
@@ -633,7 +646,7 @@ DISCOVERY_F407VG.menu.log.trace=TRACE
 DISCOVERY_F407VG.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
 
 ####################################### Discovery F429ZI #########################################
-DISCOVERY_F429ZI.name=Discovery F429ZI(168M)
+DISCOVERY_F429ZI.name=Discovery F429ZI(180M)
 
 DISCOVERY_F429ZI.build.core=arduino
 DISCOVERY_F429ZI.build.board=DISCOVERY_F429ZI
@@ -642,6 +655,7 @@ DISCOVERY_F429ZI.build.mcu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard
 DISCOVERY_F429ZI.build.series=STM32F4
 DISCOVERY_F429ZI.build.variant=DISCOVERY_F429ZI
 DISCOVERY_F429ZI.build.extra_flags=-DSTM32F429ZI -DSTM32F429xx
+DISCOVERY_F429ZI.build.f_cpupre=180000000L
 
 DISCOVERY_F429ZI.menu.clock_source.bypass=HSE_BYPASS_Clock_Source
 DISCOVERY_F429ZI.menu.clock_source.bypass.build.f_cpu={build.f_cpupre} -DUSE_HSEBYPASS -DHSE_VALUE=8000000
@@ -773,32 +787,32 @@ F030_051.build.series=STM32F0
 F030_051.build.mcu=cortex-m0
 F030_051.build.extra_flags_serial=-DMENU_SERIAL=SerialUART1
 
-F030_051.menu.subboard.F030F4P632=GENERIC_F030F4P6(32kFlash LED PA4)
-F030_051.menu.subboard.F030F4P632.upload.maximum_size=32768
-F030_051.menu.subboard.F030F4P632.upload.maximum_data_size=4096
-F030_051.menu.subboard.F030F4P632.upload.device=STM32F030F4
-F030_051.menu.subboard.F030F4P632.build.extra_flags=-DSTM32F030F4
-F030_051.menu.subboard.F030F4P632.build.variant=F030F4P6
-F030_051.menu.subboard.F030F4P632.build.board=F030F4P6
-F030_051.menu.subboard.F030F4P632.build.ldscript=ld/f030f4p6_32.ld
+F030_051.menu.cpu.F030F4P632=GENERIC_F030F4P6(32kFlash LED PA4)
+F030_051.menu.cpu.F030F4P632.upload.maximum_size=32768
+F030_051.menu.cpu.F030F4P632.upload.maximum_data_size=4096
+F030_051.menu.cpu.F030F4P632.upload.device=STM32F030F4
+F030_051.menu.cpu.F030F4P632.build.extra_flags=-DSTM32F030F4
+F030_051.menu.cpu.F030F4P632.build.variant=F030F4P6
+F030_051.menu.cpu.F030F4P632.build.board=F030F4P6
+F030_051.menu.cpu.F030F4P632.build.ldscript=ld/f030f4p6_32.ld
 
-F030_051.menu.subboard.F030F4P6=GENERIC_F030F4P6(16kFlash LED PA4)
-F030_051.menu.subboard.F030F4P6.upload.maximum_size=16384
-F030_051.menu.subboard.F030F4P6.upload.maximum_data_size=4096
-F030_051.menu.subboard.F030F4P6.upload.device=STM32F030F4
-F030_051.menu.subboard.F030F4P6.build.extra_flags=-DSTM32F030F4
-F030_051.menu.subboard.F030F4P6.build.variant=F030F4P6
-F030_051.menu.subboard.F030F4P6.build.board=F030F4P6
-F030_051.menu.subboard.F030F4P6.build.ldscript=ld/f030f4p6.ld
+F030_051.menu.cpu.F030F4P6=GENERIC_F030F4P6(16kFlash LED PA4)
+F030_051.menu.cpu.F030F4P6.upload.maximum_size=16384
+F030_051.menu.cpu.F030F4P6.upload.maximum_data_size=4096
+F030_051.menu.cpu.F030F4P6.upload.device=STM32F030F4
+F030_051.menu.cpu.F030F4P6.build.extra_flags=-DSTM32F030F4
+F030_051.menu.cpu.F030F4P6.build.variant=F030F4P6
+F030_051.menu.cpu.F030F4P6.build.board=F030F4P6
+F030_051.menu.cpu.F030F4P6.build.ldscript=ld/f030f4p6.ld
 
-F030_051.menu.subboard.F051C=GENERIC_F051C8T6(64kFlash LED PA4)
-F030_051.menu.subboard.F051C.upload.maximum_size=65536
-F030_051.menu.subboard.F051C.upload.maximum_data_size=8192
-F030_051.menu.subboard.F051C.upload.device=STM32F051C8
-F030_051.menu.subboard.F051C.build.extra_flags=-DSTM32F051C8
-F030_051.menu.subboard.F051C.build.variant=F051C
-F030_051.menu.subboard.F051C.build.board=F051C8T6
-F030_051.menu.subboard.F051C.build.ldscript=ld/ldscript.ld
+F030_051.menu.cpu.F051C=GENERIC_F051C8T6(64kFlash LED PA4)
+F030_051.menu.cpu.F051C.upload.maximum_size=65536
+F030_051.menu.cpu.F051C.upload.maximum_data_size=8192
+F030_051.menu.cpu.F051C.upload.device=STM32F051C8
+F030_051.menu.cpu.F051C.build.extra_flags=-DSTM32F051C8
+F030_051.menu.cpu.F051C.build.variant=F051C
+F030_051.menu.cpu.F051C.build.board=F051C8T6
+F030_051.menu.cpu.F051C.build.ldscript=ld/ldscript.ld
 
 F030_051.menu.osc_speed.speed_08m=8M(HSE)_48M(default)
 F030_051.menu.osc_speed.speed_08m.build.f_cpu=48000000L -DHSE_VALUE=8000000
@@ -857,55 +871,55 @@ f103x6.build.variant=BLUEPILL
 f103x6.build.series=STM32F1
 f103x6.build.f_cpu=72000000L
 
-f103x6.menu.subboard.F103R6=F103R6[LED PC13]
-f103x6.menu.subboard.F103R6.upload.maximum_size=32768
-f103x6.menu.subboard.F103R6.upload.maximum_data_size=10240
-f103x6.menu.subboard.F103R6.upload.device=STM32F103R6
-f103x6.menu.subboard.F103R6.build.variant=F103R
-f103x6.menu.subboard.F103R6.build.extra_flags=-DSTM32F103R6
-f103x6.menu.subboard.F103R6.build.ldscript=ld/f103x6.ld
-f103x6.menu.subboard.F103R6.build.board=F103R6
+f103x6.menu.cpu.F103R6=F103R6[LED PC13]
+f103x6.menu.cpu.F103R6.upload.maximum_size=32768
+f103x6.menu.cpu.F103R6.upload.maximum_data_size=10240
+f103x6.menu.cpu.F103R6.upload.device=STM32F103R6
+f103x6.menu.cpu.F103R6.build.variant=F103R
+f103x6.menu.cpu.F103R6.build.extra_flags=-DSTM32F103R6
+f103x6.menu.cpu.F103R6.build.ldscript=ld/f103x6.ld
+f103x6.menu.cpu.F103R6.build.board=F103R6
 
-f103x6.menu.subboard.F103R4=F103R4[LED PB8]
-f103x6.menu.subboard.F103R4.upload.maximum_size=16384
-f103x6.menu.subboard.F103R4.upload.maximum_data_size=6144
-f103x6.menu.subboard.F103R4.upload.device=STM32F103R4
-f103x6.menu.subboard.F103R4.build.variant=F103R
-f103x6.menu.subboard.F103R4.build.extra_flags=-DSTM32F103R4 -DLED_BUILTIN=PB8
-f103x6.menu.subboard.F103R4.build.ldscript=ld/f103x4.ld
-f103x6.menu.subboard.F103R4.build.board=F103R4
+f103x6.menu.cpu.F103R4=F103R4[LED PB8]
+f103x6.menu.cpu.F103R4.upload.maximum_size=16384
+f103x6.menu.cpu.F103R4.upload.maximum_data_size=6144
+f103x6.menu.cpu.F103R4.upload.device=STM32F103R4
+f103x6.menu.cpu.F103R4.build.variant=F103R
+f103x6.menu.cpu.F103R4.build.extra_flags=-DSTM32F103R4 -DLED_BUILTIN=PB8
+f103x6.menu.cpu.F103R4.build.ldscript=ld/f103x4.ld
+f103x6.menu.cpu.F103R4.build.board=F103R4
 
-f103x6.menu.subboard.F103C6=F103C6[LED PC13]
-f103x6.menu.subboard.F103C6.upload.maximum_size=32768
-f103x6.menu.subboard.F103C6.upload.maximum_data_size=10240
-f103x6.menu.subboard.F103C6.upload.device=STM32F103C6
-f103x6.menu.subboard.F103C6.build.extra_flags=-DSTM32F103C6
-f103x6.menu.subboard.F103C6.build.ldscript=ld/f103x6.ld
-f103x6.menu.subboard.F103C6.build.board=F103C6
+f103x6.menu.cpu.F103C6=F103C6[LED PC13]
+f103x6.menu.cpu.F103C6.upload.maximum_size=32768
+f103x6.menu.cpu.F103C6.upload.maximum_data_size=10240
+f103x6.menu.cpu.F103C6.upload.device=STM32F103C6
+f103x6.menu.cpu.F103C6.build.extra_flags=-DSTM32F103C6
+f103x6.menu.cpu.F103C6.build.ldscript=ld/f103x6.ld
+f103x6.menu.cpu.F103C6.build.board=F103C6
 
-f103x6.menu.subboard.F103C4=F103C4[LED PB8]
-f103x6.menu.subboard.F103C4.upload.maximum_size=16384
-f103x6.menu.subboard.F103C4.upload.maximum_data_size=6144
-f103x6.menu.subboard.F103C4.upload.device=STM32F103C4
-f103x6.menu.subboard.F103C4.build.extra_flags=-DSTM32F103C4 -DLED_BUILTIN=PB8
-f103x6.menu.subboard.F103C4.build.ldscript=ld/f103x4.ld
-f103x6.menu.subboard.F103C4.build.board=F103C4
+f103x6.menu.cpu.F103C4=F103C4[LED PB8]
+f103x6.menu.cpu.F103C4.upload.maximum_size=16384
+f103x6.menu.cpu.F103C4.upload.maximum_data_size=6144
+f103x6.menu.cpu.F103C4.upload.device=STM32F103C4
+f103x6.menu.cpu.F103C4.build.extra_flags=-DSTM32F103C4 -DLED_BUILTIN=PB8
+f103x6.menu.cpu.F103C4.build.ldscript=ld/f103x4.ld
+f103x6.menu.cpu.F103C4.build.board=F103C4
 
-f103x6.menu.subboard.F103T6=F103T6[LED PB7]
-f103x6.menu.subboard.F103T6.upload.maximum_size=32768
-f103x6.menu.subboard.F103T6.upload.maximum_data_size=10240
-f103x6.menu.subboard.F103T6.upload.device=STM32F103T6
-f103x6.menu.subboard.F103T6.build.extra_flags=-DSTM32F103T6 -DLED_BUILTIN=PB7
-f103x6.menu.subboard.F103T6.build.ldscript=ld/f103x6.ld
-f103x6.menu.subboard.F103T6.build.board=F103T6
+f103x6.menu.cpu.F103T6=F103T6[LED PB7]
+f103x6.menu.cpu.F103T6.upload.maximum_size=32768
+f103x6.menu.cpu.F103T6.upload.maximum_data_size=10240
+f103x6.menu.cpu.F103T6.upload.device=STM32F103T6
+f103x6.menu.cpu.F103T6.build.extra_flags=-DSTM32F103T6 -DLED_BUILTIN=PB7
+f103x6.menu.cpu.F103T6.build.ldscript=ld/f103x6.ld
+f103x6.menu.cpu.F103T6.build.board=F103T6
 
-f103x6.menu.subboard.F103T4=F103T4[LED PB7]
-f103x6.menu.subboard.F103T4.upload.maximum_size=16384
-f103x6.menu.subboard.F103T4.upload.maximum_data_size=6144
-f103x6.menu.subboard.F103T4.upload.device=STM32F103T4
-f103x6.menu.subboard.F103T4.build.extra_flags=-DSTM32F103T4 -DLED_BUILTIN=PB7
-f103x6.menu.subboard.F103T4.build.ldscript=ld/f103x4.ld
-f103x6.menu.subboard.F103T4.build.board=F103T4
+f103x6.menu.cpu.F103T4=F103T4[LED PB7]
+f103x6.menu.cpu.F103T4.upload.maximum_size=16384
+f103x6.menu.cpu.F103T4.upload.maximum_data_size=6144
+f103x6.menu.cpu.F103T4.upload.device=STM32F103T4
+f103x6.menu.cpu.F103T4.build.extra_flags=-DSTM32F103T4 -DLED_BUILTIN=PB7
+f103x6.menu.cpu.F103T4.build.ldscript=ld/f103x4.ld
+f103x6.menu.cpu.F103T4.build.board=F103T4
 
 f103x6.menu.osc_speed.speed_hsi8=8M(HSI)_8M(for proteus)
 f103x6.menu.osc_speed.speed_hsi8.build.f_cpu=8000000L -DUSE_HSI -DPROTEUS
@@ -984,14 +998,14 @@ MapleMini.build.board=MAPLE_MINI
 MapleMini.build.variant=MAPLE_MINI
 MapleMini.build.series=STM32F1
 
-MapleMini.menu.subboard.F103CB=MapleMini F103C8/B[LED PB1/SWD]
-MapleMini.menu.subboard.F103CB.upload.maximum_size=131072
-MapleMini.menu.subboard.F103CB.upload.maximum_data_size=20480
-MapleMini.menu.subboard.F103CB.build.extra_flags=-DSTM32F103CB
-MapleMini.menu.subboard.F103CB.build.ldscript_pre=ld/f103xB
-MapleMini.menu.subboard.F103CB.build.ldscript=ld/f103xB.ld
-MapleMini.menu.subboard.F103CB.build.board=MAPLEMINI_F103CB
-MapleMini.menu.subboard.F103CB.build.extra_flags_jtag=-DMENU_DEBUG_SWD
+MapleMini.menu.cpu.F103CB=MapleMini F103C8/B[LED PB1/SWD]
+MapleMini.menu.cpu.F103CB.upload.maximum_size=131072
+MapleMini.menu.cpu.F103CB.upload.maximum_data_size=20480
+MapleMini.menu.cpu.F103CB.build.extra_flags=-DSTM32F103CB
+MapleMini.menu.cpu.F103CB.build.ldscript_pre=ld/f103xB
+MapleMini.menu.cpu.F103CB.build.ldscript=ld/f103xB.ld
+MapleMini.menu.cpu.F103CB.build.board=MAPLEMINI_F103CB
+MapleMini.menu.cpu.F103CB.build.extra_flags_jtag=-DMENU_DEBUG_SWD
 
 MapleMini.menu.clock_source.hse=8M(HSE)_72M
 MapleMini.menu.clock_source.hse.build.f_cpu=72000000L -DHSE_VALUE=8000000
@@ -1097,31 +1111,31 @@ BluePill.build.variant=BLUEPILL
 BluePill.build.series=STM32F1
 BluePill.build.f_cpu=72000000L
 
-BluePill.menu.subboard.F103CB=BluePill F103C8/B[LED PC13]
-BluePill.menu.subboard.F103CB.upload.maximum_size=131072
-BluePill.menu.subboard.F103CB.upload.maximum_data_size=20480
-BluePill.menu.subboard.F103CB.upload.device=STM32F103CB
-BluePill.menu.subboard.F103CB.build.extra_flags=-DSTM32F103CB
-BluePill.menu.subboard.F103CB.build.ldscript_pre=ld/f103xB
-BluePill.menu.subboard.F103CB.build.ldscript=ld/f103xB.ld
-BluePill.menu.subboard.F103CB.build.board=BluePill_F103CB
-BluePill.menu.subboard.F103CB.build.extra_flags_jtag=-DMENU_DEBUG_SWD
+BluePill.menu.cpu.F103CB=BluePill F103C8/B[LED PC13]
+BluePill.menu.cpu.F103CB.upload.maximum_size=131072
+BluePill.menu.cpu.F103CB.upload.maximum_data_size=20480
+BluePill.menu.cpu.F103CB.upload.device=STM32F103CB
+BluePill.menu.cpu.F103CB.build.extra_flags=-DSTM32F103CB
+BluePill.menu.cpu.F103CB.build.ldscript_pre=ld/f103xB
+BluePill.menu.cpu.F103CB.build.ldscript=ld/f103xB.ld
+BluePill.menu.cpu.F103CB.build.board=BluePill_F103CB
+BluePill.menu.cpu.F103CB.build.extra_flags_jtag=-DMENU_DEBUG_SWD
 
-BluePill.menu.subboard.GF103CB=GENERIC F103C8/B[LED PB8]
-BluePill.menu.subboard.GF103CB.upload.maximum_size=131072
-BluePill.menu.subboard.GF103CB.upload.maximum_data_size=20480
-BluePill.menu.subboard.GF103CB.upload.device=STM32F103CB
-BluePill.menu.subboard.GF103CB.build.extra_flags=-DSTM32F103CB  -DLED_BUILTIN=PB8
-BluePill.menu.subboard.GF103CB.build.ldscript=ld/f103xB.ld
-BluePill.menu.subboard.GF103CB.build.board=F103C_PB8
+BluePill.menu.cpu.GF103CB=GENERIC F103C8/B[LED PB8]
+BluePill.menu.cpu.GF103CB.upload.maximum_size=131072
+BluePill.menu.cpu.GF103CB.upload.maximum_data_size=20480
+BluePill.menu.cpu.GF103CB.upload.device=STM32F103CB
+BluePill.menu.cpu.GF103CB.build.extra_flags=-DSTM32F103CB  -DLED_BUILTIN=PB8
+BluePill.menu.cpu.GF103CB.build.ldscript=ld/f103xB.ld
+BluePill.menu.cpu.GF103CB.build.board=F103C_PB8
 
-BluePill.menu.subboard.BF103CB=GENERIC F103C8/B[LED PB12]
-BluePill.menu.subboard.BF103CB.upload.maximum_size=131072
-BluePill.menu.subboard.BF103CB.upload.maximum_data_size=20480
-BluePill.menu.subboard.BF103CB.upload.device=STM32F103CB
-BluePill.menu.subboard.BF103CB.build.extra_flags0=-DSTM32F103CB -DLED_BUILTIN=PB12
-BluePill.menu.subboard.BF103CB.build.ldscript=ld/f103xB.ld
-BluePill.menu.subboard.BF103CB.build.board=F103C_PB12
+BluePill.menu.cpu.BF103CB=GENERIC F103C8/B[LED PB12]
+BluePill.menu.cpu.BF103CB.upload.maximum_size=131072
+BluePill.menu.cpu.BF103CB.upload.maximum_data_size=20480
+BluePill.menu.cpu.BF103CB.upload.device=STM32F103CB
+BluePill.menu.cpu.BF103CB.build.extra_flags0=-DSTM32F103CB -DLED_BUILTIN=PB12
+BluePill.menu.cpu.BF103CB.build.ldscript=ld/f103xB.ld
+BluePill.menu.cpu.BF103CB.build.board=F103C_PB12
 
 BluePill.menu.osc_speed.speed_08m=8M(HSE)_72M
 BluePill.menu.osc_speed.speed_08m.build.f_cpu=72000000L -DHSE_VALUE=8000000
@@ -1200,19 +1214,19 @@ L152C.build.board=L152C
 L152C.build.mcu=cortex-m3
 L152C.build.series=STM32L1
 
-L152C.menu.subboard.L152CB=L152CB
-L152C.menu.subboard.L152CB.upload.maximum_size=131072
-L152C.menu.subboard.L152CB.upload.maximum_data_size=16384
-L152C.menu.subboard.L152CB.build.variant=L152C
-L152C.menu.subboard.L152CB.build.extra_flags=-DSTM32L152CB
-L152C.menu.subboard.L152CB.build.ldscript=ld/l152cb.ld
+L152C.menu.cpu.L152CB=L152CB
+L152C.menu.cpu.L152CB.upload.maximum_size=131072
+L152C.menu.cpu.L152CB.upload.maximum_data_size=16384
+L152C.menu.cpu.L152CB.build.variant=L152C
+L152C.menu.cpu.L152CB.build.extra_flags=-DSTM32L152CB
+L152C.menu.cpu.L152CB.build.ldscript=ld/l152cb.ld
 
-L152C.menu.subboard.L152C8=L152C8
-L152C.menu.subboard.L152C8.upload.maximum_size=65536
-L152C.menu.subboard.L152C8.upload.maximum_data_size=10240
-L152C.menu.subboard.L152C8.build.variant=L152C
-L152C.menu.subboard.L152C8.build.extra_flags=-DSTM32L152C8
-L152C.menu.subboard.L152C8.build.ldscript=ld/l152c8.ld
+L152C.menu.cpu.L152C8=L152C8
+L152C.menu.cpu.L152C8.upload.maximum_size=65536
+L152C.menu.cpu.L152C8.upload.maximum_data_size=10240
+L152C.menu.cpu.L152C8.build.variant=L152C
+L152C.menu.cpu.L152C8.build.extra_flags=-DSTM32L152C8
+L152C.menu.cpu.L152C8.build.ldscript=ld/l152c8.ld
 
 L152C.build.f_cpupre=32000000L
 
@@ -1277,48 +1291,48 @@ GD103R.build.core=arduino
 GD103R.build.series=STM32F1
 GD103R.build.mcu=cortex-m3
 
-GD103R.menu.subboard.F103RE=ALIENTEK_MINI[F103RE/SWD]
-GD103R.menu.subboard.F103RE.upload.maximum_size=524288
-GD103R.menu.subboard.F103RE.upload.maximum_data_size=65536
-GD103R.menu.subboard.F103RE.upload.device=STM32F103RE
-GD103R.menu.subboard.F103RE.build.extra_flags0=-DSTM32F103RE
-GD103R.menu.subboard.F103RE.build.variant=ATKMINI_F103R
-GD103R.menu.subboard.F103RE.build.board=ATKMINI_F103RE
-GD103R.menu.subboard.F103RE.build.ldscript0=ld/f103xE
-GD103R.menu.subboard.F103RE.build.extra_flags_jtag=-DMENU_DEBUG_SWD
-GD103R.menu.subboard.F103RE.massstorage_drive=NUCLEO
+GD103R.menu.cpu.F103RE=ALIENTEK_MINI[F103RE/SWD]
+GD103R.menu.cpu.F103RE.upload.maximum_size=524288
+GD103R.menu.cpu.F103RE.upload.maximum_data_size=65536
+GD103R.menu.cpu.F103RE.upload.device=STM32F103RE
+GD103R.menu.cpu.F103RE.build.extra_flags0=-DSTM32F103RE
+GD103R.menu.cpu.F103RE.build.variant=ATKMINI_F103R
+GD103R.menu.cpu.F103RE.build.board=ATKMINI_F103RE
+GD103R.menu.cpu.F103RE.build.ldscript0=ld/f103xE
+GD103R.menu.cpu.F103RE.build.extra_flags_jtag=-DMENU_DEBUG_SWD
+GD103R.menu.cpu.F103RE.massstorage_drive=NUCLEO
 
-GD103R.menu.subboard.F103RC=ALIENTEK_MINI[F103RC/SWD]
-GD103R.menu.subboard.F103RC.upload.maximum_size=262144
-GD103R.menu.subboard.F103RC.upload.maximum_data_size=49152
-GD103R.menu.subboard.F103RC.upload.device=STM32F103RC
-GD103R.menu.subboard.F103RC.build.extra_flags0=-DSTM32F103RC
-GD103R.menu.subboard.F103RC.build.variant=ATKMINI_F103R
-GD103R.menu.subboard.F103RC.build.board=ATKMINI_F103RC
-GD103R.menu.subboard.F103RC.build.ldscript0=ld/f103xC
-GD103R.menu.subboard.F103RC.build.extra_flags_jtag=-DMENU_DEBUG_SWD
-GD103R.menu.subboard.F103RC.massstorage_drive=NUCLEO
+GD103R.menu.cpu.F103RC=ALIENTEK_MINI[F103RC/SWD]
+GD103R.menu.cpu.F103RC.upload.maximum_size=262144
+GD103R.menu.cpu.F103RC.upload.maximum_data_size=49152
+GD103R.menu.cpu.F103RC.upload.device=STM32F103RC
+GD103R.menu.cpu.F103RC.build.extra_flags0=-DSTM32F103RC
+GD103R.menu.cpu.F103RC.build.variant=ATKMINI_F103R
+GD103R.menu.cpu.F103RC.build.board=ATKMINI_F103RC
+GD103R.menu.cpu.F103RC.build.ldscript0=ld/f103xC
+GD103R.menu.cpu.F103RC.build.extra_flags_jtag=-DMENU_DEBUG_SWD
+GD103R.menu.cpu.F103RC.massstorage_drive=NUCLEO
 
-GD103R.menu.subboard.F103RB=ALIENTEK_MINI[F103RB/SWD]
-GD103R.menu.subboard.F103RB.upload.maximum_size=131072
-GD103R.menu.subboard.F103RB.upload.maximum_data_size=20480
-GD103R.menu.subboard.F103RB.upload.device=STM32F103RB
-GD103R.menu.subboard.F103RB.build.extra_flags0=-DSTM32F103RB
-GD103R.menu.subboard.F103RB.build.variant=ATKMINI_F103R
-GD103R.menu.subboard.F103RB.build.board=ATKMINI_F103RB
-GD103R.menu.subboard.F103RB.build.ldscript0=ld/f103xB
-GD103R.menu.subboard.F103RB.build.extra_flags_jtag=-DMENU_DEBUG_SWD
-GD103R.menu.subboard.F103RB.massstorage_drive=NUCLEO
+GD103R.menu.cpu.F103RB=ALIENTEK_MINI[F103RB/SWD]
+GD103R.menu.cpu.F103RB.upload.maximum_size=131072
+GD103R.menu.cpu.F103RB.upload.maximum_data_size=20480
+GD103R.menu.cpu.F103RB.upload.device=STM32F103RB
+GD103R.menu.cpu.F103RB.build.extra_flags0=-DSTM32F103RB
+GD103R.menu.cpu.F103RB.build.variant=ATKMINI_F103R
+GD103R.menu.cpu.F103RB.build.board=ATKMINI_F103RB
+GD103R.menu.cpu.F103RB.build.ldscript0=ld/f103xB
+GD103R.menu.cpu.F103RB.build.extra_flags_jtag=-DMENU_DEBUG_SWD
+GD103R.menu.cpu.F103RB.massstorage_drive=NUCLEO
 
-GD103R.menu.subboard.F103RE1=GENERIC_F103RE[LED PC13/JTAG]
-GD103R.menu.subboard.F103RE1.upload.maximum_size=524288
-GD103R.menu.subboard.F103RE1.upload.maximum_data_size=65536
-GD103R.menu.subboard.F103RE1.upload.device=STM32F103RE
-GD103R.menu.subboard.F103RE1.build.extra_flags0=-DSTM32F103RE
-GD103R.menu.subboard.F103RE1.build.variant=F103R_GD
-GD103R.menu.subboard.F103RE1.build.board=GENERIC_F103RE
-GD103R.menu.subboard.F103RE1.build.ldscript0=ld/f103xE
-GD103R.menu.subboard.F103RE1.massstorage_drive=NUCLEO
+GD103R.menu.cpu.F103RE1=GENERIC_F103RE[LED PC13/JTAG]
+GD103R.menu.cpu.F103RE1.upload.maximum_size=524288
+GD103R.menu.cpu.F103RE1.upload.maximum_data_size=65536
+GD103R.menu.cpu.F103RE1.upload.device=STM32F103RE
+GD103R.menu.cpu.F103RE1.build.extra_flags0=-DSTM32F103RE
+GD103R.menu.cpu.F103RE1.build.variant=F103R_GD
+GD103R.menu.cpu.F103RE1.build.board=GENERIC_F103RE
+GD103R.menu.cpu.F103RE1.build.ldscript0=ld/f103xE
+GD103R.menu.cpu.F103RE1.massstorage_drive=NUCLEO
 
 GD103R.menu.startadr.default=flash(default)
 GD103R.menu.startadr.default.build.extra_flags={build.extra_flags0}
@@ -1469,37 +1483,37 @@ F103R.build.core=arduino
 F103R.build.series=STM32F1
 F103R.build.mcu=cortex-m3
 
-F103R.menu.subboard.F103RB=ALIENTEK_MINI[F103R8/B]
-F103R.menu.subboard.F103RB.upload.maximum_size=131072
-F103R.menu.subboard.F103RB.upload.maximum_data_size=20480
-F103R.menu.subboard.F103RB.upload.device=STM32F103RB
-F103R.menu.subboard.F103RB.build.extra_flags0=-DSTM32F103RB
-F103R.menu.subboard.F103RB.build.variant=ATKMINI_F103R
-F103R.menu.subboard.F103RB.build.board=ATKMINI_F103RB
-F103R.menu.subboard.F103RB.build.ldscript=ld/f103xB.ld
-F103R.menu.subboard.F103RB.build.extra_flags_jtag=-DMENU_DEBUG_SWD
-F103R.menu.subboard.F103RB.massstorage_drive=NUCLEO
+F103R.menu.cpu.F103RB=ALIENTEK_MINI[F103R8/B]
+F103R.menu.cpu.F103RB.upload.maximum_size=131072
+F103R.menu.cpu.F103RB.upload.maximum_data_size=20480
+F103R.menu.cpu.F103RB.upload.device=STM32F103RB
+F103R.menu.cpu.F103RB.build.extra_flags0=-DSTM32F103RB
+F103R.menu.cpu.F103RB.build.variant=ATKMINI_F103R
+F103R.menu.cpu.F103RB.build.board=ATKMINI_F103RB
+F103R.menu.cpu.F103RB.build.ldscript=ld/f103xB.ld
+F103R.menu.cpu.F103RB.build.extra_flags_jtag=-DMENU_DEBUG_SWD
+F103R.menu.cpu.F103RB.massstorage_drive=NUCLEO
 
-F103R.menu.subboard.F103RE=ALIENTEK_MINI[F103RC/D/E]
-F103R.menu.subboard.F103RE.upload.maximum_size=524288
-F103R.menu.subboard.F103RE.upload.maximum_data_size=65536
-F103R.menu.subboard.F103RE.upload.device=STM32F103RE
-F103R.menu.subboard.F103RE.build.extra_flags0=-DSTM32F103RE
-F103R.menu.subboard.F103RE.build.variant=ATKMINI_F103R
-F103R.menu.subboard.F103RE.build.board=ATKMINI_F103RE
-F103R.menu.subboard.F103RE.build.ldscript=ld/f103xE.ld
-F103R.menu.subboard.F103RE.build.extra_flags_jtag=-DMENU_DEBUG_SWD
-F103R.menu.subboard.F103RE.massstorage_drive=NUCLEO
+F103R.menu.cpu.F103RE=ALIENTEK_MINI[F103RC/D/E]
+F103R.menu.cpu.F103RE.upload.maximum_size=524288
+F103R.menu.cpu.F103RE.upload.maximum_data_size=65536
+F103R.menu.cpu.F103RE.upload.device=STM32F103RE
+F103R.menu.cpu.F103RE.build.extra_flags0=-DSTM32F103RE
+F103R.menu.cpu.F103RE.build.variant=ATKMINI_F103R
+F103R.menu.cpu.F103RE.build.board=ATKMINI_F103RE
+F103R.menu.cpu.F103RE.build.ldscript=ld/f103xE.ld
+F103R.menu.cpu.F103RE.build.extra_flags_jtag=-DMENU_DEBUG_SWD
+F103R.menu.cpu.F103RE.massstorage_drive=NUCLEO
 
-F103R.menu.subboard.F103RE1=GENERIC_F103RC/D/E[LED PC13]
-F103R.menu.subboard.F103RE1.upload.maximum_size=524288
-F103R.menu.subboard.F103RE1.upload.maximum_data_size=65536
-F103R.menu.subboard.F103RE1.upload.device=STM32F103RE
-F103R.menu.subboard.F103RE1.build.extra_flags0=-DSTM32F103RE
-F103R.menu.subboard.F103RE1.build.variant=F103R
-F103R.menu.subboard.F103RE1.build.board=GENERIC_F103RE
-F103R.menu.subboard.F103RE1.build.ldscript=ld/f103xE.ld
-F103R.menu.subboard.F103RE1.massstorage_drive=NUCLEO
+F103R.menu.cpu.F103RE1=GENERIC_F103RC/D/E[LED PC13]
+F103R.menu.cpu.F103RE1.upload.maximum_size=524288
+F103R.menu.cpu.F103RE1.upload.maximum_data_size=65536
+F103R.menu.cpu.F103RE1.upload.device=STM32F103RE
+F103R.menu.cpu.F103RE1.build.extra_flags0=-DSTM32F103RE
+F103R.menu.cpu.F103RE1.build.variant=F103R
+F103R.menu.cpu.F103RE1.build.board=GENERIC_F103RE
+F103R.menu.cpu.F103RE1.build.ldscript=ld/f103xE.ld
+F103R.menu.cpu.F103RE1.massstorage_drive=NUCLEO
 
 F103R.menu.startadr.default=flash(default)
 F103R.menu.startadr.default.build.extra_flags={build.extra_flags0}
@@ -1617,33 +1631,33 @@ F103V.serial.disableRTS=true
 F103V.upload.uploadadr=0x08000000
 F103V.upload.vect=0x08000000
 
-F103V.menu.subboard.F103VE=ArmFly_X2[F103VC/D/E PL2303]
-F103V.menu.subboard.F103VE.upload.maximum_size=524288
-F103V.menu.subboard.F103VE.upload.maximum_data_size=65536
-F103V.menu.subboard.F103VE.upload.device=STM32F103VE
-F103V.menu.subboard.F103VE.build.extra_flags0=-DSTM32F103VE
-F103V.menu.subboard.F103VE.build.variant=ARMFLY_X2_F103VE
-F103V.menu.subboard.F103VE.build.board=ARMFLY_X2
-F103V.menu.subboard.F103VE.build.ldscript=ld/f103xE.ld
-F103V.menu.subboard.F103VE.massstorage_drive=NUCLEO
-F103V.menu.subboard.F103VE.upload.protocol=maple_serial
-F103V.menu.subboard.F103VE.upload.tool=serial_upload
-F103V.menu.subboard.F103VE.upload.altID=PL2303
-F103V.menu.subboard.F103VE.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
+F103V.menu.cpu.F103VE=ArmFly_X2[F103VC/D/E PL2303]
+F103V.menu.cpu.F103VE.upload.maximum_size=524288
+F103V.menu.cpu.F103VE.upload.maximum_data_size=65536
+F103V.menu.cpu.F103VE.upload.device=STM32F103VE
+F103V.menu.cpu.F103VE.build.extra_flags0=-DSTM32F103VE
+F103V.menu.cpu.F103VE.build.variant=ARMFLY_X2_F103VE
+F103V.menu.cpu.F103VE.build.board=ARMFLY_X2
+F103V.menu.cpu.F103VE.build.ldscript=ld/f103xE.ld
+F103V.menu.cpu.F103VE.massstorage_drive=NUCLEO
+F103V.menu.cpu.F103VE.upload.protocol=maple_serial
+F103V.menu.cpu.F103VE.upload.tool=serial_upload
+F103V.menu.cpu.F103VE.upload.altID=PL2303
+F103V.menu.cpu.F103VE.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
 
-F103V.menu.subboard.F103VE1=GENERIC_F103VC/D/E
-F103V.menu.subboard.F103VE1.upload.maximum_size=524288
-F103V.menu.subboard.F103VE1.upload.maximum_data_size=65536
-F103V.menu.subboard.F103VE1.upload.device=STM32F103VE
-F103V.menu.subboard.F103VE1.build.extra_flags0=-DSTM32F103VE
-F103V.menu.subboard.F103VE1.build.variant=F103V
-F103V.menu.subboard.F103VE1.build.board=GENERIC_F103VE
-F103V.menu.subboard.F103VE1.build.ldscript=ld/f103xE.ld
-F103V.menu.subboard.F103VE1.massstorage_drive=NUCLEO
-F103V.menu.subboard.F103VE1.upload.protocol=maple_serial
-F103V.menu.subboard.F103VE1.upload.tool=serial_upload
-F103V.menu.subboard.F103VE1.upload.altID=CH340
-F103V.menu.subboard.F103VE1.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
+F103V.menu.cpu.F103VE1=GENERIC_F103VC/D/E
+F103V.menu.cpu.F103VE1.upload.maximum_size=524288
+F103V.menu.cpu.F103VE1.upload.maximum_data_size=65536
+F103V.menu.cpu.F103VE1.upload.device=STM32F103VE
+F103V.menu.cpu.F103VE1.build.extra_flags0=-DSTM32F103VE
+F103V.menu.cpu.F103VE1.build.variant=F103V
+F103V.menu.cpu.F103VE1.build.board=GENERIC_F103VE
+F103V.menu.cpu.F103VE1.build.ldscript=ld/f103xE.ld
+F103V.menu.cpu.F103VE1.massstorage_drive=NUCLEO
+F103V.menu.cpu.F103VE1.upload.protocol=maple_serial
+F103V.menu.cpu.F103VE1.upload.tool=serial_upload
+F103V.menu.cpu.F103VE1.upload.altID=CH340
+F103V.menu.cpu.F103VE1.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
 
 F103V.menu.startadr.default=flash(512k+64k)
 F103V.menu.startadr.default.build.extra_flags={build.extra_flags0}
@@ -1754,85 +1768,85 @@ F103Z.build.core=arduino
 F103Z.build.series=STM32F1
 F103Z.build.f_cpu=72000000L
 
-F103Z.menu.subboard.F103ZE1=HY_RedBull_V2[F103ZC/D/E]
-F103Z.menu.subboard.F103ZE1.upload.maximum_size=524288
-F103Z.menu.subboard.F103ZE1.upload.maximum_data_size=65536
-F103Z.menu.subboard.F103ZE1.upload.device=STM32F103ZE
-F103Z.menu.subboard.F103ZE1.build.variant=REDBULL_V2_F103ZE
-F103Z.menu.subboard.F103ZE1.build.board=REDBULL
-F103Z.menu.subboard.F103ZE1.build.extra_flags0=-DSTM32F103ZE
-F103Z.menu.subboard.F103ZE1.build.ldscript=ld/f103xE.ld
-F103Z.menu.subboard.F103ZE1.massstorage_drive=NUCLEO
-F103Z.menu.subboard.F103ZE1.upload.protocol=jlink
-F103Z.menu.subboard.F103ZE1.upload.tool=jlink_upload
-F103Z.menu.subboard.F103ZE1.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
+F103Z.menu.cpu.F103ZE1=HY_RedBull_V2[F103ZC/D/E]
+F103Z.menu.cpu.F103ZE1.upload.maximum_size=524288
+F103Z.menu.cpu.F103ZE1.upload.maximum_data_size=65536
+F103Z.menu.cpu.F103ZE1.upload.device=STM32F103ZE
+F103Z.menu.cpu.F103ZE1.build.variant=REDBULL_V2_F103ZE
+F103Z.menu.cpu.F103ZE1.build.board=REDBULL
+F103Z.menu.cpu.F103ZE1.build.extra_flags0=-DSTM32F103ZE
+F103Z.menu.cpu.F103ZE1.build.ldscript=ld/f103xE.ld
+F103Z.menu.cpu.F103ZE1.massstorage_drive=NUCLEO
+F103Z.menu.cpu.F103ZE1.upload.protocol=jlink
+F103Z.menu.cpu.F103ZE1.upload.tool=jlink_upload
+F103Z.menu.cpu.F103ZE1.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
 
-F103Z.menu.subboard.F103ZE2=HASEE_V3[F103ZC/D/E]
-F103Z.menu.subboard.F103ZE2.upload.maximum_size=524288
-F103Z.menu.subboard.F103ZE2.upload.maximum_data_size=65536
-F103Z.menu.subboard.F103ZE2.upload.device=STM32F103ZE
-F103Z.menu.subboard.F103ZE2.build.variant=HASEE_III_F103ZE
-F103Z.menu.subboard.F103ZE2.build.board=HASEE_V3
-F103Z.menu.subboard.F103ZE2.build.extra_flags0=-DSTM32F103ZE
-F103Z.menu.subboard.F103ZE2.build.ldscript=ld/f103xE.ld
-F103Z.menu.subboard.F103ZE2.massstorage_drive=NUCLEO
-F103Z.menu.subboard.F103ZE2.upload.protocol=STLink
-F103Z.menu.subboard.F103ZE2.upload.tool=stlink_upload
-F103Z.menu.subboard.F103ZE2.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
+F103Z.menu.cpu.F103ZE2=HASEE_V3[F103ZC/D/E]
+F103Z.menu.cpu.F103ZE2.upload.maximum_size=524288
+F103Z.menu.cpu.F103ZE2.upload.maximum_data_size=65536
+F103Z.menu.cpu.F103ZE2.upload.device=STM32F103ZE
+F103Z.menu.cpu.F103ZE2.build.variant=HASEE_III_F103ZE
+F103Z.menu.cpu.F103ZE2.build.board=HASEE_V3
+F103Z.menu.cpu.F103ZE2.build.extra_flags0=-DSTM32F103ZE
+F103Z.menu.cpu.F103ZE2.build.ldscript=ld/f103xE.ld
+F103Z.menu.cpu.F103ZE2.massstorage_drive=NUCLEO
+F103Z.menu.cpu.F103ZE2.upload.protocol=STLink
+F103Z.menu.cpu.F103ZE2.upload.tool=stlink_upload
+F103Z.menu.cpu.F103ZE2.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
 
-F103Z.menu.subboard.DOFLYE=DOFLYE_M3S[F103ZC/D/E CH340]
-F103Z.menu.subboard.DOFLYE.upload.maximum_size=524288
-F103Z.menu.subboard.DOFLYE.upload.maximum_data_size=65536
-F103Z.menu.subboard.DOFLYE.upload.device=STM32F103ZE
-F103Z.menu.subboard.DOFLYE.build.variant=DOFLYE_M3S_F103ZE
-F103Z.menu.subboard.DOFLYE.build.board=DOFLYE_M3S
-F103Z.menu.subboard.DOFLYE.build.extra_flags0=-DSTM32F103ZE
-F103Z.menu.subboard.DOFLYE.build.ldscript=ld/f103xE.ld
-F103Z.menu.subboard.DOFLYE.massstorage_drive=NUCLEO
-F103Z.menu.subboard.DOFLYE.upload.protocol=maple_serial
-F103Z.menu.subboard.DOFLYE.upload.tool=serial_upload
-F103Z.menu.subboard.DOFLYE.upload.altID=CH340
-F103Z.menu.subboard.DOFLYE.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
+F103Z.menu.cpu.DOFLYE=DOFLYE_M3S[F103ZC/D/E CH340]
+F103Z.menu.cpu.DOFLYE.upload.maximum_size=524288
+F103Z.menu.cpu.DOFLYE.upload.maximum_data_size=65536
+F103Z.menu.cpu.DOFLYE.upload.device=STM32F103ZE
+F103Z.menu.cpu.DOFLYE.build.variant=DOFLYE_M3S_F103ZE
+F103Z.menu.cpu.DOFLYE.build.board=DOFLYE_M3S
+F103Z.menu.cpu.DOFLYE.build.extra_flags0=-DSTM32F103ZE
+F103Z.menu.cpu.DOFLYE.build.ldscript=ld/f103xE.ld
+F103Z.menu.cpu.DOFLYE.massstorage_drive=NUCLEO
+F103Z.menu.cpu.DOFLYE.upload.protocol=maple_serial
+F103Z.menu.cpu.DOFLYE.upload.tool=serial_upload
+F103Z.menu.cpu.DOFLYE.upload.altID=CH340
+F103Z.menu.cpu.DOFLYE.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
 
-F103Z.menu.subboard.BITV30=BIT_V30[F103ZC/D/E CH340]
-F103Z.menu.subboard.BITV30.upload.maximum_size=524288
-F103Z.menu.subboard.BITV30.upload.maximum_data_size=65536
-F103Z.menu.subboard.BITV30.upload.device=STM32F103ZE
-F103Z.menu.subboard.BITV30.build.variant=BIT_V30_F103ZE
-F103Z.menu.subboard.BITV30.build.board=BIT_V30
-F103Z.menu.subboard.BITV30.build.extra_flags0=-DSTM32F103ZE
-F103Z.menu.subboard.BITV30.build.ldscript=ld/f103xE.ld
-F103Z.menu.subboard.BITV30.massstorage_drive=NUCLEO
-F103Z.menu.subboard.BITV30.upload.protocol=maple_serial
-F103Z.menu.subboard.BITV30.upload.tool=serial_upload
-F103Z.menu.subboard.BITV30.upload.altID=CH340
-F103Z.menu.subboard.BITV30.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
+F103Z.menu.cpu.BITV30=BIT_V30[F103ZC/D/E CH340]
+F103Z.menu.cpu.BITV30.upload.maximum_size=524288
+F103Z.menu.cpu.BITV30.upload.maximum_data_size=65536
+F103Z.menu.cpu.BITV30.upload.device=STM32F103ZE
+F103Z.menu.cpu.BITV30.build.variant=BIT_V30_F103ZE
+F103Z.menu.cpu.BITV30.build.board=BIT_V30
+F103Z.menu.cpu.BITV30.build.extra_flags0=-DSTM32F103ZE
+F103Z.menu.cpu.BITV30.build.ldscript=ld/f103xE.ld
+F103Z.menu.cpu.BITV30.massstorage_drive=NUCLEO
+F103Z.menu.cpu.BITV30.upload.protocol=maple_serial
+F103Z.menu.cpu.BITV30.upload.tool=serial_upload
+F103Z.menu.cpu.BITV30.upload.altID=CH340
+F103Z.menu.cpu.BITV30.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
 
-F103Z.menu.subboard.ZECORE=F103ZE_CORE
-F103Z.menu.subboard.ZECORE.upload.maximum_size=524288
-F103Z.menu.subboard.ZECORE.upload.maximum_data_size=65536
-F103Z.menu.subboard.ZECORE.upload.device=STM32F103ZE
-F103Z.menu.subboard.ZECORE.build.variant=F103Z
-F103Z.menu.subboard.ZECORE.build.board=F103Z_CORE
-F103Z.menu.subboard.ZECORE.build.extra_flags0=-DSTM32F103ZE
-F103Z.menu.subboard.ZECORE.build.ldscript=ld/f103xE.ld
-F103Z.menu.subboard.ZECORE.massstorage_drive=NUCLEO
-F103Z.menu.subboard.ZECORE.upload.protocol=STLink
-F103Z.menu.subboard.ZECORE.upload.tool=stlink_upload
-F103Z.menu.subboard.ZECORE.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
+F103Z.menu.cpu.ZECORE=F103ZE_CORE
+F103Z.menu.cpu.ZECORE.upload.maximum_size=524288
+F103Z.menu.cpu.ZECORE.upload.maximum_data_size=65536
+F103Z.menu.cpu.ZECORE.upload.device=STM32F103ZE
+F103Z.menu.cpu.ZECORE.build.variant=F103Z
+F103Z.menu.cpu.ZECORE.build.board=F103Z_CORE
+F103Z.menu.cpu.ZECORE.build.extra_flags0=-DSTM32F103ZE
+F103Z.menu.cpu.ZECORE.build.ldscript=ld/f103xE.ld
+F103Z.menu.cpu.ZECORE.massstorage_drive=NUCLEO
+F103Z.menu.cpu.ZECORE.upload.protocol=STLink
+F103Z.menu.cpu.ZECORE.upload.tool=stlink_upload
+F103Z.menu.cpu.ZECORE.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
 
-F103Z.menu.subboard.F103ZE=GENERIC_F103ZC/D/E
-F103Z.menu.subboard.F103ZE.upload.maximum_size=524288
-F103Z.menu.subboard.F103ZE.upload.maximum_data_size=65536
-F103Z.menu.subboard.F103ZE.upload.device=STM32F103ZE
-F103Z.menu.subboard.F103ZE.build.variant=F103Z
-F103Z.menu.subboard.F103ZE.build.board=GENERIC_F103ZE
-F103Z.menu.subboard.F103ZE.build.extra_flags0=-DSTM32F103ZE
-F103Z.menu.subboard.F103ZE.build.ldscript=ld/f103xE.ld
-F103Z.menu.subboard.F103ZE.massstorage_drive=NUCLEO
-F103Z.menu.subboard.F103ZE.upload.protocol=STLink
-F103Z.menu.subboard.F103ZE.upload.tool=stlink_upload
-F103Z.menu.subboard.F103ZE.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
+F103Z.menu.cpu.F103ZE=GENERIC_F103ZC/D/E
+F103Z.menu.cpu.F103ZE.upload.maximum_size=524288
+F103Z.menu.cpu.F103ZE.upload.maximum_data_size=65536
+F103Z.menu.cpu.F103ZE.upload.device=STM32F103ZE
+F103Z.menu.cpu.F103ZE.build.variant=F103Z
+F103Z.menu.cpu.F103ZE.build.board=GENERIC_F103ZE
+F103Z.menu.cpu.F103ZE.build.extra_flags0=-DSTM32F103ZE
+F103Z.menu.cpu.F103ZE.build.ldscript=ld/f103xE.ld
+F103Z.menu.cpu.F103ZE.massstorage_drive=NUCLEO
+F103Z.menu.cpu.F103ZE.upload.protocol=STLink
+F103Z.menu.cpu.F103ZE.upload.tool=stlink_upload
+F103Z.menu.cpu.F103ZE.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
 
 F103Z.menu.startadr.default=flash(512k+64k)
 F103Z.menu.startadr.default.build.extra_flags={build.extra_flags0}
@@ -1948,19 +1962,19 @@ F107V.serial.disableRTS=true
 F107V.upload.uploadadr=0x08000000
 F107V.upload.vect=0x08000000
 
-F107V.menu.subboard.F107VC1=GENERIC_F107VC
-F107V.menu.subboard.F107VC1.upload.maximum_size=262144
-F107V.menu.subboard.F107VC1.upload.maximum_data_size=65536
-F107V.menu.subboard.F107VC1.upload.device=STM32F107VC
-F107V.menu.subboard.F107VC1.build.extra_flags0=-DSTM32F107VC
-F107V.menu.subboard.F107VC1.build.variant=F107VC
-F107V.menu.subboard.F107VC1.build.board=GENERIC_F107VC
-F107V.menu.subboard.F107VC1.build.ldscript=ld/f107xC.ld
-F107V.menu.subboard.F107VC1.massstorage_drive=NUCLEO
-F107V.menu.subboard.F107VC1.upload.protocol=maple_serial
-F107V.menu.subboard.F107VC1.upload.tool=serial_upload
-F107V.menu.subboard.F107VC1.upload.altID=CH340
-F107V.menu.subboard.F107VC1.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
+F107V.menu.cpu.F107VC1=GENERIC_F107VC
+F107V.menu.cpu.F107VC1.upload.maximum_size=262144
+F107V.menu.cpu.F107VC1.upload.maximum_data_size=65536
+F107V.menu.cpu.F107VC1.upload.device=STM32F107VC
+F107V.menu.cpu.F107VC1.build.extra_flags0=-DSTM32F107VC
+F107V.menu.cpu.F107VC1.build.variant=F107VC
+F107V.menu.cpu.F107VC1.build.board=GENERIC_F107VC
+F107V.menu.cpu.F107VC1.build.ldscript=ld/f107xC.ld
+F107V.menu.cpu.F107VC1.massstorage_drive=NUCLEO
+F107V.menu.cpu.F107VC1.upload.protocol=maple_serial
+F107V.menu.cpu.F107VC1.upload.tool=serial_upload
+F107V.menu.cpu.F107VC1.upload.altID=CH340
+F107V.menu.cpu.F107VC1.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
 
 F107V.menu.startadr.default=flash(256k+64k)
 F107V.menu.startadr.default.build.extra_flags={build.extra_flags0}
@@ -2075,18 +2089,18 @@ F401S.build.core=arduino
 F401S.build.board=F401NANO
 F401S.build.series=STM32F4
 
-F401S.menu.subboard.CCU6F=NANO_CCU6
-F401S.menu.subboard.CCU6F.upload.maximum_size=262144
-F401S.menu.subboard.CCU6F.upload.maximum_data_size=65536
-F401S.menu.subboard.CCU6F.build.variant=F401C
-F401S.menu.subboard.CCU6F.build.board=F401NANO
-F401S.menu.subboard.CCU6F.build.extra_flags0=-DSTM32F401CC
-F401S.menu.subboard.CCU6F.massstorage_drive=NUCLEO
+F401S.menu.cpu.CCU6F=NANO_CCU6
+F401S.menu.cpu.CCU6F.upload.maximum_size=262144
+F401S.menu.cpu.CCU6F.upload.maximum_data_size=65536
+F401S.menu.cpu.CCU6F.build.variant=F401C
+F401S.menu.cpu.CCU6F.build.board=F401NANO
+F401S.menu.cpu.CCU6F.build.extra_flags0=-DSTM32F401CC
+F401S.menu.cpu.CCU6F.massstorage_drive=NUCLEO
 #default upload method
-F401S.menu.subboard.CCU6F.upload.device=STM32F401CC
-F401S.menu.subboard.CCU6F.upload.tool=stlink_upload
-F401S.menu.subboard.CCU6F.upload.protocol=STLink
-F401S.menu.subboard.CCU6F.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUSB
+F401S.menu.cpu.CCU6F.upload.device=STM32F401CC
+F401S.menu.cpu.CCU6F.upload.tool=stlink_upload
+F401S.menu.cpu.CCU6F.upload.protocol=STLink
+F401S.menu.cpu.CCU6F.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUSB
 
 F401S.menu.startadr.default=flash(256k+64k)
 F401S.menu.startadr.default.build.extra_flags={build.extra_flags0}
@@ -2205,123 +2219,123 @@ F407S.build.board=BLACK_F407VE
 F407S.build.series=STM32F4
 F407S.build.f_cpu=168000000L
 
-F407S.menu.subboard.BLACK_407V=BLACK_F407VE[YL136]
-F407S.menu.subboard.BLACK_407V.upload.maximum_size=524288
-F407S.menu.subboard.BLACK_407V.upload.maximum_data_size=131072
-F407S.menu.subboard.BLACK_407V.build.variant=BLACK_F407VE
-F407S.menu.subboard.BLACK_407V.build.board=BLACK_F407VE
-F407S.menu.subboard.BLACK_407V.build.extra_flags0=-DSTM32F407VE -DHSE_VALUE=8000000
-F407S.menu.subboard.BLACK_407V.build.ldscript_pre=ld/f407xE
-F407S.menu.subboard.BLACK_407V.massstorage_drive=NUCLEO
-F407S.menu.subboard.BLACK_407V.upload.device=STM32F407VE
+F407S.menu.cpu.BLACK_407V=BLACK_F407VE[YL136]
+F407S.menu.cpu.BLACK_407V.upload.maximum_size=524288
+F407S.menu.cpu.BLACK_407V.upload.maximum_data_size=131072
+F407S.menu.cpu.BLACK_407V.build.variant=BLACK_F407VE
+F407S.menu.cpu.BLACK_407V.build.board=BLACK_F407VE
+F407S.menu.cpu.BLACK_407V.build.extra_flags0=-DSTM32F407VE -DHSE_VALUE=8000000
+F407S.menu.cpu.BLACK_407V.build.ldscript_pre=ld/f407xE
+F407S.menu.cpu.BLACK_407V.massstorage_drive=NUCLEO
+F407S.menu.cpu.BLACK_407V.upload.device=STM32F407VE
 #default upload method
-F407S.menu.subboard.BLACK_407V.upload.tool=jlink_upload
-F407S.menu.subboard.BLACK_407V.upload.protocol=jlink
-F407S.menu.subboard.BLACK_407V.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
+F407S.menu.cpu.BLACK_407V.upload.tool=jlink_upload
+F407S.menu.cpu.BLACK_407V.upload.protocol=jlink
+F407S.menu.cpu.BLACK_407V.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
 
-F407S.menu.subboard.V11_F407V=F407VE_V11[BLUE  CH340]
-F407S.menu.subboard.V11_F407V.upload.maximum_size=524288
-F407S.menu.subboard.V11_F407V.upload.maximum_data_size=131072
-F407S.menu.subboard.V11_F407V.build.variant=F407VE_V11
-F407S.menu.subboard.V11_F407V.build.board=V11VET6
-F407S.menu.subboard.V11_F407V.build.extra_flags0=-DSTM32F407VE -DHSE_VALUE=8000000
-F407S.menu.subboard.V11_F407V.build.ldscript_pre=ld/f407xE
-F407S.menu.subboard.V11_F407V.upload.device=STM32F407VE
+F407S.menu.cpu.V11_F407V=F407VE_V11[BLUE  CH340]
+F407S.menu.cpu.V11_F407V.upload.maximum_size=524288
+F407S.menu.cpu.V11_F407V.upload.maximum_data_size=131072
+F407S.menu.cpu.V11_F407V.build.variant=F407VE_V11
+F407S.menu.cpu.V11_F407V.build.board=V11VET6
+F407S.menu.cpu.V11_F407V.build.extra_flags0=-DSTM32F407VE -DHSE_VALUE=8000000
+F407S.menu.cpu.V11_F407V.build.ldscript_pre=ld/f407xE
+F407S.menu.cpu.V11_F407V.upload.device=STM32F407VE
 #default upload method
-F407S.menu.subboard.V11_F407V.upload.protocol=maple_serial
-F407S.menu.subboard.V11_F407V.upload.tool=serial_upload
-F407S.menu.subboard.V11_F407V.upload.altID=CH340
-F407S.menu.subboard.V11_F407V.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
+F407S.menu.cpu.V11_F407V.upload.protocol=maple_serial
+F407S.menu.cpu.V11_F407V.upload.tool=serial_upload
+F407S.menu.cpu.V11_F407V.upload.altID=CH340
+F407S.menu.cpu.V11_F407V.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
 
-F407S.menu.subboard.ArmFly_F4=ArmFly_F407ZG
-F407S.menu.subboard.ArmFly_F4.upload.maximum_size=1232896
-F407S.menu.subboard.ArmFly_F4.upload.maximum_data_size=131072
-F407S.menu.subboard.ArmFly_F4.build.variant=ARMFLY_F407ZG
-F407S.menu.subboard.ArmFly_F4.build.board=ARMFLY_F4
-F407S.menu.subboard.ArmFly_F4.build.extra_flags0=-DSTM32F407ZG -DHSE_VALUE=8000000
-F407S.menu.subboard.ArmFly_F4.build.ldscript_pre=ld/f407xG
-F407S.menu.subboard.ArmFly_F4.massstorage_drive=NUCLEO
-F407S.menu.subboard.ArmFly_F4.upload.device=STM32F407ZG
+F407S.menu.cpu.ArmFly_F4=ArmFly_F407ZG
+F407S.menu.cpu.ArmFly_F4.upload.maximum_size=1232896
+F407S.menu.cpu.ArmFly_F4.upload.maximum_data_size=131072
+F407S.menu.cpu.ArmFly_F4.build.variant=ARMFLY_F407ZG
+F407S.menu.cpu.ArmFly_F4.build.board=ARMFLY_F4
+F407S.menu.cpu.ArmFly_F4.build.extra_flags0=-DSTM32F407ZG -DHSE_VALUE=8000000
+F407S.menu.cpu.ArmFly_F4.build.ldscript_pre=ld/f407xG
+F407S.menu.cpu.ArmFly_F4.massstorage_drive=NUCLEO
+F407S.menu.cpu.ArmFly_F4.upload.device=STM32F407ZG
 #default upload method
-F407S.menu.subboard.ArmFly_F4.upload.protocol=
-F407S.menu.subboard.ArmFly_F4.upload.tool=nucleoFlasher
-F407S.menu.subboard.ArmFly_F4.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
+F407S.menu.cpu.ArmFly_F4.upload.protocol=
+F407S.menu.cpu.ArmFly_F4.upload.tool=nucleoFlasher
+F407S.menu.cpu.ArmFly_F4.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
 
-F407S.menu.subboard.IMT407GV21=ILLUMINATI_F407ZG[JLink SerialUART3]
-F407S.menu.subboard.IMT407GV21.upload.maximum_size=1232896
-F407S.menu.subboard.IMT407GV21.upload.maximum_data_size=131072
-F407S.menu.subboard.IMT407GV21.build.variant=ILLUMINATI_F407ZG
-F407S.menu.subboard.IMT407GV21.build.board=IMT407GV21
-F407S.menu.subboard.IMT407GV21.build.extra_flags0=-DSTM32F407ZG -DHSE_VALUE=8000000
-F407S.menu.subboard.IMT407GV21.build.ldscript_pre=ld/f407xG
-F407S.menu.subboard.IMT407GV21.massstorage_drive=NUCLEO
-F407S.menu.subboard.IMT407GV21.upload.device=STM32F407ZG
+F407S.menu.cpu.IMT407GV21=ILLUMINATI_F407ZG[JLink SerialUART3]
+F407S.menu.cpu.IMT407GV21.upload.maximum_size=1232896
+F407S.menu.cpu.IMT407GV21.upload.maximum_data_size=131072
+F407S.menu.cpu.IMT407GV21.build.variant=ILLUMINATI_F407ZG
+F407S.menu.cpu.IMT407GV21.build.board=IMT407GV21
+F407S.menu.cpu.IMT407GV21.build.extra_flags0=-DSTM32F407ZG -DHSE_VALUE=8000000
+F407S.menu.cpu.IMT407GV21.build.ldscript_pre=ld/f407xG
+F407S.menu.cpu.IMT407GV21.massstorage_drive=NUCLEO
+F407S.menu.cpu.IMT407GV21.upload.device=STM32F407ZG
 #default upload method
-F407S.menu.subboard.IMT407GV21.upload.tool=jlink_upload
-F407S.menu.subboard.IMT407GV21.upload.protocol=jlink
-F407S.menu.subboard.IMT407GV21.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART3
+F407S.menu.cpu.IMT407GV21.upload.tool=jlink_upload
+F407S.menu.cpu.IMT407GV21.upload.protocol=jlink
+F407S.menu.cpu.IMT407GV21.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART3
 
-F407S.menu.subboard.WAVESHARE_IGT6=WAVESHARE_F407IG
-F407S.menu.subboard.WAVESHARE_IGT6.upload.maximum_size=1232896
-F407S.menu.subboard.WAVESHARE_IGT6.upload.maximum_data_size=131072
-F407S.menu.subboard.WAVESHARE_IGT6.build.variant=WAVESHARE_F407IG
-F407S.menu.subboard.WAVESHARE_IGT6.build.board=WAVESHARE_F407IGT6
-F407S.menu.subboard.WAVESHARE_IGT6.build.extra_flags0=-DSTM32F407IG -DHSE_VALUE=8000000
-F407S.menu.subboard.WAVESHARE_IGT6.build.ldscript_pre=ld/f407xG
-F407S.menu.subboard.WAVESHARE_IGT6.upload.device=STM32F407IG
-F407S.menu.subboard.WAVESHARE_IGT6.upload.protocol=STLink
-F407S.menu.subboard.WAVESHARE_IGT6.upload.tool=stlink_upload
-F407S.menu.subboard.WAVESHARE_IGT6.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
+F407S.menu.cpu.WAVESHARE_IGT6=WAVESHARE_F407IG
+F407S.menu.cpu.WAVESHARE_IGT6.upload.maximum_size=1232896
+F407S.menu.cpu.WAVESHARE_IGT6.upload.maximum_data_size=131072
+F407S.menu.cpu.WAVESHARE_IGT6.build.variant=WAVESHARE_F407IG
+F407S.menu.cpu.WAVESHARE_IGT6.build.board=WAVESHARE_F407IGT6
+F407S.menu.cpu.WAVESHARE_IGT6.build.extra_flags0=-DSTM32F407IG -DHSE_VALUE=8000000
+F407S.menu.cpu.WAVESHARE_IGT6.build.ldscript_pre=ld/f407xG
+F407S.menu.cpu.WAVESHARE_IGT6.upload.device=STM32F407IG
+F407S.menu.cpu.WAVESHARE_IGT6.upload.protocol=STLink
+F407S.menu.cpu.WAVESHARE_IGT6.upload.tool=stlink_upload
+F407S.menu.cpu.WAVESHARE_IGT6.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
 
-F407S.menu.subboard.IGT6_CORE=F407IG_CORE[GREEN]
-F407S.menu.subboard.IGT6_CORE.upload.maximum_size=1232896
-F407S.menu.subboard.IGT6_CORE.upload.maximum_data_size=131072
-F407S.menu.subboard.IGT6_CORE.build.variant=F407IG_CORE
-F407S.menu.subboard.IGT6_CORE.build.board=IGT6CORE
-F407S.menu.subboard.IGT6_CORE.build.extra_flags0=-DSTM32F407IG -DHSE_VALUE=8000000
-F407S.menu.subboard.IGT6_CORE.build.ldscript_pre=ld/f407xG
-F407S.menu.subboard.IGT6_CORE.massstorage_drive=NUCLEO
-F407S.menu.subboard.IGT6_CORE.upload.device=STM32F407IG
+F407S.menu.cpu.IGT6_CORE=F407IG_CORE[GREEN]
+F407S.menu.cpu.IGT6_CORE.upload.maximum_size=1232896
+F407S.menu.cpu.IGT6_CORE.upload.maximum_data_size=131072
+F407S.menu.cpu.IGT6_CORE.build.variant=F407IG_CORE
+F407S.menu.cpu.IGT6_CORE.build.board=IGT6CORE
+F407S.menu.cpu.IGT6_CORE.build.extra_flags0=-DSTM32F407IG -DHSE_VALUE=8000000
+F407S.menu.cpu.IGT6_CORE.build.ldscript_pre=ld/f407xG
+F407S.menu.cpu.IGT6_CORE.massstorage_drive=NUCLEO
+F407S.menu.cpu.IGT6_CORE.upload.device=STM32F407IG
 #default upload method
-F407S.menu.subboard.IGT6_CORE.upload.protocol=
-F407S.menu.subboard.IGT6_CORE.upload.tool=nucleoFlasher
-F407S.menu.subboard.IGT6_CORE.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
+F407S.menu.cpu.IGT6_CORE.upload.protocol=
+F407S.menu.cpu.IGT6_CORE.upload.tool=nucleoFlasher
+F407S.menu.cpu.IGT6_CORE.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
 
-F407S.menu.subboard.GENERIC_F407V=GENERIC_F407VE
-F407S.menu.subboard.GENERIC_F407V.upload.maximum_size=524288
-F407S.menu.subboard.GENERIC_F407V.upload.maximum_data_size=131072
-F407S.menu.subboard.GENERIC_F407V.build.variant=BLUE_F407VE
-F407S.menu.subboard.GENERIC_F407V.build.board=GENERIC_F407VE
-F407S.menu.subboard.GENERIC_F407V.build.extra_flags0=-DSTM32F407VE -DHSE_VALUE=8000000
-F407S.menu.subboard.GENERIC_F407V.build.ldscript_pre=ld/f407xG
-F407S.menu.subboard.GENERIC_F407V.upload.device=STM32F407VE
-F407S.menu.subboard.GENERIC_F407V.upload.protocol=STLink
-F407S.menu.subboard.GENERIC_F407V.upload.tool=stlink_upload
-F407S.menu.subboard.GENERIC_F407V.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUSB
+F407S.menu.cpu.GENERIC_F407V=GENERIC_F407VE
+F407S.menu.cpu.GENERIC_F407V.upload.maximum_size=524288
+F407S.menu.cpu.GENERIC_F407V.upload.maximum_data_size=131072
+F407S.menu.cpu.GENERIC_F407V.build.variant=BLUE_F407VE
+F407S.menu.cpu.GENERIC_F407V.build.board=GENERIC_F407VE
+F407S.menu.cpu.GENERIC_F407V.build.extra_flags0=-DSTM32F407VE -DHSE_VALUE=8000000
+F407S.menu.cpu.GENERIC_F407V.build.ldscript_pre=ld/f407xG
+F407S.menu.cpu.GENERIC_F407V.upload.device=STM32F407VE
+F407S.menu.cpu.GENERIC_F407V.upload.protocol=STLink
+F407S.menu.cpu.GENERIC_F407V.upload.tool=stlink_upload
+F407S.menu.cpu.GENERIC_F407V.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUSB
 
-F407S.menu.subboard.BLACK_F407ZE=GENERIC_F407ZE
-F407S.menu.subboard.BLACK_F407ZE.upload.maximum_size=1232896
-F407S.menu.subboard.BLACK_F407ZE.upload.maximum_data_size=131072
-F407S.menu.subboard.BLACK_F407ZE.build.variant=BLACK_F407ZE
-F407S.menu.subboard.BLACK_F407ZE.build.board=GENERIC_F407ZE
-F407S.menu.subboard.BLACK_F407ZE.build.extra_flags0=-DSTM32F407ZE -DHSE_VALUE=8000000
-F407S.menu.subboard.BLACK_F407ZE.build.ldscript_pre=ld/f407xG
-F407S.menu.subboard.BLACK_F407ZE.upload.device=STM32F407ZE
-F407S.menu.subboard.BLACK_F407ZE.upload.protocol=STLink
-F407S.menu.subboard.BLACK_F407ZE.upload.tool=stlink_upload
-F407S.menu.subboard.BLACK_F407ZE.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUSB
+F407S.menu.cpu.BLACK_F407ZE=GENERIC_F407ZE
+F407S.menu.cpu.BLACK_F407ZE.upload.maximum_size=1232896
+F407S.menu.cpu.BLACK_F407ZE.upload.maximum_data_size=131072
+F407S.menu.cpu.BLACK_F407ZE.build.variant=BLACK_F407ZE
+F407S.menu.cpu.BLACK_F407ZE.build.board=GENERIC_F407ZE
+F407S.menu.cpu.BLACK_F407ZE.build.extra_flags0=-DSTM32F407ZE -DHSE_VALUE=8000000
+F407S.menu.cpu.BLACK_F407ZE.build.ldscript_pre=ld/f407xG
+F407S.menu.cpu.BLACK_F407ZE.upload.device=STM32F407ZE
+F407S.menu.cpu.BLACK_F407ZE.upload.protocol=STLink
+F407S.menu.cpu.BLACK_F407ZE.upload.tool=stlink_upload
+F407S.menu.cpu.BLACK_F407ZE.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUSB
 
-F407S.menu.subboard.BLACK_F407ZG=GENERIC_F407ZG
-F407S.menu.subboard.BLACK_F407ZG.upload.maximum_size=1232896
-F407S.menu.subboard.BLACK_F407ZG.upload.maximum_data_size=131072
-F407S.menu.subboard.BLACK_F407ZG.build.variant=BLACK_F407ZG
-F407S.menu.subboard.BLACK_F407ZG.build.board=GENERIC_F407ZG
-F407S.menu.subboard.BLACK_F407ZG.build.extra_flags0=-DSTM32F407ZG -DHSE_VALUE=8000000
-F407S.menu.subboard.BLACK_F407ZG.build.ldscript_pre=ld/f407xG
-F407S.menu.subboard.BLACK_F407ZG.upload.device=STM32F407ZG
-F407S.menu.subboard.BLACK_F407ZG.upload.protocol=STLink
-F407S.menu.subboard.BLACK_F407ZG.upload.tool=stlink_upload
-F407S.menu.subboard.BLACK_F407ZG.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUSB
+F407S.menu.cpu.BLACK_F407ZG=GENERIC_F407ZG
+F407S.menu.cpu.BLACK_F407ZG.upload.maximum_size=1232896
+F407S.menu.cpu.BLACK_F407ZG.upload.maximum_data_size=131072
+F407S.menu.cpu.BLACK_F407ZG.build.variant=BLACK_F407ZG
+F407S.menu.cpu.BLACK_F407ZG.build.board=GENERIC_F407ZG
+F407S.menu.cpu.BLACK_F407ZG.build.extra_flags0=-DSTM32F407ZG -DHSE_VALUE=8000000
+F407S.menu.cpu.BLACK_F407ZG.build.ldscript_pre=ld/f407xG
+F407S.menu.cpu.BLACK_F407ZG.upload.device=STM32F407ZG
+F407S.menu.cpu.BLACK_F407ZG.upload.protocol=STLink
+F407S.menu.cpu.BLACK_F407ZG.upload.tool=stlink_upload
+F407S.menu.cpu.BLACK_F407ZG.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUSB
 
 F407S.menu.startadr.default=flash(default)
 F407S.menu.startadr.default.build.extra_flags={build.extra_flags0}
@@ -2435,18 +2449,18 @@ f429xG.build.board=IGT6CORE
 f429xG.build.series=STM32F4
 f429xG.build.f_cpu=180000000L
 
-f429xG.menu.subboard.IGT6_CORE=F429IG_CORE[GREEN]
-f429xG.menu.subboard.IGT6_CORE.upload.maximum_size=1232896
-f429xG.menu.subboard.IGT6_CORE.upload.maximum_data_size=131072
-f429xG.menu.subboard.IGT6_CORE.build.variant=F429IG_CORE
-f429xG.menu.subboard.IGT6_CORE.build.board=IGT6CORE
-f429xG.menu.subboard.IGT6_CORE.build.extra_flags0=-DSTM32F429IG -DHSE_VALUE=8000000
-f429xG.menu.subboard.IGT6_CORE.build.ldscript_pre=ld/f429xG
-f429xG.menu.subboard.IGT6_CORE.upload.device=STM32F429IG
+f429xG.menu.cpu.IGT6_CORE=F429IG_CORE[GREEN]
+f429xG.menu.cpu.IGT6_CORE.upload.maximum_size=1232896
+f429xG.menu.cpu.IGT6_CORE.upload.maximum_data_size=131072
+f429xG.menu.cpu.IGT6_CORE.build.variant=F429IG_CORE
+f429xG.menu.cpu.IGT6_CORE.build.board=IGT6CORE
+f429xG.menu.cpu.IGT6_CORE.build.extra_flags0=-DSTM32F429IG -DHSE_VALUE=8000000
+f429xG.menu.cpu.IGT6_CORE.build.ldscript_pre=ld/f429xG
+f429xG.menu.cpu.IGT6_CORE.upload.device=STM32F429IG
 #default upload method
-f429xG.menu.subboard.IGT6_CORE.upload.protocol=STLink
-f429xG.menu.subboard.IGT6_CORE.upload.tool=stlink_upload
-f429xG.menu.subboard.IGT6_CORE.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
+f429xG.menu.cpu.IGT6_CORE.upload.protocol=STLink
+f429xG.menu.cpu.IGT6_CORE.upload.tool=stlink_upload
+f429xG.menu.cpu.IGT6_CORE.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
 
 f429xG.menu.startadr.default=flash(1024k+128k)
 f429xG.menu.startadr.default.build.extra_flags={build.extra_flags0}
@@ -2561,7 +2575,7 @@ F746S.build.variant=WAVESHARE_F746IG
 F746S.build.extra_flags0=-DSTM32F746IG -DHSE_VALUE=((uint32_t)8000000)
 F746S.build.f_cpu=216000000L
 
-F746S.menu.subboard.F746IG=WaveShare F746IG(1024K+320K)
+F746S.menu.cpu.F746IG=WaveShare F746IG(1024K+320K)
 
 F746S.menu.startadr.default=flash(1024k+320k)
 F746S.menu.startadr.default.build.extra_flags={build.extra_flags0}
