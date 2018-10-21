@@ -238,8 +238,8 @@ class BB_PIN {
     BB_PIN(__ConstPin cpin): cpin(cpin) {}
     __ConstPin cpin;
     const uint8_t  pos       = variant_gpiopin_pos_static[cpin];
-    const uint32_t inReg     = (const uint32_t)&cpin.port->IDR;
-    const uint32_t outReg    = (const uint32_t)&cpin.port->ODR;
+    const uint32_t inReg     = (const uint32_t)&cpin.ulPortBase->IDR;
+    const uint32_t outReg    = (const uint32_t)&cpin.ulPortBase->ODR;
     const uint32_t bb_inadr  = BITBAND(inReg, pos);
     const uint32_t bb_outadr = BITBAND(outReg, pos);
 

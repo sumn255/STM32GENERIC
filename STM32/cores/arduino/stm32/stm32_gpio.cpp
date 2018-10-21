@@ -22,9 +22,7 @@
   add for stm32h7 by huaweiwx@sina.com 2017.12.9 
   add avr emulation  huaweiwx@sina.com 2018.9.17
 */
-
-#include "stm32_gpio.h"
-#include "variant.h"
+#include "Arduino.h"
 
 extern "C"
 void stm32GpioClockEnable(GPIO_TypeDef *port) {
@@ -243,39 +241,91 @@ void pinMode(uint8_t pin, uint8_t mode) {
 }
 #endif
 
+
+uint32_t pulseIn(__ConstPin cpin, bool state, uint32_t timeout )
+{
+  // Cache the port and bit of the pin in order to speed up the
+  // pulse width measuring loop and achieve finer resolution.
+  // Calling digitalRead() instead yields much coarser resolution.
+  uint32_t startMicros = micros();
+
+  // wait for any previous pulse to end
+  while (digitalRead(cpin) == state) {
+    if (micros()-startMicros > timeout)
+      return 0;
+  }
+
+  // wait for the pulse to start
+  while (digitalRead(cpin) != state) {
+    if (micros()-startMicros > timeout)
+      return 0;
+  }
+
+  uint32_t start = micros();
+  // wait for the pulse to stop
+  while (digitalRead(cpin) == state) {
+    if (micros()-startMicros > timeout)
+      return 0;
+  }
+  return (micros() - start);
+}
+
+
 #if USE_AVREMULATION > 0
 #ifdef GPIOA
-DDRemulation DDRA(GPIOA);
+DDRemulation   DDRA(GPIOA);
+PORTemulation PORTA(GPIOA);
+PINemulation   PINA(GPIOA);
 #endif
 #ifdef GPIOB
-DDRemulation DDRB(GPIOB);
+DDRemulation   DDRB(GPIOB);
+PORTemulation PORTB(GPIOB);
+PINemulation   PINB(GPIOB);
 #endif
 #ifdef GPIOC
-DDRemulation DDRC(GPIOC);
+DDRemulation   DDRC(GPIOC);
+PORTemulation PORTC(GPIOC);
+PINemulation   PINC(GPIOC);
 #endif
 #ifdef GPIOD
-DDRemulation DDRD(GPIOD);
+DDRemulation   DDRD(GPIOD);
+PORTemulation PORTD(GPIOD);
+PINemulation   PIND(GPIOD);
 #endif
 #ifdef GPIOE
-DDRemulation DDRE(GPIOE);
+DDRemulation   DDRE(GPIOE);
+PORTemulation PORTE(GPIOE);
+PINemulation   PINE(GPIOE);
 #endif
 #ifdef GPIOF
-DDRemulation DDRF(GPIOF);
+DDRemulation   DDRF(GPIOF);
+PORTemulation PORTF(GPIOF);
+PINemulation   PINF(GPIOF);
 #endif
 #ifdef GPIOG
-DDRemulation DDRG(GPIOG);
+DDRemulation   DDRG(GPIOG);
+PORTemulation PORTG(GPIOG);
+PINemulation   PING(GPIOG);
 #endif
 #ifdef GPIOH
-DDRemulation DDRH(GPIOH);
+DDRemulation   DDRH(GPIOH);
+PORTemulation PORTH(GPIOH);
+PINemulation   PINH(GPIOH);
 #endif
 #ifdef GPIOI
-DDRemulation DDRI(GPIOI);
+DDRemulation   DDRI(GPIOI);
+PORTemulation PORTI(GPIOI);
+PINemulation   PINI(GPIOI);
 #endif
 #ifdef GPIOJ
-DDRemulation DDRJ(GPIOJ);
+DDRemulation   DDRJ(GPIOJ);
+PORTemulation PORTJ(GPIOJ);
+PINemulation   PINJ(GPIOJ);
 #endif
 #ifdef GPIOK
-DDRemulation DDRK(GPIOK);
+DDRemulation   DDRK(GPIOK);
+PORTemulation PORTK(GPIOK);
+PINemulation   PINK(GPIOK);
 #endif
 #endif //USE_AVREMULATION > 0
 
