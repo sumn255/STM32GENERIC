@@ -29,15 +29,11 @@
 #include "stm32_def.h"
 
 /*C including option*/
-#if USE_BITCONSTANTS
-  #include "bit_constants.h"
-#endif
+#include "bit_constants.h"
 
 #ifdef __cplusplus
 extern "C"{
 #endif
-
-void yield(void);
 
 #define HIGH 0x1
 #define LOW  0x0
@@ -126,7 +122,7 @@ void pwmWrite(uint8_t pin, int dutyCycle16Bits, int frequency, int durationMilli
 //void delayMicroseconds(uint32_t us);
 
 uint32_t shiftIn( uint32_t ulDataPin, uint32_t ulClockPin, uint32_t ulBitOrder ); //add by huaweiwx@sina.com
-void shiftOut( uint32_t ulDataPin, uint32_t ulClockPin, uint32_t ulBitOrder, uint32_t ulVal ); //add by huaweiwx@sina.com
+void shiftOut( uint32_t ulDataPin, uint32_t ulClockPin, uint32_t ulBitOrder, uint8_t uVal ); //add by huaweiwx@sina.com
 
 //void attachInterrupt(uint8_t, void (*)(void), int mode);
 //void detachInterrupt(uint8_t);
@@ -185,6 +181,7 @@ long map(long, long, long, long, long);
 
 #include "stm32_clock.h"
 #include "stm32_gpio.h"
+#include "wiring_pulse.h"  /*copy from Arduino_core_STM32 huaweiwx@sina.com 2017.11*/
 #include "stm32_debug.h"
 
 
@@ -193,7 +190,6 @@ long map(long, long, long, long, long);
 #include "HardwareSerial.h"
 #include <SerialUSB.h>
 #include <STM32System.h>
-#include "wiring_pulse.h"  /*copy from Arduino_core_STM32 huaweiwx@sina.com 2017.11*/
 
 /*C++ including option*/
 #if USE_ARDUINOSTREAMING
