@@ -3,15 +3,18 @@
 #ifndef STM32_BUILD_DEFINES_H
 #define STM32_BUILD_DEFINES_H
 
+#define  ARDUINO_EXTEND 1
+
 #if __has_include("HAL_Conf.h")
 # include "HAL_Conf.h"
-#elif __has_include("configs/HAL_Conf.h")
+#endif
+
+#if __has_include("configs/HAL_Conf.h")
 # include "configs/HAL_Conf.h"
 #endif
 
 //default defines,  overriden by HAL_Conf.h  in path sketch or path valiants/valiant/configs/
 /***************  HAL_Conf default here ******************/
-
 //OS
 #ifndef  FREERTOS
 # define FREERTOS 0
@@ -26,8 +29,8 @@
 #endif
 
 //core
-#ifndef USE_BITCONSTANTS  /* some libraries are incompatible so can not included it */
-# define USE_BITCONSTANTS 1
+#ifndef USE_CORECALLBACK
+# define USE_CORECALLBACK  0
 #endif
 
 #ifndef USE_ERRORBLINK
@@ -47,7 +50,7 @@
 #endif
 
 #ifndef USE_BITBAND
-#define USE_BITBAND       0
+#define USE_BITBAND      0
 #endif
 
 //devices
