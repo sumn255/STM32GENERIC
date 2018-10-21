@@ -122,7 +122,7 @@ void pwmWrite(uint8_t pin, int dutyCycle16Bits, int frequency, int durationMilli
 //void delayMicroseconds(uint32_t us);
 
 uint32_t shiftIn( uint32_t ulDataPin, uint32_t ulClockPin, uint32_t ulBitOrder ); //add by huaweiwx@sina.com
-void shiftOut( uint32_t ulDataPin, uint32_t ulClockPin, uint32_t ulBitOrder, uint8_t uVal ); //add by huaweiwx@sina.com
+void shiftOut( uint32_t ulDataPin, uint32_t ulClockPin, uint32_t ulBitOrder, uint8_t ucVal ); //add by huaweiwx@sina.com
 
 //void attachInterrupt(uint8_t, void (*)(void), int mode);
 //void detachInterrupt(uint8_t);
