@@ -10,9 +10,17 @@
 #define EE_SCL     AT24CXX_SCL
 #define EE_TYPE    AT24CXX_TYPE
 
-#define   EE_ADR  0x50    //Address A2A1A0=000
+#define	EE_ADR  0x50    //Address A2A1A0=000
 
-EXTEEPROM<EE_ADR, EE_TYPE>  myeeprom(EE_SDA, EE_SCL);
+//EXTEEPROM  myeeprom(EE_SDA, EE_SCL,EE_ADR, EE_TYPE);
+EXTEEPROM  myeeprom(EE_SDA, EE_SCL,EE_ADR, EE_TYPE);
+
+inline int EERef::read_byte(int index) {
+  return myeeprom.read_byte((uint16_t)index);
+}
+inline void EERef::write_byte(int index, uint8_t val) {
+  return myeeprom.write_byte((uint16_t)index, val);
+}
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
@@ -21,16 +29,17 @@ void setup() {
   Serial.println("\nAT24CXX RW");
   myeeprom.begin(); //
 
-  //write all eeprom with page number; run one times only
-#if 0
+//write test
+#if 0  /* write all eeprom with page number; run one times only */
   for (uint16_t i = 0; i < 256; i++) {
-    myeeprom.write(i, (uint8_t)i & 0xff);
+    myeeprom[i] = i;
   }
 #endif
 
+//read test
   for (uint16_t i = 0; i < 16; i++) {
     for (uint16_t j = 0; j < 16; j++) {
-      uint8_t ch = myeeprom.read( i * 16 + j);
+      uint8_t ch = myeeprom[ i * 16 + j];
       if ( ch < 16) Serial << "0";
       Serial << _HEX(ch) << "  ";
     }
@@ -41,6 +50,6 @@ void setup() {
 
 void loop() {
   digitalToggle(LED_BUILTIN);
-  delay(500);           // wait 5 seconds for next scan
+  delay(500);
 }
 
