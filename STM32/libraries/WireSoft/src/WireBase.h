@@ -70,7 +70,7 @@ typedef struct i2c_msg {
 } i2c_msg;
 
 
-class WireBase: public Stream { { // Abstraction is awesome!
+class WireBase { // Abstraction is awesome!
 protected:
     i2c_msg itc_msg;
 	

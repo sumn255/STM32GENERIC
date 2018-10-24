@@ -9,19 +9,16 @@ unused system define FLASH_LENGTH,because of
 stm32f103x8 stm32L1xxx8 as xB have 128k internalflash and xC/xD as xE have 512k flash (undocmented)
 */
 
-#if defined(STM32F103x8)||defined(STM32L152C8)
+#if defined(STM32F103C8)||defined(STM32F103R8)||defined(STM32L152C8)
 #   define  _FLASH_LENGTH 128
-#elif defined(STM32F103xE)|| defined(STM32F407VD)
+#elif defined(STM32F103RC)||defined(STM32F103RD)||\
+    defined(STM32F103VC)||defined(STM32F103VD)||\
+    defined(STM32F407VD)
 #   define  _FLASH_LENGTH 512
 #else 	  
 #   define  _FLASH_LENGTH FLASH_LENGTH	  
 #endif
-
 #define _FLASH_END (FLASH_BASE+_FLASH_LENGTH)
-
-#ifndef FLASHDISK_SIZE
-#define FLASHDISK_SIZE (_FLASH_LENGTH/2)  /*default val*/
-#endif
 
 #define FLASHDIVE_BLOCKS   FLASHDISK_SIZE*1024/512
 

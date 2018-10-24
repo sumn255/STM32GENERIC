@@ -1,15 +1,13 @@
-/**  extRam_rw.ino   sram(sdram) r/w test pass whit following  boards:
+/**  sram_test.ino   sram(sdram) test for this board:
       DISCOVERY_F746NG
-      WaveShare F746I)(8M SDRAM) Checksum 4293918720
-      DISCOVERY_F429ZI(8M SDRAM) Checksum 4293918720
-      F429IG_CORE(8M SDRAM)      Checksum 4293918720
-      ARMFLY_F407ZG (1M SRAM)    Checksum 4294836224
+      DISCOVERY_F429ZI
+      ARMFLY_F407ZG
       HASEE_III_F103ZE
       ILLUMINATI_F407ZG
       REDBULL_V2_F103ZE
    Allocate ext ram, and write to Serial the results
 */
-#include <STM32ExtRAM.h>
+#include <stm32ExtRam.h>
 STM32EXTRAM& extRAM = STM32EXTRAM::getInstance();
 
 #define led LED_BUILTIN
