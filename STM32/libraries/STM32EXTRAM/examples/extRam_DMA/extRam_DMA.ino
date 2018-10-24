@@ -1,4 +1,4 @@
-/**  extRam_rw.ino   sram(sdram) r/w test pass whit following  boards:
+/**  extRam_DMA.ino   sram(sdram) DMA  test pass whit following  boards:
       DISCOVERY_F746NG
       WaveShare F746I)(8M SDRAM) Checksum 4293918720
       DISCOVERY_F429ZI(8M SDRAM) Checksum 4293918720
@@ -7,8 +7,11 @@
       HASEE_III_F103ZE
       ILLUMINATI_F407ZG
       REDBULL_V2_F103ZE
-   Allocate ext ram, and write to Serial the results
 */
+
+#include <stm32_dma.h>
+STM32DMA<>dma;
+
 #include <STM32ExtRAM.h>
 STM32EXTRAM& extRAM = STM32EXTRAM::getInstance();
 
@@ -16,17 +19,20 @@ STM32EXTRAM& extRAM = STM32EXTRAM::getInstance();
 
 uint32_t size;
 uint32_t data;
+uint32_t dis[1024];
 
 void setup() {
   Serial.begin(115200);
   pinMode(led, OUTPUT);
   size = extRAM.getRamByteLength() / sizeof(data);
-  delay(200);
-}
+  pinMode(LED_BUILTIN, OUTPUT);
+  delay(1000);
 
-void loop() {
+  Serial.println("extRam DMA mentomen test....");
   Serial.print("EXTRAM SIZE: 0x");
   Serial.println(extRAM.getRamByteLength(), HEX);
+  Serial.flush();
+
   uint32_t start = millis();
 
   uint32_t sum = 0;
@@ -62,21 +68,29 @@ void loop() {
     Serial.println(size * sizeof(data));
   } else {
     Serial.println("!!! EXTRAM NOT WORKING !!!");
-    while(1);
+    while (1);
   }
 
-  Serial.print("test ptr baes adr read:");
-  uint32_t* ptr;
-  ptr = extRAM.getRamBaseAddress<uint32_t>();
-  Serial.println((uint32_t)ptr, HEX);
-  for (uint32_t i = 0; i < 16; i++) {
-    Serial.print(*ptr++, HEX);
-    Serial.print(" ");
+  Serial.println("test DMA:");
+  uint32_t* ptr = extRAM.getRamBaseAddress<uint32_t>();
+  
+  dma.Init();
+  if (dma.start(ptr, dis, sizeof(dis)) == HAL_OK) {
+    for (uint32_t i = 0; i < sizeof(dis) / sizeof(dis[0]); i++) {
+      Serial.print(dis[i],HEX);
+      if((i&0xf) == 0xf) 
+          Serial.println();
+      else
+         Serial.print("  ");
+    }
+    Serial.println("\ndma test ok!");
+  } else {
+    Serial.println("\n!dma fault!");
   }
+}
 
-  Serial.println("\n----------------------------------------");
-
-  delay(5000);
+void loop() {
+  delay(500);
   digitalToggle(led);
 }
 

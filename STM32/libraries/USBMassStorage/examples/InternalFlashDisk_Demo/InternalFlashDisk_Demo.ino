@@ -8,11 +8,14 @@
    if Select Serial Communication:SerialUSB from the menu, output message by USB CDC
    ---------------------------------------------------------------------------------------
    modify for f1/4  by huaweiwx@sina.com
-   default FLASHDISK_SIZE:   F103x8/xB  64    xC/xD/xE 256
-                             F4xx   xE  256         xG 512 
+   default FLASHDISK_SIZE:   F103x8/xB  64
+                             xC/xD/xE 256
+                             F4xx   xE  256
+							 xG 512 
    ---------------------------------------------------------------------------------------
 */
-#define FLASHDISK_SIZE     64   /*user define, unused default defined*/   
+
+//#define FLASHDISK_SIZE     64   /*user define, unused default defined*/   
 #include <InternalFlashDisk.h>
 #include <LED.h>
 #include <Streaming.h>

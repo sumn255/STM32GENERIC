@@ -1,14 +1,16 @@
-/**  sram_test.ino   sram(sdram) test for this board:
+/**  extRam_malloc.ino   sram(sdram) r/w pass whit following  boards:
       DISCOVERY_F746NG
-      DISCOVERY_F429ZI
-      ARMFLY_F407ZG
+      WaveShare F746I)(8M SDRAM) Checksum 4293918720
+      DISCOVERY_F429ZI(8M SDRAM) Checksum 4293918720
+      F429IG_CORE(8M SDRAM)      Checksum 4293918720
+      ARMFLY_F407ZG (1M SRAM)    Checksum 4294836224
       HASEE_III_F103ZE
       ILLUMINATI_F407ZG
       REDBULL_V2_F103ZE
    Allocate ext ram, and write to Serial the results
 */
 
-#include <stm32ExtRam.h>
+#include <STM32ExtRAM.h>
 STM32EXTRAM& extRAM = STM32EXTRAM::getInstance(); /* One instance only*/
 
 #define led  LED_BUILTIN
@@ -52,7 +54,7 @@ void setup() {
   Serial.print("\nperused: ");
   Serial.println(extRAM.perused());
 
-  size = 1024 * 1024;
+  size = 1024 * 1024; /*!for 51216 is error!*/
   ptr = extRAM.malloc<uint8_t>(size);
   if (ptr) {
     Serial.print("malloc ");
@@ -64,7 +66,6 @@ void setup() {
     Serial.print(" bytes!");
     return;
   }
-
 }
 
 void loop() {

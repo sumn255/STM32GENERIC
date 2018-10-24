@@ -12,7 +12,8 @@
                              F4xx   xE  256         xG 512 
    ---------------------------------------------------------------------------------------
 */
-#define FLASHDISK_SIZE     64   /*user define, unused default defined*/   
+
+//#define FLASHDISK_SIZE     64   /*user define, unused default defined*/   
 #include <InternalFlashDisk.h>
 #include <LED.h>
 #include <Streaming.h>
