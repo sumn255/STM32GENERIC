@@ -237,9 +237,9 @@ class BB_PIN {
   public:
     BB_PIN(__ConstPin cpin): cpin(cpin) {}
     __ConstPin cpin;
-    const uint8_t  pos       = variant_gpiopin_pos_static[cpin];
-    const uint32_t inReg     = (const uint32_t)&cpin.ulPortBase->IDR;
-    const uint32_t outReg    = (const uint32_t)&cpin.ulPortBase->ODR;
+    const uint8_t  pos       = __builtin_ffs(cpin.pinMask) - 1;
+    const uint32_t inReg     = (const uint32_t)&((GPIO_TypeDef*)cpin.ulPortBase)->IDR;
+    const uint32_t outReg    = (const uint32_t)&((GPIO_TypeDef*)cpin.ulPortBase)->ODR;
     const uint32_t bb_inadr  = BITBAND(inReg, pos);
     const uint32_t bb_outadr = BITBAND(outReg, pos);
 
@@ -258,24 +258,16 @@ class BB_PIN {
       this->write(value);
       return *this;
     }
-
+	
+    template<typename T>
+    inline BB_PIN & operator ^= (T value) {
+      if(value) this->toggle();
+      return *this;
+    }
     inline BB_PIN& operator = (BB_PIN& rhs) {
       this->write(rhs.read());
       return *this;
     }
-
-    template<typename T>
-    inline BB_PIN & operator << (T value) {
-      this->write(value);
-      return *this;
-    }
-
-    template<class T>
-    inline BB_PIN & operator >> (T &value) {
-      value = this->read();
-      return *this;
-    }
-
 
     inline void high() {
       MEM_ADDR(this->bb_outadr) = 1;
@@ -297,7 +289,7 @@ class BB_PIN {
     /*----- comptabled with DigitalPin ----------*/
     inline __attribute__((always_inline))
     void toggle() {
-      MEM_ADDR(this->bb_outadr) ^= 1;
+		digitalToggle(cpin);
     }
 
     inline __attribute__((always_inline))

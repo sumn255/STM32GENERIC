@@ -167,7 +167,6 @@ inline static T digitalRead(__ConstPin cpin) {
   return LL_GPIO_IsInputPinSet((GPIO_TypeDef*)cpin.ulPortBase, cpin.pinMask);
 }
 
-
 extern "C" void pinModeLL(GPIO_TypeDef *port, uint32_t ll_pin, uint8_t mode);
 inline static void pinMode(__ConstPin cpin, uint8_t mode) {
   pinModeLL((GPIO_TypeDef *)cpin.ulPortBase, cpin.pinMask, mode);
@@ -176,25 +175,6 @@ inline static void pinMode(__ConstPin cpin, uint8_t mode) {
 inline static void digitalToggle(__ConstPin cpin) {
   LL_GPIO_TogglePin((GPIO_TypeDef*)cpin.ulPortBase, cpin.pinMask);
 }
-
-template<class T>
-inline  void operator << (__ConstPin co, T value) {
-  digitalWrite(co, (uint8_t)value);
-}
-
-inline void operator << (__ConstPin co, __ConstPin ci) {
-  digitalWrite(co, (uint8_t)digitalRead(ci));
-}
-
-template<class T>
-inline void operator >> (__ConstPin ci, T &value) {
-  value = digitalRead(ci);
-}
-
-inline void operator >> (__ConstPin ci, __ConstPin co) {
-  digitalWrite(co, (uint8_t)digitalRead(ci));
-}
-
 
 #if USE_AVREMULATION > 0
 
@@ -405,34 +385,22 @@ extern PINemulation   PINK;
 /*gpio low layer interface class*/
 class LL_PIN {
   public:
-    LL_PIN(__ConstPin cpin): cpin(cpin) {}
+    constexpr LL_PIN(__ConstPin cpin): cpin(cpin) {}
     __ConstPin cpin;
-
+	
     template<typename T>
     inline LL_PIN & operator = (T value) {
       this->write(value);
       return *this;
     }
+    template<typename T>
+    inline LL_PIN & operator ^= (T value) {
+      if(value) this->toggle();
+      return *this;
+    }
 
     LL_PIN& operator = (LL_PIN& rhs) {
       this->write(rhs.read());
-      return *this;
-    }
-
-    template<typename T>
-    inline LL_PIN & operator << (T value) {
-      this->write(value);
-      return *this;
-    }
-
-    inline LL_PIN & operator << (bool value) {
-      this->write(value);
-      return *this;
-    }
-
-    template<class T>
-    inline LL_PIN & operator >> (T &value) {
-      value = this->read();
       return *this;
     }
 
@@ -495,7 +463,7 @@ uint32_t pulseIn(__ConstPin cpin, bool state = false, uint32_t timeout = 1'000'0
 
 class InputPin : public LL_PIN {
   public:
-    InputPin(__ConstPin cpin, bool initial_value = 1): LL_PIN(cpin) {
+    constexpr InputPin(__ConstPin cpin, bool initial_value = 1): LL_PIN(cpin) {
       config(INPUT, initial_value);
     }
     template<typename T = bool>
@@ -533,7 +501,7 @@ class InputPin : public LL_PIN {
 
 class OutputPin : public LL_PIN {
   public:
-    OutputPin(__ConstPin cpin, bool initial_value = 1): LL_PIN(cpin) {
+    constexpr OutputPin(__ConstPin cpin, bool initial_value = 1): LL_PIN(cpin) {
       config(OUTPUT, initial_value);
     }
 
@@ -548,9 +516,23 @@ class OutputPin : public LL_PIN {
       }
     }
 
+    template<typename T = bool>
+    inline operator T () const {
+       return LL_PIN::read();
+    }
+ 
+    inline void operator  !() __attribute__((always_inline)) {
+      toggle();
+	}
+	
     template<typename T>
     inline OutputPin & operator = (T value) {
-      LL_PIN::write(value);
+       write(value);
+      return *this;
+    }
+    template<typename T>
+    inline OutputPin & operator ^= (T value) {
+      if(value) toggle();
       return *this;
     }
 };
@@ -562,7 +544,7 @@ class ClockedInput {
   public:
     // Define a type large enough to hold nbits bits (see base.h)
     typedef bits_type(nbits) bits_t;
-    ClockedInput(__ConstPin data_pin, __ConstPin clock_pin , bool pullup = true) : data(data_pin, pullup), clock(clock_pin) {}
+    constexpr ClockedInput(__ConstPin data_pin, __ConstPin clock_pin , bool pullup = true) : data(data_pin, pullup), clock(clock_pin) {}
     InputPin data;
     OutputPin clock;
 
@@ -611,7 +593,7 @@ class ClockedOutput {
     // Define a type large enough to hold nbits bits (see base.h)
     typedef bits_type(nbits) bits_t;
 
-    ClockedOutput(__ConstPin data_pin, __ConstPin clock_pin): data(data_pin), clock(clock_pin) {};
+    constexpr ClockedOutput(__ConstPin data_pin, __ConstPin clock_pin): data(data_pin), clock(clock_pin) {};
     OutputPin data;
     OutputPin clock;
 
