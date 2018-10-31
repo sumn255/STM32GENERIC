@@ -46,7 +46,8 @@
   
 #include "../../Source/include/FreeRTOS.h"
 
-#if defined(TIM6) ||  (portTickUSE_TIMx == 6)
+#if (portTickUSE_TIMx == 6)
+#if defined(TIM6)
 
 TIM_HandleTypeDef        htim6; 
 uint32_t                 uwIncrementState = 0;
@@ -158,8 +159,14 @@ void TIM6_IRQHandler(void)
 
   /* USER CODE END TIM17_IRQn 1 */
 }
+#else
+#error "!!! you selected portTickUSE_TIMx == 6 error, but this mcu not TIM6 !!! Please selected another"
+#endif /* (portTickUSE_TIMx == 6) */
+#endif /* (TIM6) */
 
-#elif defined(TIM7) ||  (portTickUSE_TIMx == 7)
+
+#if (portTickUSE_TIMx == 7)
+#if defined(TIM7)
 
 TIM_HandleTypeDef        htim7; 
 uint32_t                 uwIncrementState = 0;
@@ -271,8 +278,14 @@ void TIM7_IRQHandler(void)
 
   /* USER CODE END TIM7_IRQn 1 */
 }
+#else
+#error "!!! you selected portTickUSE_TIMx == 7 error, but this mcu not TIM7 !!! Please selected 0 or 11"
+#endif /* (portTickUSE_TIMx == 7) */
+#endif /* (TIM7) */
 
-#elif defined(TIM17)&& (portTickUSE_TIMx == 17)
+#if (portTickUSE_TIMx == 17)
+#if defined(TIM17)
+
 TIM_HandleTypeDef        htim17; 
 uint32_t                 uwIncrementState = 0;
 /* Private function prototypes -----------------------------------------------*/
@@ -383,7 +396,10 @@ void TIM17_IRQHandler(void)
 
   /* USER CODE END TIM17_IRQn 1 */
 }
+#else
+#error "!!! you selected portTickUSE_TIMx == 17 error, but this mcu not TIM17 !!! Please selected another"
+#endif /* (portTickUSE_TIMx == 17) */
+#endif /* (TIM17) */
 
-#endif	
 #endif
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
