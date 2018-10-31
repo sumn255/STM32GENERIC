@@ -14,13 +14,13 @@
 
 class __ConstPin {
   public:
-    constexpr __ConstPin(const int ulPortBase, const int pinMask, const int val): ulPortBase(ulPortBase), pinMask(pinMask), val(val) {};
+    constexpr __ConstPin(const int ulPortBase, const int pinMask, const int ucPin): ulPortBase(ulPortBase), pinMask(pinMask), ucPin(ucPin) {};
     constexpr operator int() const {
-      return val;
+      return ucPin;
     }
     const int ulPortBase;
     const int pinMask;
-    const int val;
+    const int ucPin;
 };
 
 #define PIN(a, b) __P##a##b

@@ -235,11 +235,11 @@ static inline uint32_t BB_pinOutAdr(uint32_t pin) {
 /*gpio bitband interface class*/
 class BB_PIN {
   public:
-    BB_PIN(__ConstPin cpin): cpin(cpin) {}
-    __ConstPin cpin;
-    const uint8_t  pos       = __builtin_ffs(cpin.pinMask) - 1;
-    const uint32_t inReg     = (const uint32_t)&((GPIO_TypeDef*)cpin.ulPortBase)->IDR;
-    const uint32_t outReg    = (const uint32_t)&((GPIO_TypeDef*)cpin.ulPortBase)->ODR;
+    BB_PIN(__ConstPin CPin): CPin(CPin) {}
+    __ConstPin CPin;
+    const uint8_t  pos       = __builtin_ffs(CPin.pinMask) - 1;
+    const uint32_t inReg     = (const uint32_t)&((GPIO_TypeDef*)CPin.ulPortBase)->IDR;
+    const uint32_t outReg    = (const uint32_t)&((GPIO_TypeDef*)CPin.ulPortBase)->ODR;
     const uint32_t bb_inadr  = BITBAND(inReg, pos);
     const uint32_t bb_outadr = BITBAND(outReg, pos);
 
@@ -289,7 +289,7 @@ class BB_PIN {
     /*----- comptabled with DigitalPin ----------*/
     inline __attribute__((always_inline))
     void toggle() {
-		digitalToggle(cpin);
+		digitalToggle(CPin);
     }
 
     inline __attribute__((always_inline))
@@ -300,17 +300,17 @@ class BB_PIN {
 
     inline __attribute__((always_inline))
     void mode(uint8_t mode) {
-      pinMode(cpin, mode);
+      pinMode(CPin, mode);
     }
 
     inline __attribute__((always_inline))
     void attach(voidFuncPtr callback, uint8_t mode) {
-      attachInterrupt(cpin, callback, mode);
+      attachInterrupt(CPin, callback, mode);
     }
 
     inline __attribute__((always_inline))
     void detach(void) {
-      detachInterrupt(cpin);
+      detachInterrupt(CPin);
     }
 
 };
