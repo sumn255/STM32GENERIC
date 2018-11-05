@@ -67,7 +67,7 @@
 class HardwareSerial : public Stream{
   public:
     HardwareSerial(USART_TypeDef *instance);
-    void begin(const uint32_t baud, uint8_t config = SERIAL_8N1);
+    void begin(const uint32_t baud = 115200, uint8_t config = SERIAL_8N1);
     void configForLowPower(void);
     void end(void);
     int available(void);
