@@ -3,7 +3,7 @@
 #define __BSP_SPIFLASH_H__
 
 #define SPIFLASH_TYPE W25Q128
-#define SPIFLASH_DEV	SPI
+#define SPIFLASH_DEV	SPI3
 #define SPIFLASH_CS	    PG8
 #define SPIFLASH_SCK	PB3
 #define SPIFLASH_MISO	PB4
