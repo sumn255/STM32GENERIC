@@ -169,7 +169,11 @@ inline static T digitalRead(__ConstPin CPin) {
 
 extern "C" void pinModeLL(GPIO_TypeDef *port, uint32_t ll_pin, uint8_t mode);
 inline static void pinMode(__ConstPin CPin, uint8_t mode) {
+#ifdef STM32F1
+  pinMode(CPin.ucPin,mode); 
+#else	
   pinModeLL((GPIO_TypeDef *)CPin.ulPortBase, CPin.pinMask, mode);
+#endif
 }
 
 inline static void digitalToggle(__ConstPin CPin) {
@@ -326,58 +330,36 @@ class PINemulation
 
 #ifdef GPIOA
 extern DDRemulation   DDRA;
-extern PORTemulation PORTA;
-extern PINemulation   PINA;
 #endif
 #ifdef GPIOB
 extern DDRemulation   DDRB;
-extern PORTemulation PORTB;
-extern PINemulation   PINB;
 #endif
 #ifdef GPIOC
 extern DDRemulation   DDRC;
-extern PORTemulation PORTC;
-extern PINemulation   PINC;
 #endif
 #ifdef GPIOD
 extern DDRemulation   DDRD;
-extern PORTemulation PORTD;
-extern PINemulation   PIND;
 #endif
 #ifdef GPIOE
 extern DDRemulation   DDRE;
-extern PORTemulation PORTE;
-extern PINemulation   PINE;
 #endif
 #ifdef GPIOF
 extern DDRemulation   DDRF;
-extern PORTemulation PORTF;
-extern PINemulation   PINF;
 #endif
 #ifdef GPIOG
 extern DDRemulation   DDRG;
-extern PORTemulation PORTG;
-extern PINemulation   PING;
 #endif
 #ifdef GPIOH
 extern DDRemulation   DDRH;
-extern PORTemulation PORTH;
-extern PINemulation   PINH;
 #endif
 #ifdef GPIOI
 extern DDRemulation   DDRI;
-extern PORTemulation PORTI;
-extern PINemulation   PINI;
 #endif
 #ifdef GPIOJ
 extern DDRemulation   DDRJ;
-extern PORTemulation PORTJ;
-extern PINemulation   PINJ;
 #endif
 #ifdef GPIOK
 extern DDRemulation   DDRK;
-extern PORTemulation PORTK;
-extern PINemulation   PINK;
 #endif
 
 #endif //USE_AVREMULATION > 0
@@ -463,13 +445,24 @@ uint32_t pulseIn(__ConstPin CPin, bool state = false, uint32_t timeout = 1'000'0
 
 class InputPin : public LL_PIN {
   public:
+    uint32_t ulDelayCnt = F_CPU / 10'000'000;  
     constexpr InputPin(__ConstPin CPin, bool initial_value = 1): LL_PIN(CPin) {
       config(INPUT, initial_value);
     }
+
+    inline void setWaitTime(uint32_t time){
+		ulDelayCnt = time;
+	}
+
     template<typename T = bool>
     inline operator T () const {
+      /*Waiting for stability*/
+      if (ulDelayCnt) {                           
+        for (volatile uint32_t i = ulDelayCnt; i > 0; i--);
+      }
        return read();
     }
+
     uint32_t pulseIn(bool state = false, uint32_t timeout = 1'000'000L )
     {
       // Cache the port and bit of the pin in order to speed up the
@@ -501,24 +494,30 @@ class InputPin : public LL_PIN {
 
 class OutputPin : public LL_PIN {
   public:
-    constexpr OutputPin(__ConstPin CPin, bool initial_value = 1): LL_PIN(CPin) {
+    uint32_t ulDelayCnt = F_CPU / 10'000'000;
+
+	constexpr OutputPin(__ConstPin CPin, bool initial_value = 0): LL_PIN(CPin) {
       config(OUTPUT, initial_value);
     }
 
-    void pulse(uint32_t delaycnt = F_CPU / 10'000'000, bool value = true) {
+    inline void setWaitTime(uint32_t time){
+		ulDelayCnt = time;
+	}
+
+    void pulse(bool value = true) {
+      if (ulDelayCnt) {
+        for (volatile uint32_t i = ulDelayCnt; i > 0; i--);
+      }
       this->write(value);
-      if (delaycnt) {
-        for (volatile uint32_t i = delaycnt; i > 0; i--);
+      if (ulDelayCnt) {
+        for (volatile uint32_t i = ulDelayCnt; i > 0; i--);
       }
       this->toggle();
-      if (delaycnt) {
-        for (volatile uint32_t i = delaycnt; i > 0; i--);
-      }
     }
 
     template<typename T = bool>
     inline operator T () const {
-       return LL_PIN::read();
+       return read();
     }
  
     inline void operator  !() __attribute__((always_inline)) {
@@ -537,16 +536,23 @@ class OutputPin : public LL_PIN {
     }
 };
 
-template < uint8_t nbits = 8, uint8_t bit_order = MSBFIRST, uint32_t delaycnt = F_CPU / 10'000'000 >
+template < uint8_t nbits = 8, uint8_t bit_order = MSBFIRST>
 class ClockedInput {
     // A DirectIO implementation of shiftIn. Also supports
     // a variable number of bits (1-32); shiftIn is always 8 bits.
   public:
     // Define a type large enough to hold nbits bits (see base.h)
     typedef bits_type(nbits) bits_t;
+	
+    uint32_t ulDelayCnt = F_CPU / 10'000'000;
+
     constexpr ClockedInput(__ConstPin data_pin, __ConstPin clock_pin , bool pullup = true) : data(data_pin, pullup), clock(clock_pin) {}
-    InputPin data;
+    InputPin  data;
     OutputPin clock;
+
+    inline void setWaitTime(uint32_t time){
+		ulDelayCnt = time;
+	}
 
     bits_t read() {
       // read nbits bits from the input pin and pack them
@@ -555,10 +561,12 @@ class ClockedInput {
       bits_t value = 0;
       bits_t mask = (bit_order == LSBFIRST) ? 1 : (bits_t(1) << (nbits - 1));
 
+      data.setWaitTime(0);  /*use this ulDelayCnt*/
+
       for (uint8_t i = 0; i < nbits; i++) {
         clock = HIGH;
-        if (delaycnt) {
-          for (volatile uint32_t i = delaycnt; i > 0; i--);
+        if (ulDelayCnt) {
+          for (volatile uint32_t i = ulDelayCnt; i > 0; i--);
         }
 
         if (data) {
@@ -573,8 +581,8 @@ class ClockedInput {
         else {
           mask >>= 1;
         }
-        if (delaycnt) {
-          for (volatile uint32_t i = delaycnt; i > 0; i--);
+        if (ulDelayCnt) {
+          for (volatile uint32_t i = ulDelayCnt; i > 0; i--);
         }
       }
       return value;
@@ -585,25 +593,32 @@ class ClockedInput {
     }
 };
 
-template < uint8_t nbits = 8, uint8_t bit_order = MSBFIRST, uint32_t delaycnt = F_CPU / 10'000'000 >
+template < uint8_t nbits = 8, uint8_t bit_order = MSBFIRST>
 class ClockedOutput {
     // A DirectIO implementation of shiftOut. Also supports
     // a variable number of bits (1-32); shiftOut is always 8 bits.
   public:
     // Define a type large enough to hold nbits bits (see base.h)
     typedef bits_type(nbits) bits_t;
+    uint32_t ulDelayCnt = F_CPU / 10'000'000;
 
     constexpr ClockedOutput(__ConstPin data_pin, __ConstPin clock_pin): data(data_pin), clock(clock_pin) {};
     OutputPin data;
     OutputPin clock;
 
-    void write(bits_t val) {
+    inline void setWaitTime(uint32_t time){
+		ulDelayCnt = time;
+	}
+
+    void write(bits_t val, bool level = HIGH) {
       // write nbits bits to the output pin
       bits_t mask = (bit_order == LSBFIRST) ? 1 : (bits_t(1) << (nbits - 1));
 
+      clock.setWaitTime(ulDelayCnt);  /*setup clock.pulse width*/
+
       for (uint8_t i = 0; i < nbits; i++) {
         data = (val & mask);
-        clock.pulse(delaycnt);
+        clock.pulse(level);
 
         if (bit_order == LSBFIRST) {
           mask <<= 1;
@@ -637,8 +652,10 @@ class ClockedOutput {
 
 #define with(pin, val) for(boolean _loop_##pin=((pin=val),true);_loop_##pin; _loop_##pin=((pin=!val), false))
 
-#else  /*c mode*/
 
+#endif /* __cplusplus */
+
+#if USE_AVREMULATION > 0
 /*compatable with avr*/
 #ifdef GPIOA
 # define PORTA      GPIOA->ODR
@@ -677,7 +694,7 @@ class ClockedOutput {
 # define PINI       GPIOI->IDR
 #endif
 
-#endif /* __cplusplus */
+#endif /*USE_AVREMULATION*/
 
 #if USE_BITBAND >0
 #include "util/bitband.h"

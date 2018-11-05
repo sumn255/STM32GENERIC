@@ -181,19 +181,19 @@ void pinMode(uint8_t pin, uint8_t mode) {
 #else
 	
 extern "C"
-void pinModeLL(GPIO_TypeDef *port, uint32_t pin, uint8_t mode) {
+void pinModeLL(GPIO_TypeDef *port, uint32_t pinMask, uint8_t mode) {
   assert_param(IS_GPIO_ALL_INSTANCE(port));
-  assert_param(IS_GPIO_PIN(pin));
+  assert_param(IS_GPIO_PIN(pinMask));
 
   if (stm32_pwm_disable_callback != NULL) {
-    (*stm32_pwm_disable_callback)(port, pin);
+    (*stm32_pwm_disable_callback)(port, pinMask);
   }
   stm32GpioClockEnable(port);
 
   GPIO_InitTypeDef init;
 
   init.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-  init.Pin = pin;
+  init.Pin = pinMask;
 
   switch ( mode ) {
     case OUTPUT:
@@ -274,58 +274,36 @@ uint32_t pulseIn(__ConstPin cpin, bool state, uint32_t timeout )
 #if USE_AVREMULATION > 0
 #ifdef GPIOA
 DDRemulation   DDRA(GPIOA);
-PORTemulation PORTA(GPIOA);
-PINemulation   PINA(GPIOA);
 #endif
 #ifdef GPIOB
 DDRemulation   DDRB(GPIOB);
-PORTemulation PORTB(GPIOB);
-PINemulation   PINB(GPIOB);
 #endif
 #ifdef GPIOC
 DDRemulation   DDRC(GPIOC);
-PORTemulation PORTC(GPIOC);
-PINemulation   PINC(GPIOC);
 #endif
 #ifdef GPIOD
 DDRemulation   DDRD(GPIOD);
-PORTemulation PORTD(GPIOD);
-PINemulation   PIND(GPIOD);
 #endif
 #ifdef GPIOE
 DDRemulation   DDRE(GPIOE);
-PORTemulation PORTE(GPIOE);
-PINemulation   PINE(GPIOE);
 #endif
 #ifdef GPIOF
 DDRemulation   DDRF(GPIOF);
-PORTemulation PORTF(GPIOF);
-PINemulation   PINF(GPIOF);
 #endif
 #ifdef GPIOG
 DDRemulation   DDRG(GPIOG);
-PORTemulation PORTG(GPIOG);
-PINemulation   PING(GPIOG);
 #endif
 #ifdef GPIOH
 DDRemulation   DDRH(GPIOH);
-PORTemulation PORTH(GPIOH);
-PINemulation   PINH(GPIOH);
 #endif
 #ifdef GPIOI
 DDRemulation   DDRI(GPIOI);
-PORTemulation PORTI(GPIOI);
-PINemulation   PINI(GPIOI);
 #endif
 #ifdef GPIOJ
 DDRemulation   DDRJ(GPIOJ);
-PORTemulation PORTJ(GPIOJ);
-PINemulation   PINJ(GPIOJ);
 #endif
 #ifdef GPIOK
 DDRemulation   DDRK(GPIOK);
-PORTemulation PORTK(GPIOK);
-PINemulation   PINK(GPIOK);
 #endif
 #endif //USE_AVREMULATION > 0
 
