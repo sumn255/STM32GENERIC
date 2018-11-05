@@ -59,38 +59,27 @@ class TwoWireSoft : public WireBase {
 	            uint8_t i2c_delay = SOFT_STANDARD)
                 : sda(sda), scl(scl), i2c_delay(i2c_delay) {}
 				
-#if USE_ITERATOR >0  /*for stl begin/end is keywords for iteration*/
     void Init(uint8_t self_addr = 0) {
       WireBase::Init(self_addr);
-#else
-    __deprecated("This wire init func, if you use begin() as iterator must set USE_ITERATOR to 1, chandged by huaweiwx")
-    void begin(uint8_t self_addr = 0) {
-      WireBase::begin(self_addr);
-#endif	
       pinMode(this->scl, OUTPUT_OD);
       pinMode(this->sda, OUTPUT_OD);
       sclPin(HIGH);
       sdaPin(HIGH);
     }
-    
-#if USE_ITERATOR >0  /*for stl begin/end is keywords for iteration*/
     void deInit(){
       if (this->scl) pinMode(this->scl, INPUT);	  
       if (this->sda) pinMode(this->sda, INPUT);
     }
-#else
-    void end(){
-      if (this->scl) pinMode(this->scl, INPUT);	  
-      if (this->sda) pinMode(this->sda, INPUT);
-    }
+	
+#if USE_ITERATOR == 0  /*for stl begin/end is keywords for iteration*/
+    __deprecated("This wire init func, if you use begin() as iterator must set USE_ITERATOR to 1, chandged by huaweiwx")
+    void begin(uint8_t self_addr = 0){Init(self_addr);} 
+     __deprecated("This wire init func, if you use begin() as iterator must set USE_ITERATOR to 1, chandged by huaweiwx")
+   void end(){deInit();}
 #endif
 
     ~TwoWireSoft(){
-#if USE_ITERATOR >0  /*for stl begin/end is keywords for iteration*/
 	  deInit();	
-#else
-	  end();
-#endif	
 	}
 	
     void sclPin(bool state) {

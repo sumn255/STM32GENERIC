@@ -80,13 +80,13 @@ class WireBase
     virtual int peek(){};
     virtual void flush(){};
 #endif
+
+#if USE_ITERATOR == 0
+    void begin(uint8_t self_addr = 0){Init(self_addr);}
+#endif
 // Allow derived classes to overwrite begin function
 //    virtual void begin(uint8_t self_addr= 0x00);
-#if USE_WAREINIT >0
     void Init(uint8_t self_addr = 0)
-#else
-    void begin(uint8_t self_addr = 0)
-#endif
 	{
 	  UNUSED(self_addr);
       tx_buf_idx = 0;
