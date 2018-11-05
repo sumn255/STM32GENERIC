@@ -50,7 +50,7 @@
 #if defined(STM32F0)||defined(STM32L0)||defined(STM32F7)||defined(STM32H7)||defined(STM32F3)||defined(STM32L4)
 #  define BITBAND_OPTION 0
 #else
-# define BITBAND_OPTION 1
+#  define BITBAND_OPTION 1
 #endif
 
 #define MEM_ADDR(addr)  *((volatile unsigned long  *)(addr))
@@ -64,71 +64,41 @@
 //example:  in = PAin(0);
 //          PCout(13) = 1;
 #ifdef GPIOA
-# define PAout(n)   BITBAND_ADDR((uint32_t)&PORTA,n)  //输出 
-# define PAin(n)    BITBAND_ADDR((uint32_t)&PINA,n)   //输入 
+# define PAout(n)   BITBAND_ADDR((uint32_t)&(GPIOA->ODR),n)  //输出 
+# define PAin(n)    BITBAND_ADDR((uint32_t)&(GPIOA->IDR),n)  //输入 
 #endif
 #ifdef GPIOB
-# define PBout(n)   BITBAND_ADDR((uint32_t)&PORTB,n)  //输出 
-# define PBin(n)    BITBAND_ADDR((uint32_t)&PINB,n)   //输入 
+# define PBout(n)   BITBAND_ADDR((uint32_t)&(GPIOB->ODR),n)  //输出 
+# define PBin(n)    BITBAND_ADDR((uint32_t)&(GPIOB->IDR),n)  //输入 
 #endif
 #ifdef GPIOC
-# define PCout(n)   BITBAND_ADDR((uint32_t)&PORTC,n)  //输出 
-# define PCin(n)    BITBAND_ADDR((uint32_t)&PINC,n)   //输入 
+# define PCout(n)   BITBAND_ADDR((uint32_t)&(GPIOC->ODR),n)  //输出
+# define PCin(n)    BITBAND_ADDR((uint32_t)&(GPIOC->IDR),n)  //输入
 #endif
 #ifdef GPIOD
-# define PDout(n)   BITBAND_ADDR((uint32_t)&PORTD,n)  //输出 
-# define PDin(n)    BITBAND_ADDR((uint32_t)&PIND,n)   //输入 
+# define PDout(n)   BITBAND_ADDR((uint32_t)&(GPIOD->ODR),n)  //输出
+# define PDin(n)    BITBAND_ADDR((uint32_t)&(GPIOD->IDR),n)  //输入
 #endif
 #ifdef GPIOE
-# define PEout(n)   BITBAND_ADDR((uint32_t)&PORTE,n)  //输出 
-# define PEin(n)    BITBAND_ADDR((uint32_t)&PINE,n)   //输入
+# define PEout(n)   BITBAND_ADDR((uint32_t)&(GPIOE->ODR),n)  //输出
+# define PEin(n)    BITBAND_ADDR((uint32_t)&(GPIOE->IDR),n)  //输入
 #endif
 #ifdef GPIOF
-# define PFout(n)   BITBAND_ADDR((uint32_t)&PORTF,n)  //输出 
-# define PFin(n)    BITBAND_ADDR((uint32_t)&PINF,n)   //输入
+# define PFout(n)   BITBAND_ADDR((uint32_t)&(GPIOF->ODR),n)  //输出 
+# define PFin(n)    BITBAND_ADDR((uint32_t)&(GPIOF->IDR),n)  //输入
 #endif
 #ifdef GPIOG
-# define PGout(n)   BITBAND_ADDR((uint32_t)&PORTG,n)  //输出 
-# define PGin(n)    BITBAND_ADDR((uint32_t)&PING,n)   //输入
+# define PGout(n)   BITBAND_ADDR((uint32_t)&(GPIOG->ODR),n)  //输出 
+# define PGin(n)    BITBAND_ADDR((uint32_t)&(GPIOG->IDR),n)  //输入
 #endif
 #ifdef GPIOH
-# define PHout(n)   BITBAND_ADDR((uint32_t)&PORTH,n)  //输出 
-# define PHin(n)    BITBAND_ADDR((uint32_t)&PINH,n)   //输入
+# define PHout(n)   BITBAND_ADDR((uint32_t)&(GPIOH->ODR),n)  //输出
+# define PHin(n)    BITBAND_ADDR((uint32_t)&(GPIOH->IDR),n)  //输入
 #endif
 #ifdef GPIOI
-# define PIout(n)   BITBAND_ADDR((uint32_t)&PORTI,n)  //输出 
-# define PIin(n)    BITBAND_ADDR((uint32_t)&PINI,n)   //输入
+# define PIout(n)   BITBAND_ADDR((uint32_t)&(GPIOI->ODR),n)  //输出
+# define PIin(n)    BITBAND_ADDR((uint32_t)&(GPIOI->IDR),n)  //输入
 #endif
-
-//for arduino pin add 2017.10
-#ifdef VARIANT_PIN_LIST
-# define PIN_OUTADR(pin) BITBAND(((const uint32_t)&variant_pin_list[pin].port->ODR),BITMASKPOS(variant_pin_list[pin].pinMask))
-# define PIN_INADR(pin)  BITBAND(((const uint32_t)&variant_pin_list[pin].port->IDR),BITMASKPOS(variant_pin_list[pin].pinMask))
-# define PINout(pin)  MEM_ADDR(PIN_OUTADR(pin))
-# define PINin(pin) MEM_ADDR(PIN_OUTADR(pin))
-
-#else /*CHIP_PIN_LIST */
-# ifdef STM32F1
-#    define PIN_OUTADR(pin) BITBAND((GPIOA_BASE+(((pin)>>4)&0x0f)*(GPIOB_BASE-GPIOA_BASE)+12),((pin)&0x0f))
-#    define PIN_INADR(pin)  BITBAND((GPIOA_BASE+(((pin)>>4)&0x0f)*(GPIOB_BASE-GPIOA_BASE)+ 8),((pin)&0x0f))
-# else
-#    define PIN_OUTADR(pin) BITBAND((GPIOA_BASE+(((pin)>>4)&0x0f)*(GPIOB_BASE-GPIOA_BASE)+20),((pin)&0x0f))
-#    define PIN_INADR(pin)  BITBAND((GPIOA_BASE+(((pin)>>4)&0x0f)*(GPIOB_BASE-GPIOA_BASE)+16),((pin)&0x0f))
-# endif /*STM32F1*/
-
-# ifdef __cplusplus  /*for __ConstPin*/
-#   ifdef STM32F1
-#     define PINout(pin)  BITBAND_ADDR((pinToBase(pin)+12), pinMaskPos(pin))
-#     define PINin(pin)   BITBAND_ADDR((pinToBase(pin)+8) , pinMaskPos(pin))
-#   else
-#     define PINout(pin)  BITBAND_ADDR((pinToBase(pin)+20), pinMaskPos(pin))
-#     define PINin(pin)   BITBAND_ADDR((pinToBase(pin)+16), pinMaskPos(pin))
-#   endif
-# else
-#  define PINout(pin) MEM_ADDR(PIN_OUTADR(pin))
-#  define PINin(pin)  MEM_ADDR(PIN_OUTADR(pin))
-# endif /*__cplusplus*/
-#endif /*VARIANT_PIN_LIST*/
 
 #define BB_sramVarPtr(x)  __BB_addr((volatile uint32_t*)&(x), 0, SRAM_BB_BASE, SRAM_BASE)
 
@@ -237,7 +207,14 @@ class BB_PIN {
   public:
     BB_PIN(__ConstPin CPin): CPin(CPin) {}
     __ConstPin CPin;
-    const uint8_t  pos       = __builtin_ffs(CPin.pinMask) - 1;
+
+#ifdef STM32F1
+    /*F1 ll_gpio_pin to gpio_pin :  (ll_gpio_pin>>GPIO_PIN_MASK_POS) & 0x0000FFFFU*/
+	const uint8_t  pos       = POSITION_VAL((CPin.pinMask >> GPIO_PIN_MASK_POS) & 0x0000FFFFU);
+#else
+    const uint8_t  pos       = POSITION_VAL(CPin.pinMask); //  __builtin_ffs(CPin.pinMask) - 1;
+#endif
+
     const uint32_t inReg     = (const uint32_t)&((GPIO_TypeDef*)CPin.ulPortBase)->IDR;
     const uint32_t outReg    = (const uint32_t)&((GPIO_TypeDef*)CPin.ulPortBase)->ODR;
     const uint32_t bb_inadr  = BITBAND(inReg, pos);
@@ -250,7 +227,7 @@ class BB_PIN {
 
     template<typename T>
     inline  void write(T value) {
-      MEM_ADDR(this->bb_outadr) = value;
+      MEM_ADDR(this->bb_outadr) =(bool)value;
     }
 
     template<typename T>
