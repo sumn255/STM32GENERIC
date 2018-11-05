@@ -7,7 +7,6 @@
 #define _HAL_DEFAULT_CONFIG_H_
 
 /***************  for freeRtos ****************/
-
 #ifndef portTickUSE_TIMx
 # if defined(STM32F103RE)
     #define portTickUSE_TIMx 7
