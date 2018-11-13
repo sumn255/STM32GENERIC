@@ -21,39 +21,35 @@ void setup() {
   Serial << "\nAT24CXX hardware I2C EEPROM RW DEMO\n";
 #endif
 
-  Serial << "Length = " << EEPROM.end() << " bytes\n";
+  Serial << "Length = " << EEPROM.length() << " bytes\n";
 
-  /*-------------------------------------------------------------------------- 
-   *  for stl c++11/14 the begin/end is keywords for iteration.
-   *  while set USE_ITERATOR to 1 should be use  Init/deInit instead with them.
-  ----------------------------------------------------------------------------*/
-#if USE_ITERATOR >0
+  /*--------------------------------------------------------------------------
+      for stl c++11/14 the begin/end is keywords for iteration.
+      while set USE_ITERATOR to 1 should be use  Init/deInit instead with them.
+    ----------------------------------------------------------------------------*/
   EEPROM.Init(); /* Init ExtEEPROM gpio */
-#else
-  EEPROM.begin(); /* Init ExtEEPROM gpio */
-#endif
 
-
-#if 0
-  //write all eeprom with page number; run one times only
+#if 0  //write all eeprom with page number; run one times only
   for (auto i = 0; i < EEPROM.length(); i++) {
 
     //    EEPROM.write(i, (uint8_t)i & 0xff);   /*use write function*/
     EEPROM[i]  =  (uint8_t)i & 0xff;       /*use iteration*/
   }
 #endif
+
   for (uint32_t  page = 0; page < EEPROM.length() / 256; page++) {
-    Serial << "page: " << page+1  <<  "/" <<  EEPROM.length() / 256 << " \n";
+    Serial << "page: " << page + 1  <<  "/" <<  EEPROM.length() / 256 << " \n";
     for (auto i = 0; i < 16; i++) {
       uint16_t addr = page * 256 + i * 16;
       Serial << "addr(";
-      if (page == 0 ) Serial  << "00";
-      if (i == 0)  Serial      << "0";
+      if (page == 0 ) Serial  << "0";
+      if (page < 0x10 ) Serial  << "0";
+      if (addr == 0)    Serial  << "0";
       Serial << _HEX(addr) << ") ";
       for (auto j = 0; j < 16; j++) {
 
-        //      uint8_t ch = EEPROM.read( i * 16 + j); /*use read function*/
-        uint8_t ch = EEPROM[ i * 16 + j];             /*use iteration*/
+        //      uint8_t ch = EEPROM.read(addr + j); /*use read function*/
+        uint8_t ch = EEPROM[addr + j];             /*use iteration*/
         if ( ch < 16) Serial << "0";
         Serial << _HEX(ch) << "  ";
       }

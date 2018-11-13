@@ -155,27 +155,35 @@ class EXTEEPROM : public WARE {
 
     uint8_t read_byte(uint16_t address)
     {
-      WARE::beginTransmission(devAdr);     // transmit to device #80(0x50)
-
-      if (devType > AT24C16)	           //for 16bit address
+	  uint8_t _devAdr = devAdr;	
+      if (devType > AT24C16){	           //for 16bit address
+        WARE::beginTransmission(_devAdr);  // transmit to device #80(0x50)
         WARE::write(byte(address >> 8));   // high address
-
+      }else{
+		_devAdr |=  (address >> 8);     //04/08/16 page
+        WARE::beginTransmission(_devAdr);  // transmit to device #80(0x50)
+	  }
       WARE::write(byte(address & 0xff));   //low address
       WARE::endTransmission(); 			   // stop transmitting
-      WARE::requestFrom(byte(devAdr), byte(1));    	// request 1 bytes from slave device #80(0x50)
+      WARE::requestFrom(byte(_devAdr), byte(1));    	// request 1 bytes from slave device #80(0x50)
       delay(2);
-      return  WARE::read();  		      // receive high byte (overwrites previous reading)
+      return  WARE::read();  		       // receive high byte (overwrites previous reading)
     }
 
     inline uint8_t read(uint16_t address) {return read_byte(address);}
 
     void write_byte(uint16_t address, uint8_t val)
     {
-      WARE::beginTransmission(devAdr); // transmit to device #80(0x50)
-      if (devType > AT24C16)
-        WARE::write(address >> 8); 		// high address
-      WARE::write(address & 0xff);  			// low address
-      WARE::write(val);  				// data
+	  uint8_t _devAdr = devAdr;	
+      if (devType > AT24C16){	           //for 16bit address
+        WARE::beginTransmission(_devAdr);  // transmit to device #80(0x50)
+        WARE::write(byte(address >> 8));   // high address
+      }else{
+		_devAdr |=  (address >> 8);     //04/08/16 page
+        WARE::beginTransmission(_devAdr);  // transmit to device #80(0x50)
+	  }
+      WARE::write(address & 0xff);  	   // low address
+      WARE::write(val);  				   // data
       WARE::endTransmission();
       delay(2);
     }
