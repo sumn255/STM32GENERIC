@@ -39,13 +39,15 @@
 #include "Arduino.h"
 #include "WireBase.h"
 
-#define SOFT_STANDARD 27
+#define SOFT_STANDARD  (((F_CPU /10000) * 375)/100000)  /*200 Khz*/
 #define SOFT_FAST 0
 
 #define SOFTI2C_WRITE 0
 #define SOFTI2C_READ  1
 
+/* 10 cycle */
 #define I2C_DELAY(x) do{for(int i=0;i<x;i++) {asm volatile("nop");}}while(0)
+
 #define BUFFER_LENGTH 32
 
 class TwoWireSoft : public WireBase {
@@ -56,7 +58,7 @@ class TwoWireSoft : public WireBase {
 	
     TwoWireSoft(ARDUINOPIN_TypeDef  sda,
                 ARDUINOPIN_TypeDef  scl, 
-	            uint8_t i2c_delay = SOFT_STANDARD)
+	            uint8_t i2c_delay = SOFT_STANDARD )
                 : sda(sda), scl(scl), i2c_delay(i2c_delay) {}
 				
     void Init(uint8_t self_addr = 0) {

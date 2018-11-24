@@ -53,10 +53,10 @@
    #define AT24CXX_SCL SCL
 #endif
 #ifndef   AT24CXX_ADR
-   #if  AT24CXX_A2A1A0 >0
+   #if  defined(AT24CXX_A2A1A0) &&  (AT24CXX_A2A1A0>0)
      #define AT24CXX_ADR  (0x50 | AT24CXX_A2A1A0)
    #else
-     #define AT24CXX_ADR  (0x50 | AT24CXX_A2A1A0)
+     #define AT24CXX_ADR  0x50
    #endif
 #endif
 #ifndef    AT24CXX_TYPE
@@ -160,7 +160,7 @@ class EXTEEPROM : public WARE {
         WARE::beginTransmission(_devAdr);  // transmit to device #80(0x50)
         WARE::write(byte(address >> 8));   // high address
       }else{
-		_devAdr |=  (address >> 8);     //04/08/16 page
+		_devAdr |=  (address >> 8);        //04/08/16 page
         WARE::beginTransmission(_devAdr);  // transmit to device #80(0x50)
 	  }
       WARE::write(byte(address & 0xff));   //low address
@@ -179,13 +179,13 @@ class EXTEEPROM : public WARE {
         WARE::beginTransmission(_devAdr);  // transmit to device #80(0x50)
         WARE::write(byte(address >> 8));   // high address
       }else{
-		_devAdr |=  (address >> 8);     //04/08/16 page
+		_devAdr |=  (address >> 8);        //04/08/16 page
         WARE::beginTransmission(_devAdr);  // transmit to device #80(0x50)
 	  }
       WARE::write(address & 0xff);  	   // low address
       WARE::write(val);  				   // data
       WARE::endTransmission();
-      delay(2);
+      delay(4);
     }
 
     size_t  write(uint16_t address, uint8_t val) { write_byte(address, val); return 1; };
