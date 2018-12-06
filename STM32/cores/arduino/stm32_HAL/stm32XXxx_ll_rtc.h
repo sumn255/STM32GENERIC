@@ -2,7 +2,7 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 
-#include "stm32XXxxx_ll_rcc.h"
+#include "stm32XXxx_ll_rcc.h"
 
 
 #ifdef STM32F0
