@@ -11,7 +11,7 @@ version=1.8.5
 # STM compile variables
 # ----------------------
 
-compiler.warning_flags=-w 
+compiler.warning_flags=-w {build.log_level}
 compiler.warning_flags.none=-w {build.log_level}
 compiler.warning_flags.default={build.log_level}
 compiler.warning_flags.more=-Wall {build.log_level}
