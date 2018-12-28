@@ -91,7 +91,7 @@ caddr_t _sbrk( int incr ) {
 }
 
 __attribute__((weak))
-int _link(char *old, char *new)
+int link(const char *old, const char *new)
 {
     UNUSED(old);
     UNUSED(new);	
