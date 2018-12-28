@@ -19,8 +19,6 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 */
- 
-#include "unistd.h"
 
 #include "STM32System.h"
 
@@ -29,6 +27,11 @@
 static const int print_fileno = 3;
 
 static Print *print;
+static Stream *stdprint = &Serial;  //default serial outport
+
+#if USE_SWOPRINTERR < 1
+static Stream *errprint = &Serial;  //default serial outport
+#endif
 
 int stm32SetPrintOutput(Print *p) {
     if (p == NULL) {
@@ -46,20 +49,41 @@ int stm32SetPrintOutput(Print *p) {
     return print_fileno;
 }
 
-extern "C" int _write( int file, char *ptr, int len ) {
+void setStdPrintDev(Stream *p,int file) {
 	if (file == STDOUT_FILENO){
-		return Serial.write(ptr, len);
+        stdprint = p;
+	}
+#if USE_SWOPRINTERR < 1
+	else if (file == STDERR_FILENO) {
+        errprint = p;
 	} 
+#endif
+}
+
+extern "C" int _write(int file, char *ptr, int len ) {
+	if (file == STDOUT_FILENO){
+		return stdprint->write(ptr, len);
+	}
 	if (file == STDERR_FILENO) {
-		Serial.write(ptr, len);
-		Serial.flush();
+#if USE_SWOPRINTERR < 1
+		errprint->write(ptr, len);
+		errprint->flush();
+#else
+	    int cnt = len;
+	    while(cnt){
+	   	   ITM_SendChar(*prt);
+		   ptr++;
+           cnt--;		   
+		}
+#endif
 		return len;
 	} 
 	if (file == print_fileno) {
-		if (print != NULL) return print->write(ptr, len);
+		if (print != NULL)  return print->write(ptr, len);
 	}
 	
 	// TODO show error
 	return 0;  //return no-void warning add by huaweiwx@sina.com 2017.7.21
 }
 
+SWO  SerialSWO;

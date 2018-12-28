@@ -47,7 +47,7 @@
 #define GPIO_SPEED_FREQ_VERY_HIGH GPIO_SPEED_FREQ_HIGH
 #endif
 
-#define RwReg  uint32_t
+// #define RwReg  uint32_t
 
 #ifdef __cplusplus
 extern "C" {
@@ -285,7 +285,7 @@ class PORTemulation
     PORTemulation(GPIO_TypeDef *port): port(port) {}
     GPIO_TypeDef *port;
  
-    inline operator int () const __attribute__((always_inline)) {
+    inline operator int () __attribute__((always_inline)) {
       return port->ODR;
     }
     inline PORTemulation & operator = (uint16_t pins) __attribute__((always_inline)) {
@@ -402,12 +402,12 @@ class LL_PIN {
     }
 
     template<typename T = bool>
-    inline operator T () const {
+    inline operator T () {
       return this->read();
     }
 
     template<typename T = bool>
-    inline T read() const {
+    inline T read() {
       return digitalRead(CPin);
     }
 
@@ -455,7 +455,7 @@ class InputPin : public LL_PIN {
 	}
 
     template<typename T = bool>
-    inline operator T () const {
+    inline operator T () {
       /*Waiting for stability*/
       if (ulDelayCnt) {                           
         for (volatile uint32_t i = ulDelayCnt; i > 0; i--);
@@ -516,7 +516,7 @@ class OutputPin : public LL_PIN {
     }
 
     template<typename T = bool>
-    inline operator T () const {
+    inline operator T () {
        return read();
     }
  

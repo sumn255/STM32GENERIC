@@ -154,6 +154,7 @@ int _read(UNUSED_PARAM(int file), UNUSED_PARAM(char *ptr), UNUSED_PARAM(int len)
   return 0 ;
 }
 
+/* move to STM32SYSTEM.cpp use Serial.
 __attribute__((weak))
 int _write( UNUSED_PARAM(int file), UNUSED_PARAM(char *ptr), int len )
 {
@@ -163,6 +164,7 @@ int _write( UNUSED_PARAM(int file), UNUSED_PARAM(char *ptr), int len )
   }
   return iIndex ;
 }
+*/
 
 __attribute__((weak))
 void _exit(UNUSED_PARAM(int status))
