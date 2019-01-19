@@ -1,0 +1,5 @@
+f 
+loadfile C:\Temp\arduino_build_676955\Mecarun.ino.hex,, 
+r 
+g 
+qc 
