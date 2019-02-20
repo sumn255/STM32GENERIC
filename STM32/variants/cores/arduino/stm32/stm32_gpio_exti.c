@@ -103,37 +103,40 @@ void EXTI4_15_IRQHandler(void) {
 }
 
 #else 
-void EXTI0_IRQHandler(void) {
+__weak void EXTI0_IRQHandler(void) {
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
 }
 
-void EXTI1_IRQHandler(void) {
+__weak void EXTI1_IRQHandler(void) {
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_1);
 }
 
-void EXTI2_IRQHandler(void) {
+
+__weak void EXTI2_IRQHandler(void) {
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_2);
+ // #endif
 }
 
-void EXTI3_IRQHandler(void) {
+__weak void EXTI3_IRQHandler(void) {
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_3);
 }
 
-void EXTI4_IRQHandler(void) {
+__weak void EXTI4_IRQHandler(void) {
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_4);
 }
 
-void EXTI9_5_IRQHandler(void) {
+__weak void EXTI9_5_IRQHandler(void) {
   for(uint32_t pin = GPIO_PIN_5; pin <= GPIO_PIN_9; pin=pin<<1) {
     HAL_GPIO_EXTI_IRQHandler(pin);
   }
 }
 
-void EXTI15_10_IRQHandler(void) {
+__weak void EXTI15_10_IRQHandler(void) {
   for(uint32_t pin = GPIO_PIN_10; pin <= GPIO_PIN_15; pin=pin<<1) {
     HAL_GPIO_EXTI_IRQHandler(pin);
   }
 }
+
 #endif
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
