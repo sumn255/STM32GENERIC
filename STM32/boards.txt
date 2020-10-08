@@ -1,0 +1,234 @@
+# See: http://code.google.com/p/arduino/wiki/Platforms
+# for developer,copy or rename this file to boards.txt
+
+menu.cpu=Processor
+menu.startadr=Startup adr
+menu.clock_source=Clock source
+menu.osc_speed=OSC Speed(MHz)
+menu.cpu_speed=CPU Speed(MHz)
+menu.usb=USB
+menu.serial=Serial communication
+menu.jtag_swd=JTAG/SWD
+menu.extern_lib=Extern lib
+menu.upload_method=Upload method
+menu.log=Debug Log_level
+
+
+######################################F103RE#######################################
+F103RE.name=F103RC/D/E(72M)
+F103RE.vid.0=0x067B
+F103RE.pid.0=0x2303
+
+F103RE.serial.disableDTR=true
+F103RE.serial.disableRTS=true
+F103RE.upload.uploadadr=0x08000000
+F103RE.upload.vect=0x08000000
+
+F103RE.build.board=F103R
+F103RE.build.core=arduino
+F103RE.build.series=STM32F1
+F103RE.build.mcu=cortex-m3
+
+F103RE.menu.cpu.F103RE1=MECARUN_V2_F103RC/D/E[LED PD2]
+F103RE.menu.cpu.F103RE1.upload.maximum_size=262144
+#524288
+F103RE.menu.cpu.F103RE1.upload.maximum_data_size=49152
+#65536
+F103RE.menu.cpu.F103RE1.upload.device=STM32F103RE
+F103RE.menu.cpu.F103RE1.build.extra_flags0=-DSTM32F103RE
+F103RE.menu.cpu.F103RE1.build.variant=F103R
+F103RE.menu.cpu.F103RE1.build.board=GENERIC_F103RE
+F103RE.menu.cpu.F103RE1.build.ldscript=ld/f103xE.ld
+
+F103RE.menu.startadr.default=flash(256k+48k)
+#(512k+64k)
+F103RE.menu.startadr.default.build.extra_flags={build.extra_flags0}
+
+F103RE.menu.startadr.F08010000=flash 1:0x08010000(64k)
+F103RE.menu.startadr.F08010000.upload.maximum_size=65536
+F103RE.menu.startadr.F08010000.upload.maximum_data_size=65536
+F103RE.menu.startadr.F08010000.build.extra_flags={build.extra_flags0} -DVECT_TAB_OFFSET=0x10000
+F103RE.menu.startadr.F08010000.build.ldscript=ld/f103xE_0801.ld
+F103RE.menu.startadr.F08010000.upload.uploadadr=0x08010000
+F103RE.menu.startadr.F08010000.upload.vect=0x08010000
+
+F103RE.menu.startadr.F08020000=flash 2:0x08020000(64k)
+F103RE.menu.startadr.F08020000.upload.maximum_size=65536
+F103RE.menu.startadr.F08020000.upload.maximum_data_size=65536
+F103RE.menu.startadr.F08020000.build.extra_flags={build.extra_flags0} -DVECT_TAB_OFFSET=0x20000
+F103RE.menu.startadr.F08020000.build.ldscript=ld/f103xE_0802.ld
+F103RE.menu.startadr.F08020000.upload.uploadadr=0x08020000
+F103RE.menu.startadr.F08020000.upload.vect=0x08020000
+
+F103RE.menu.startadr.F08030000=flash 3:0x08030000(64k)
+F103RE.menu.startadr.F08030000.upload.maximum_size=65536
+F103RE.menu.startadr.F08030000.upload.maximum_data_size=65536
+F103RE.menu.startadr.F08030000.build.extra_flags={build.extra_flags0} -DVECT_TAB_OFFSET=0x30000
+F103RE.menu.startadr.F08030000.build.ldscript=ld/f103xE_0803.ld
+F103RE.menu.startadr.F08030000.upload.uploadadr=0x08030000
+F103RE.menu.startadr.F08030000.upload.vect=0x08030000
+
+F103RE.menu.startadr.F08040000=flash 4:0x08040000(64k)
+F103RE.menu.startadr.F08040000.upload.maximum_size=65536
+F103RE.menu.startadr.F08040000.upload.maximum_data_size=65536
+F103RE.menu.startadr.F08040000.build.extra_flags={build.extra_flags0} -DVECT_TAB_OFFSET=0x40000
+F103RE.menu.startadr.F08040000.build.ldscript=ld/f103xE_0804.ld
+F103RE.menu.startadr.F08040000.upload.uploadadr=0x08040000
+F103RE.menu.startadr.F08040000.upload.vect=0x08040000
+
+F103RE.menu.startadr.F08050000=flash 5:0x08050000(64k)
+F103RE.menu.startadr.F08050000.upload.maximum_size=65536
+F103RE.menu.startadr.F08050000.upload.maximum_data_size=65536
+F103RE.menu.startadr.F08050000.build.extra_flags={build.extra_flags0} -DVECT_TAB_OFFSET=0x50000
+F103RE.menu.startadr.F08050000.build.ldscript=ld/f103xE_0805.ld
+F103RE.menu.startadr.F08050000.upload.uploadadr=0x08050000
+F103RE.menu.startadr.F08050000.upload.vect=0x08050000
+
+F103RE.menu.startadr.F08060000=flash 6:0x08060000(64k)
+F103RE.menu.startadr.F08060000.upload.maximum_size=65536
+F103RE.menu.startadr.F08060000.upload.maximum_data_size=65536
+F103RE.menu.startadr.F08060000.build.extra_flags={build.extra_flags0} -DVECT_TAB_OFFSET=0x60000
+F103RE.menu.startadr.F08060000.build.ldscript=ld/f103xE_0806.ld
+F103RE.menu.startadr.F08060000.upload.uploadadr=0x08060000
+F103RE.menu.startadr.F08060000.upload.vect=0x08060000
+
+F103RE.menu.startadr.F08070000=flash 7:0x08070000(64k)
+F103RE.menu.startadr.F08070000.upload.maximum_size=65536
+F103RE.menu.startadr.F08070000.upload.maximum_data_size=65536
+F103RE.menu.startadr.F08070000.build.extra_flags={build.extra_flags0} -DVECT_TAB_OFFSET=0x70000
+F103RE.menu.startadr.F08070000.build.ldscript=ld/f103xE_0807.ld
+F103RE.menu.startadr.F08070000.upload.uploadadr=0x08070000
+F103RE.menu.startadr.F08070000.upload.vect=0x08070000
+
+F103RE.menu.startadr.F08000000=flash(WithRamBoot 20kRAM used Only)
+F103RE.menu.startadr.F08000000.upload.maximum_size=65536
+F103RE.menu.startadr.F08000000.upload.maximum_data_size=20480
+F103RE.menu.startadr.F08000000.build.extra_flags={build.extra_flags0} -DCHK_JUMP_TO_SRAM
+F103RE.menu.startadr.F08000000.build.ldscript=ld/f103xE_0800.ld
+F103RE.menu.startadr.F08000000.upload.uploadadr=0x08000000
+F103RE.menu.startadr.F08000000.upload.vect=0x08000000
+
+F103RE.menu.startadr.R20000000=Sram 0:0x20000000(44K+20K BOOT=11 St/Jlink uploader only)
+F103RE.menu.startadr.R20000000.upload.maximum_size=45056
+F103RE.menu.startadr.R20000000.upload.maximum_data_size=20480
+F103RE.menu.startadr.R20000000.build.extra_flags={build.extra_flags0} -DVECT_TAB_OFFSET=0x0000 -DVECT_TAB_SRAM
+F103RE.menu.startadr.R20000000.build.ldscript=ld/f103xE_RAM0.ld
+F103RE.menu.startadr.R20000000.upload.uploadadr=0x20000000
+F103RE.menu.startadr.R20000000.upload.vect=0x20000000
+
+F103RE.menu.extern_lib.NONE=NONE
+F103RE.menu.extern_lib.STemWin=STemWin
+F103RE.menu.extern_lib.STemWin.build.extra_lib={build.system.path}/EXTRALIB/STemWin/
+F103RE.menu.extern_lib.STemWin.build.extra_flags_os=-DOS_SUPPORT=0
+F103RE.menu.extern_lib.STemWinOS=STemWin_OS
+F103RE.menu.extern_lib.STemWinOS.build.extra_lib={build.system.path}/EXTRALIB/STemWin/STemWin532_CM3_OS_GCC.a
+F103RE.menu.extern_lib.STemWinOS.build.extra_flags_os=-DOS_SUPPORT=1
+
+F103RE.menu.osc_speed.speed_08m=8M(HSE)_72M
+F103RE.menu.osc_speed.speed_08m.build.f_cpu=72000000L -DHSE_VALUE=8000000
+F103RE.menu.osc_speed.speed_hsi=8M(HSI)_48M
+F103RE.menu.osc_speed.speed_hsi.build.f_cpu=48000000L -DUSE_HSI
+
+#---------------------------- UPLOAD METHODS ---------------------------
+upload.altID=unknown
+upload.usbID=unknown
+
+F103RE.menu.upload_method.jLinkMethod=JLink
+
+F103RE.menu.upload_method.STLinkMethod=STLink 
+F103RE.menu.upload_method.STLinkMethod.cmd=stlink_upload
+F103RE.menu.upload_method.STLinkMethod.cmd.windows=stlink_upload.bat
+F103RE.menu.upload_method.STLinkMethod.path.windows={runtime.ide.path}/hardware/tools/win
+F103RE.menu.upload_method.STLinkMethod.path.macosx={runtime.ide.path}/hardware/tools/macosx
+F103RE.menu.upload_method.STLinkMethod.path.linux={runtime.ide.path}/hardware/tools/linux
+F103RE.menu.upload_method.STLinkMethod.upload.protocol=STLink
+F103RE.menu.upload_method.STLinkMethod.upload.tool=stlink_upload
+F103RE.menu.upload_method.STLinkMethod.upload.params.verbose=-d
+F103RE.menu.upload_method.STLinkMethod.upload.params.quiet=
+F103RE.menu.upload_method.STLinkMethod.serial.port.file=UNSET
+F103RE.menu.upload_method.STLinkMethod.upload.altID=UNSET
+F103RE.menu.upload_method.STLinkMethod.upload.usbID=UNSET
+F103RE.menu.upload_method.STLinkMethod.upload.pattern="{path}/{cmd}" {serial.port.file} {upload.altID} {upload.usbID} "{build.path}/{build.project_name}.hex" "{upload .device}" "{upload.uploadadr}" "{upload.vect}"
+F103RE.menu.upload_method.STLinkMethod.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUSB
+
+F103RE.menu.upload_method.jLinkMethod.cmd=jlink_upload
+F103RE.menu.upload_method.jLinkMethod.cmd.windows=jlink_upload.bat
+F103RE.menu.upload_method.jLinkMethod.path.windows={runtime.ide.path}/hardware/tools/win
+F103RE.menu.upload_method.jLinkMethod.path.macosx={runtime.ide.path}/hardware/tools/macosx
+F103RE.menu.upload_method.jLinkMethod.path.linux={runtime.ide.path}/hardware/tools/linux
+F103RE.menu.upload_method.jLinkMethod.upload.tool=jlink_upload
+F103RE.menu.upload_method.jLinkMethod.upload.protocol=jlink
+F103RE.menu.upload_method.jLinkMethod.upload.params.verbose=-d
+F103RE.menu.upload_method.jLinkMethod.upload.params.quiet=
+F103RE.menu.upload_method.jLinkMethod.serial.port.file=UNSET
+F103RE.menu.upload_method.jLinkMethod.upload.altID=UNSET
+F103RE.menu.upload_method.jLinkMethod.upload.usbID=UNSET
+F103RE.menu.upload_method.jLinkMethod.upload.pattern="{path}/{cmd}" {serial.port.file} {upload.altID} {upload.usbID} "{build.path}/{build.project_name}.hex" {upload.device} "{upload.uploadadr}" "{upload.vect}" 
+F103RE.menu.upload_method.jLinkMethod.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUSB
+
+F103RE.menu.upload_method.serialMethod=Serial [TX/PA9, RX/PA10, BOOT0=1]
+F103RE.menu.upload_method.serialMethod.upload.protocol=maple_serial
+F103RE.menu.upload_method.serialMethod.upload.tool=serial_upload
+F103RE.menu.upload_method.serialMethod.upload.altID=UNUSED
+F103RE.menu.upload_method.serialMethod.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
+
+F103RE.menu.upload_method.serialMethod1=Serial [PL2303 AutoLoad]
+F103RE.menu.upload_method.serialMethod1.upload.protocol=maple_serial
+F103RE.menu.upload_method.serialMethod1.upload.tool=serial_upload
+F103RE.menu.upload_method.serialMethod1.upload.altID=PL2303
+F103RE.menu.upload_method.serialMethod1.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
+
+F103RE.menu.upload_method.serialMethod2=Serial [CH340 AutoLoad]
+F103RE.menu.upload_method.serialMethod2.upload.protocol=maple_serial
+F103RE.menu.upload_method.serialMethod2.upload.tool=serial_upload
+F103RE.menu.upload_method.serialMethod2.upload.altID=CH340
+F103RE.menu.upload_method.serialMethod2.build.extra_flags_serial_auto=-DMENU_SERIAL_AUTO=SerialUART1
+
+F103RE.menu.upload_method.BMPMethod=BMP (Black Magic Probe)
+F103RE.menu.upload_method.BMPMethod.upload.protocol=gdb_bmp
+F103RE.menu.upload_method.BMPMethod.upload.tool=bmp_upload
+
+F103RE.menu.usb.Disabled=Disabled USB
+F103RE.menu.usb.SerialUSB=Serial [Virtual COM port, PA11/12]
+F103RE.menu.usb.SerialUSB.build.extra_flags_usb=-DMENU_USB_SERIAL
+F103RE.menu.usb.SerialMSC=Mass storage
+F103RE.menu.usb.SerialMSC.build.extra_flags_usb=-DMENU_USB_MASS_STORAGE
+F103RE.menu.usb.Composite=Composite[CDC+MSC]
+F103RE.menu.usb.Composite.build.extra_flags_usb=-DMENU_USB_IAD
+
+F103RE.menu.serial.SerialUART2=SerialUART2[PA2/PA3]
+F103RE.menu.serial.SerialUART2.build.extra_flags_serial=-DMENU_SERIAL=SerialUART2
+F103RE.menu.serial.SerialUART1=SerialUART1[PA9/PA10]
+F103RE.menu.serial.SerialUART1.build.extra_flags_serial=-DMENU_SERIAL=SerialUART1
+F103RE.menu.serial.SerialUSB=SerialUSB
+F103RE.menu.serial.SerialUSB.build.extra_flags_serial=-DMENU_SERIAL=SerialUSB
+F103RE.menu.serial.SerialSWO=SerialSWO(If the SWO is connected)
+F103RE.menu.serial.SerialSWO.build.extra_flags_serial=-DMENU_SERIAL=SerialSWO
+
+#F103RE.menu.jtag_swd.default=Debug_default
+F103RE.menu.jtag_swd.SWD=SWD [debug pins reserved: PA14,PA13]
+F103RE.menu.jtag_swd.SWD.build.extra_flags_jtag=-DMENU_DEBUG_SWD
+F103RE.menu.jtag_swd.JTAG=JTAG [debug pins reserved: PB4,PB3,PA15,PA14,PA13]
+F103RE.menu.jtag_swd.JTAG.build.extra_flags_jtag=-DMENU_DEBUG_JTAG
+F103RE.menu.jtag_swd.Disabled=Disabled [debug pins free]
+F103RE.menu.jtag_swd.Disabled.build.extra_flags_jtag=-DMENU_DEBUG_DISABLED
+
+#-------------------------------------- DEBUG & LOGLEVEL ---------------------------------------#
+F103RE.menu.log.default=Release(no-exceptions)
+F103RE.menu.log.default.build.log_level=-fno-exceptions
+F103RE.menu.log.Release=Release(exceptions)
+F103RE.menu.log.fatal=FATAL
+F103RE.menu.log.fatal.build.log_level=-D__LOG_LEVEL=1 -DUSE_FULL_ASSERT
+F103RE.menu.log.error=ERROR
+F103RE.menu.log.error.build.log_level=-D__LOG_LEVEL=2 -DUSE_FULL_ASSERT
+F103RE.menu.log.warning=WARNING
+F103RE.menu.log.warning.build.log_level=-D__LOG_LEVEL=3 -DUSE_FULL_ASSERT
+F103RE.menu.log.info=INFO
+F103RE.menu.log.info.build.log_level=-D__LOG_LEVEL=4 -DUSE_FULL_ASSERT
+F103RE.menu.log.debug=DEBUG
+F103RE.menu.log.debug.build.log_level=-D__LOG_LEVEL=5 -DUSE_FULL_ASSERT
+F103RE.menu.log.trace=TRACE
+F103RE.menu.log.trace.build.log_level=-D__LOG_LEVEL=6 -DUSE_FULL_ASSERT
+
+
+###################################### end ##########################################

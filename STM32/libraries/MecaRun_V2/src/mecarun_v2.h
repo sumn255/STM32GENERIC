@@ -52,6 +52,7 @@ class Mecarun_v2
 {
 	public:
 		Mecarun_v2(void);//pwm out init
+		void Set_reverse(uint8_t motor_reverse, uint8_t encoder_reverse);
 		void Move(int16_t *speedarr);
 		void PID_Enable(float kp,float ki,float kd);//encoder init,pid argcs init
 		void PID_Disable(void);
@@ -69,6 +70,8 @@ class Mecarun_v2
 		pidtype motor[4];
 		mt_ctrltype mt_ctrl;
 		speed3axistype speed_xyr;
+		uint8_t motor_reverse;
+		uint8_t encoder_reverse;
 };
 
 #endif

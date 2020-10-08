@@ -1,5 +1,5 @@
 f 
-loadfile C:\Temp\arduino_build_439994\Mecarun.ino.hex,, 
+loadfile STM32F103RE,, 
 r 
 g 
 qc 

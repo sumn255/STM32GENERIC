@@ -15,10 +15,7 @@
 #include "ll_libs.h"
 #include "config.h"
 
-/*Encoder for motor 1*/
-static int16_t cnt1 = 0;
-/*end Encoder for motor 1*/
-
+static int16_t cnt1; //Encoder for motor 1
 extern TIM_HandleTypeDef htim3;
 extern TIM_HandleTypeDef htim4;
 extern TIM_HandleTypeDef htim5;
@@ -28,8 +25,16 @@ Mecarun_v2::Mecarun_v2(void)
 	TIM1_PWM_Init();
 	user_Motor_Init();
 	this->mt_ctrl.motor_en = 1;
+	cnt1 = 0;
+	this->motor_reverse = 0;
+	this->encoder_reverse = 0;
 }
 
+void Mecarun_v2::Set_reverse(uint8_t motor_reverse, uint8_t encoder_reverse)
+{
+	this->motor_reverse = motor_reverse;
+	this->encoder_reverse = encoder_reverse;
+}
 
 void Mecarun_v2::Move(int16_t *speedarr)
 {
@@ -75,18 +80,20 @@ void Mecarun_v2::PID_Disable(void)
 
 void Mecarun_v2::Sync_cnt(void)
 {
-	#if ENCODER_REVERSE == 0
-	this->motor[0].cnt += (int32_t)cnt1;
-	this->motor[2].cnt += (int32_t)((int16_t)(__HAL_TIM_GET_COUNTER(&htim3)));
-	this->motor[1].cnt += (int32_t)((int16_t)(__HAL_TIM_GET_COUNTER(&htim4)));
-	this->motor[3].cnt += (int32_t)((int16_t)(__HAL_TIM_GET_COUNTER(&htim5)));
-	#else
-	this->motor[0].cnt -= (int32_t)cnt1;
-	this->motor[2].cnt -= (int32_t)((int16_t)(__HAL_TIM_GET_COUNTER(&htim3)));
-	this->motor[1].cnt -= (int32_t)((int16_t)(__HAL_TIM_GET_COUNTER(&htim4)));
-	this->motor[3].cnt -= (int32_t)((int16_t)(__HAL_TIM_GET_COUNTER(&htim5)));
-	#endif
-
+	if(this->encoder_reverse == 1)
+	{
+		this->motor[0].cnt -= (int32_t)cnt1;
+		this->motor[2].cnt -= (int32_t)((int16_t)(__HAL_TIM_GET_COUNTER(&htim3)));
+		this->motor[1].cnt -= (int32_t)((int16_t)(__HAL_TIM_GET_COUNTER(&htim4)));
+		this->motor[3].cnt -= (int32_t)((int16_t)(__HAL_TIM_GET_COUNTER(&htim5)));
+	}
+	else
+	{
+		this->motor[0].cnt += (int32_t)cnt1;
+		this->motor[2].cnt += (int32_t)((int16_t)(__HAL_TIM_GET_COUNTER(&htim3)));
+		this->motor[1].cnt += (int32_t)((int16_t)(__HAL_TIM_GET_COUNTER(&htim4)));
+		this->motor[3].cnt += (int32_t)((int16_t)(__HAL_TIM_GET_COUNTER(&htim5)));
+	}
 	cnt1 = 0;
 	LL_TIM_SetCounter(htim3.Instance, 0);
 	LL_TIM_SetCounter(htim4.Instance, 0);
@@ -107,12 +114,12 @@ void Mecarun_v2::Set_speed(void)
 	{
 		if(this->mt_ctrl.motor_update == 0)
 			return;
-		for(i=0;i<4;++i)//open loop
-			#if MOTOR_REVERSE == 0
-			speed[i] = this->motor[i].target;
-			#else
-			speed[i] = -this->motor[i].target;
-			#endif
+		if(this->motor_reverse == 1)
+			for(i=0;i<4;++i)//open loop
+				speed[i] = -this->motor[i].target;
+		else
+			for(i=0;i<4;++i)//open loop
+				speed[i] = this->motor[i].target;
 
 		//set pwm
 		if(speed[3] >= 0)//keep decay mode the same
@@ -260,14 +267,16 @@ void Mecarun_v2::Set_speed(void)
 				this->motor[i].err_int = (this->motor[i].err_int < -this->motor[i].intlimit)?(-this->motor[i].intlimit):this->motor[i].err_int;
 				this->motor[i].cnt_last = this->motor[i].cnt;
 
-				#if MOTOR_REVERSE == 0
-				//speedwatch[i]=speed[i]=currerr[i]*(this->motor[i].kp)+this->motor[i].err_int*(this->motor[i].ki)+(currerr[i]-this->motor[i].err_last)*(this->motor[i].kd);
-				speed[i]=currerr[i]*(this->motor[i].kp)+this->motor[i].err_int*(this->motor[i].ki)+(currerr[i]-this->motor[i].err_last)*(this->motor[i].kd);
-
-				#else
-				//speedwatch[i]=speed[i]=-(currerr[i]*(mt[i].kp)+mt[i].err_int*(mt[i].ki)+(currerr[i]-mt[i].err_last)*(mt[i].kd));
-				speed[i]=-(currerr[i]*(this->motor[i].kp)+this->motor[i].err_int*(this->motor[i].ki)+(currerr[i]-this->motor[i].err_last)*(this->motor[i].kd));
-				#endif
+				if(motor_reverse == 1)
+				{
+					//speedwatch[i]=speed[i]=-(currerr[i]*(mt[i].kp)+mt[i].err_int*(mt[i].ki)+(currerr[i]-mt[i].err_last)*(mt[i].kd));
+					speed[i]=-(currerr[i]*(this->motor[i].kp)+this->motor[i].err_int*(this->motor[i].ki)+(currerr[i]-this->motor[i].err_last)*(this->motor[i].kd));	
+				}
+				else
+				{
+					//speedwatch[i]=speed[i]=currerr[i]*(this->motor[i].kp)+this->motor[i].err_int*(this->motor[i].ki)+(currerr[i]-this->motor[i].err_last)*(this->motor[i].kd);
+					speed[i]=currerr[i]*(this->motor[i].kp)+this->motor[i].err_int*(this->motor[i].ki)+(currerr[i]-this->motor[i].err_last)*(this->motor[i].kd);
+				}
 
 				this->motor[i].err_last = currerr[i];
 				speed[i] = (speed[i] > this->motor[i].outlimit)?this->motor[i].outlimit:speed[i];

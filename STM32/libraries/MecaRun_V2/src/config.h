@@ -4,9 +4,6 @@
 #define PID_EN 1
 #define IWDG_EN 0
 
-#define MOTOR_REVERSE 1
-#define ENCODER_REVERSE 0
-
 #define OFFLINE_DECT 1
 #define TIMEOUT_TH 200 //ofline dectect ,ms
 
